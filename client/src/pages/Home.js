@@ -51,8 +51,12 @@ class Home extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>Check your website!</h1>
+              <h1 style={{color: "white", textShadow: "2px 2px 4px #000000"}}>JetSet Site Checker V.000001</h1>
             </Jumbotron>
+          </Col>
+        </Row>
+        <Row styleClass="justify-content-center">
+          <Col size="md-6" >
             <form>
               <Input
                 value={site}
@@ -68,8 +72,8 @@ class Home extends Component {
                 Check
               </FormBtn>
             </form>
-          </Col>
-        </Row>
+          </Col>  
+          </Row>
       </Container>
     );
   }

@@ -4,7 +4,7 @@ import React from "react";
 
 export function Input(props) {
   return (
-    <div className="form-group">
+    <div className="form-group" style={{textAlign: "center"}}>
       <input className="form-control" {...props} />
     </div>
   );
