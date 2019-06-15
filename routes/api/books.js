@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const booksController = require("../../controllers/booksController");
 
+/*
 // Matches with "/api/books"
 router.route("/")
   .get(booksController.findAll)
@@ -12,6 +13,7 @@ router
   .get(booksController.findById)
   .put(booksController.update)
   .delete(booksController.remove);
+*/
 
 module.exports = router;
 // HERRO werd
