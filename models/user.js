@@ -10,7 +10,13 @@ const userSchema = new Schema({
   user_phone: { type: String, required: true },
   user_imgsrc: { type: String, required: true },
   user_github: { type: String, required: true },
-  user_preference: { type: String, required: true }
+  user_preference: { type: String, required: true },
+  user_sites: [{
+    site_url: {
+      site: Schema.Types.ObjectId,
+      ref: "Sites"
+    }
+  }]
 });
 
 const User = mongoose.model("User", userSchema);

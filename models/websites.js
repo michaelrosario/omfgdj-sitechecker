@@ -6,7 +6,11 @@ const siteSchema = new Schema({
   site_url: { type: String, required: true },
   site_desc: { type: String, required: true },
   site_imgsrc: { type: String, required: false },
-  site_badges: []
+  site_badges: [],
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'Users'
+  }
 });
 
 const Sites = mongoose.model("Sites", siteSchema);
