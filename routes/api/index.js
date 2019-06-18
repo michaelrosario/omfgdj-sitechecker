@@ -14,17 +14,107 @@ router.get("/check/:site", function(req,res){
           //console.log(response.data);
           const $  = cheerio.load(response.data);
 
-          const output = [];
+          const data = {};
 
+          // data
+          const meta = [];
+          const script = [];
+          const images = [];
+          const header1 = [];
+          const header2 = [];
+          const header3 = [];
+          const header4 = [];
+          const header5 = [];
+          const links = [];
+
+          // get all meta
           $("meta").each((i, element) => {
-              output.push({
+              meta.push({
                 name: $(element).attr("name"),
                 content: $(element).attr("content")
               });
           });
 
-          console.log("output",output);
-          return res.json(output);
+          data.meta = meta;
+
+          // get all scripts
+          $("script").each((i, element) => {
+            script.push({
+              src: $(element).attr("src")
+            });
+          });
+
+          data.script = script;
+
+          // get all images
+          $("img").each((i, element) => {
+            images.push({
+              src: $(element).attr("src"),
+              alt: $(element).attr("alt")
+            });
+          });
+
+          data.images = images;
+
+          // get all header1
+          $("h1").each((i, element) => {
+            header1.push({
+              text: $(element).text()
+            });
+          });
+
+          data.header1 = header1;
+          
+          // get all header2
+          $("h2").each((i, element) => {
+            header2.push({
+              text: $(element).text()
+            });
+          });
+
+          data.header2 = header2;
+
+          // get all header3
+          $("h3").each((i, element) => {
+            header3.push({
+              text: $(element).text()
+            });
+          });
+
+          data.header3 = header3;
+
+          // get all header4
+          $("h4").each((i, element) => {
+            header4.push({
+              text: $(element).text()
+            });
+          });
+
+          data.header4 = header4;
+
+           // get all header5
+           $("h5").each((i, element) => {
+            header5.push({
+              text: $(element).text()
+            });
+          });
+
+          data.header5 = header5;
+
+
+          // get all links
+          $("a").each((i, element) => {
+            links.push({
+              text: $(element).text(),
+              link: $(element).attr("href"),
+              target:  $(element).attr("target")
+            });
+          });
+
+          data.links = links;
+
+          console.log("data",data);
+          return res.json(data);
         }).catch( error => console.log(error));
 
   })
