@@ -29,9 +29,13 @@ router.get("/check/:site", function(req,res){
 
           // get all meta
           $("meta").each((i, element) => {
+              let content = $(element).attr("content");
+              if(content){
+                content = content.trim();
+              }
               meta.push({
                 name: $(element).attr("name"),
-                content: $(element).attr("content").trim()
+                content
               });
           });
 
@@ -58,10 +62,10 @@ router.get("/check/:site", function(req,res){
 
           // get all header1
           $("h1").each((i, element) => {
-            const headerText = $(element).text().trim();
-            if(headerText != ""){
+            const headerText = $(element).text() || "";
+            if(headerText && headerText.trim()){
               header1.push({
-                text: headerText
+                text: headerText.trim()
               });
             }
           });
@@ -70,10 +74,10 @@ router.get("/check/:site", function(req,res){
           
           // get all header2
           $("h2").each((i, element) => {
-            const headerText = $(element).text().trim();
-            if(headerText != ""){
+            const headerText = $(element).text() || "";
+            if(headerText && headerText.trim()){
               header2.push({
-                text: headerText
+                text: headerText.trim()
               });
             }
           });
@@ -82,10 +86,10 @@ router.get("/check/:site", function(req,res){
 
           // get all header3
           $("h3").each((i, element) => {
-            const headerText = $(element).text().trim();
-            if(headerText != ""){
+            const headerText = $(element).text() || "";
+            if(headerText && headerText.trim()){
               header3.push({
-                text: headerText
+                text: headerText.trim()
               });
             }
           });
@@ -94,10 +98,10 @@ router.get("/check/:site", function(req,res){
 
           // get all header4
           $("h4").each((i, element) => {
-            const headerText = $(element).text().trim();
-            if(headerText != ""){
+            const headerText = $(element).text() || "";
+            if(headerText && headerText.trim()){
               header4.push({
-                text: headerText
+                text: headerText.trim()
               });
             }
           });
@@ -106,10 +110,10 @@ router.get("/check/:site", function(req,res){
 
            // get all header5
            $("h5").each((i, element) => {
-            const headerText = $(element).text().trim();
-            if(headerText != ""){
+            const headerText = $(element).text() || "";
+            if(headerText && headerText.trim()){
               header5.push({
-                text: headerText
+                text: headerText.trim()
               });
             }
           });
