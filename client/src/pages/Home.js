@@ -85,7 +85,7 @@ class Home extends Component {
                   <h5>We are now checking <u>{siteTitle}</u></h5> 
                   <p>H1: {siteData.header1.length}</p>
                   <p>H2: {siteData.header2.length}</p>
-                  <p>H4: {siteData.header3.length}</p>
+                  <p>H3: {siteData.header3.length}</p>
                   <p>H4: {siteData.header4.length}</p>
                   <p>H5: {siteData.header5.length}</p>
                   <p>Images: {siteData.images.length}</p>
