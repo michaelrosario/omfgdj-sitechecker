@@ -31,7 +31,7 @@ router.get("/check/:site", function(req,res){
           $("meta").each((i, element) => {
               meta.push({
                 name: $(element).attr("name"),
-                content: $(element).attr("content")
+                content: $(element).attr("content").trim()
               });
           });
 
@@ -58,45 +58,60 @@ router.get("/check/:site", function(req,res){
 
           // get all header1
           $("h1").each((i, element) => {
-            header1.push({
-              text: $(element).text()
-            });
+            const headerText = $(element).text().trim();
+            if(headerText != ""){
+              header1.push({
+                text: headerText
+              });
+            }
           });
 
           data.header1 = header1;
           
           // get all header2
           $("h2").each((i, element) => {
-            header2.push({
-              text: $(element).text()
-            });
+            const headerText = $(element).text().trim();
+            if(headerText != ""){
+              header2.push({
+                text: headerText
+              });
+            }
           });
 
           data.header2 = header2;
 
           // get all header3
           $("h3").each((i, element) => {
-            header3.push({
-              text: $(element).text()
-            });
+            const headerText = $(element).text().trim();
+            if(headerText != ""){
+              header3.push({
+                text: headerText
+              });
+            }
           });
 
           data.header3 = header3;
 
           // get all header4
           $("h4").each((i, element) => {
-            header4.push({
-              text: $(element).text()
-            });
+            const headerText = $(element).text().trim();
+            if(headerText != ""){
+              header4.push({
+                text: headerText
+              });
+            }
           });
 
           data.header4 = header4;
 
            // get all header5
            $("h5").each((i, element) => {
-            header5.push({
-              text: $(element).text()
-            });
+            const headerText = $(element).text().trim();
+            if(headerText != ""){
+              header5.push({
+                text: headerText
+              });
+            }
           });
 
           data.header5 = header5;
@@ -105,7 +120,7 @@ router.get("/check/:site", function(req,res){
           // get all links
           $("a").each((i, element) => {
             links.push({
-              text: $(element).text(),
+              text: $(element).text().trim(),
               link: $(element).attr("href"),
               target:  $(element).attr("target")
             });
