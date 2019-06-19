@@ -5,18 +5,37 @@ import API from "../utils/API";
 //import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
+import socket from 'socket.io-client';
 
 class Home extends Component {
   state = {
     site: '',
     siteData: {},
-    badges: {}
+    messages: "",
+    endpoint: process.env.NODE_ENV === "production" ? "/" : "localhost:3001"
   };
+ 
 
   componentDidMount() {
    /* API.getAllBadges()
       .then()
     */
+    const io = socket(this.state.endpoint, { secure: true });
+    io.on('toReact',site => {
+
+      console.log(site);
+      this.setState({
+        messages: site.data.data
+      });
+
+    })
+    
+  }
+
+  componentWillUnmount() {
+    const io = socket(this.state.endpoint, { secure: true });
+    socket.off("toReact");
+
   }
 
   handleInputChange = event => {
@@ -32,8 +51,14 @@ class Home extends Component {
     
     console.log("SEARCH "+site+" VIA API");
 
+
     API.checkSite(site) .then(res => {
       console.log("res",res);
+
+      const io = socket(this.state.endpoint, { secure: true });
+      // send site to all users
+      io.emit('fromReact', { data: site });
+
       this.setState({
         siteData: res.data
       })
@@ -46,6 +71,8 @@ class Home extends Component {
   render() {
 
     const { site, siteData } = this.state;
+
+    const io = socket(this.state.endpoint);
 
     let siteTitle = siteData.title || "";
 
@@ -94,6 +121,8 @@ class Home extends Component {
                   <p>Scripts: {siteData.script.length}</p>
                 </div>
                : ""}
+
+               {this.state.messages ? <div>Someone is checking {this.state.messages}</div> : ""}
 
               
             </Col>
