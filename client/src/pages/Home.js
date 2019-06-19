@@ -80,7 +80,22 @@ class Home extends Component {
 
           <Row styleClass="justify-content-center">
             <Col size="md-6" >
-              {siteTitle ? <h5>We are now checking {siteTitle}</h5> : ""}
+              {siteTitle ? 
+                <div>
+                  <h5>We are now checking <u>{siteTitle}</u></h5> 
+                  <p>H1: {siteData.header1.length}</p>
+                  <p>H2: {siteData.header2.length}</p>
+                  <p>H4: {siteData.header3.length}</p>
+                  <p>H4: {siteData.header4.length}</p>
+                  <p>H5: {siteData.header5.length}</p>
+                  <p>Images: {siteData.images.length}</p>
+                  <p>Links: {siteData.links.length}</p>
+                  <p>Meta: {siteData.meta.length}</p>
+                  <p>Scripts: {siteData.script.length}</p>
+                </div>
+               : ""}
+
+              
             </Col>
           </Row>
       </Container>
