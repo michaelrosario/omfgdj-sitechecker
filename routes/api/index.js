@@ -17,7 +17,7 @@ router.get("/check/:site", function(req,res){
           const data = {};
 
           // data
-          
+          let title = "";
           const meta = [];
           const script = [];
           const images = [];
@@ -29,10 +29,11 @@ router.get("/check/:site", function(req,res){
           const links = [];
 
           // get all meta
-          let siteTitle = $("title").text();
-          if(siteTitle && siteTitle.text().trim()) {
-            data.title = siteTitle.trim();
-          }
+          $("title").each((i, element) => {
+            title = $(element).text();
+            data.title = title;
+          });
+
 
           $("meta").each((i, element) => {
               let content = $(element).attr("content");

@@ -9,6 +9,7 @@ import { Input, FormBtn } from "../components/Form";
 class Home extends Component {
   state = {
     site: '',
+    siteData: {},
     badges: {}
   };
 
@@ -34,7 +35,7 @@ class Home extends Component {
     API.checkSite(site) .then(res => {
       console.log("res",res);
       this.setState({
-        badges: res.data.badges
+        siteData: res.data
       })
 
     });
@@ -44,7 +45,9 @@ class Home extends Component {
 
   render() {
 
-    const { site } = this.state;
+    const { site, siteData } = this.state;
+
+    let siteTitle = siteData.title || "";
 
     return (
       <Container fluid>
@@ -73,6 +76,12 @@ class Home extends Component {
               </FormBtn>
             </form>
           </Col>  
+          </Row>
+
+          <Row styleClass="justify-content-center">
+            <Col size="md-6" >
+              {siteTitle ? <h5>We are now checking {siteTitle}</h5> : ""}
+            </Col>
           </Row>
       </Container>
     );
