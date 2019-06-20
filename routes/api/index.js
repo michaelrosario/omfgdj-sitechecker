@@ -1,13 +1,16 @@
 const router = require("express").Router();
 const axios = require("axios");
 const cheerio = require("cheerio");
+const siteController = require("../../controllers/siteController");
 
-// Book routes
-//router.use("/books", bookRoutes);
+
+
 
 router.get("/check/:site", function(req,res){
       let site = req.params.site;
-      // remove http amd https and use www   
+      // remove http amd https and use www  
+      
+        
       console.log(site);
       axios.get("https://"+site)
         .then(response => {
@@ -138,6 +141,15 @@ router.get("/check/:site", function(req,res){
           });
 
           data.links = links;
+
+          // let info = {
+          //   site_name: data.title,
+          //   site_url: site,
+          //   site_desc: "test",
+          //   site_imgsrc: "",
+          //   site_badges:[]
+          // };
+          // info.post(siteController.create);
 
           console.log("data",data);
           return res.json(data);

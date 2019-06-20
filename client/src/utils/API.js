@@ -6,4 +6,5 @@ export default {
     return axios.get("/api/check/"+site);
   },
 
+  
 };
