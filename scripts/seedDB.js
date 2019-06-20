@@ -8,7 +8,7 @@ mongoose.connect(
     "mongodb://localhost/sitechecker"
 );
 
-const badgeseed = [
+const badgeSeed = [
   {
 
       badge_name: "HTML Not Broken",
@@ -135,13 +135,22 @@ const badgeseed = [
   badge_description: "No http request",
   badge_score: "-5",
   badge_icon: "/image",
-},
+}];
 
-];
+db.Badges
+  .remove({})
+  .then(() => db.Badges.collection.insertMany(badgeSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 
 
-
-const userseed = [
+const userSeed = [
     {
       user_login: "user",
       user_password: "password",
@@ -149,21 +158,46 @@ const userseed = [
       user_firstname: "FirstName",
       user_lastname: "LastName",
       user_phone: "123-456-7891",
-      user_imgsrc: "/image",
+      user_imgsrc: "",
       user_github: "http://github.com",
-      user_preference: "undefined"
-    },
+      user_preference: "undefined",
+      user_sites: []
+    }
 ];
 
-  const websiteseed = [
+db.User
+.remove({})
+.then(() => db.User.collection.insertMany(userSeed))
+.then(data => {
+  console.log(data.result.n + " records inserted!");
+  process.exit(0);
+})
+.catch(err => {
+  console.error(err);
+  process.exit(1);
+});
+
+
+  const sitesSeed = [
     {
       site_name: "Columbia University",
       site_url: "www.columbia.edu",
       site_desc: "Columbia University in the city of New York",
       site_imgsrc: "/image",
-      site_badges: "HTML 5 Badge"
+      site_badges: "HTML 5 Badge",
+      
     }
   ];
 
-
+  db.Sites
+  .remove({})
+  .then(() => db.Sites.collection.insertMany(sitesSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 

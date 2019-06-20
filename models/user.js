@@ -12,7 +12,7 @@ const userSchema = new Schema({
   user_github: { type: String, required: true },
   user_preference: { type: String, required: true },
   user_sites: [{
-      site: Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Sites" 
   }]
 });
