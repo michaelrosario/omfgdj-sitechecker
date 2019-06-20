@@ -52,7 +52,7 @@ class Home extends Component {
     console.log("SEARCH "+site+" VIA API");
 
 
-    API.checkSite(site) .then(res => {
+    API.checkSite(site).then(res => {
       console.log("res",res);
 
       const io = socket(this.state.endpoint, { secure: true });
@@ -61,12 +61,26 @@ class Home extends Component {
 
       this.setState({
         siteData: res.data
-      })
+      });
+
+      this.saveSiteToDB();
 
     });
   
-   
   };
+
+  saveSiteToDB = () => {
+      const { siteData, site } = this.state;
+      const info = {
+        site_name: siteData.title,
+        site_url: site,
+        site_desc: "test",
+        site_imgsrc: "",
+        site_badges:[]
+      };
+      API.saveSite(info);
+  }
+
 
   render() {
 

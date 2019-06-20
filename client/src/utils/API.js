@@ -5,6 +5,9 @@ export default {
   checkSite: function(site) {
     return axios.get("/api/check/"+site);
   },
+  saveSite: function(data) {
+    return axios.post("/api/site", data);
+  }
 
   
 };
