@@ -2,11 +2,12 @@ const router = require("express").Router();
 const axios = require("axios");
 const cheerio = require("cheerio");
 
+router.use("/site",require("./site.js"));
+
 router.get("/check/:site", function(req,res){
       let site = req.params.site;
       // remove http amd https and use www  
       
-        
       console.log(site);
       axios.get("https://"+site)
         .then(response => {
@@ -126,6 +127,7 @@ router.get("/check/:site", function(req,res){
 
           data.header5 = header5;
 
+
           // get all links
           $("a").each((i, element) => {
             links.push({
@@ -137,6 +139,7 @@ router.get("/check/:site", function(req,res){
 
           data.links = links;
 
+  
           console.log("data",data);
           return res.json(data);
         }).catch( error => console.log(error));
