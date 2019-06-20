@@ -6,6 +6,8 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import socket from 'socket.io-client';
+import {Card} from 'react-bootstrap';
+
 
 class Home extends Component {
   state = {
@@ -125,6 +127,31 @@ class Home extends Component {
                {this.state.messages ? <div>Someone is checking {this.state.messages}</div> : ""}
 
               
+            </Col>
+          </Row>
+
+          <Row>
+            <Col size="md-6">
+              <Card>
+              <Card.Img variant="top" src="https://images.websitebuilderexpert.com/wp-content/uploads/2018/09/crypton_trading.jpg" />
+              <Card.Body>
+              <Card.Text>
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+              </Card.Text>
+              </Card.Body>
+              </Card>
+            </Col>
+            <Col size="md-6">
+              <Card>
+              <Card.Img variant="top" src="https://images.websitebuilderexpert.com/wp-content/uploads/2018/09/crypton_trading.jpg" />
+              <Card.Body>
+              <Card.Text>
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+              </Card.Text>
+              </Card.Body>
+              </Card>
             </Col>
           </Row>
       </Container>
