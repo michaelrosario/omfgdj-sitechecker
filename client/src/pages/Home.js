@@ -6,6 +6,8 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import socket from 'socket.io-client';
+import Button from 'react-bootstrap/Button';
+
 
 class Home extends Component {
   state = {
@@ -95,6 +97,7 @@ class Home extends Component {
                 placeholder="Enter a URL"
               />
               
+              <Button>HEY IM BOOTSTRAP</Button>
               <FormBtn
                 disabled={!site}
                 onClick={this.handleFormSubmit}
