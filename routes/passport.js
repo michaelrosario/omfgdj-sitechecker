@@ -8,15 +8,15 @@ passport.use(
   "local-signin",
   new LocalStrategy(
     {
-      usernameField: "username",
-      passwordField: "password"
+      usernameField: "user_login",
+      passwordField: "user_password"
       // passReqToCallback: true
     },
 
     function(username, password, done) {
       db.User.findOne({
         where: {
-          username: username
+          user_login: username
         }
       }).then(function(user) {
         if (!user) {
