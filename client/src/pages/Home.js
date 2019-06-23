@@ -14,6 +14,12 @@ class Home extends Component {
     site: '',
     siteData: {},
     messages: "",
+    username: "",
+    password: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    loggedIn: false,
     endpoint: process.env.NODE_ENV === "production" ? "/" : "localhost:3001"
   };
  
@@ -45,7 +51,58 @@ class Home extends Component {
     this.setState({
       [name]: value
     });
-  };
+  }
+
+  handleLogin = event => {
+    event.preventDefault();
+    const { 
+      username, 
+      password
+    } = this.state;
+
+    console.log("Login",{ username, password });
+    
+    const user = {
+      user_login: username,
+      user_password: password
+    }
+
+    API.login(user).then(res => {
+      console.log("res", res);
+      if(res.status === 200) {
+        this.setState({
+          loggedIn: true,
+          username: res.data.user_login
+        });
+      }
+    });
+  }
+
+  handleSignUp = event => {
+    event.preventDefault();
+    const { 
+      username, 
+      password,
+      firstName,
+      lastName,
+      email 
+    } = this.state;
+
+    console.log("Sign Up",{ username, password, firstName, lastName, email });
+
+    const user = {
+      user_login: username,
+      user_password: password,
+      user_email: email,
+      user_firstname: firstName,
+      user_lastname: lastName
+    }
+
+    API.signup(user).then(res => {
+      console.log("res",res);
+    });
+
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -86,9 +143,16 @@ class Home extends Component {
 
   render() {
 
-    const { site, siteData } = this.state;
+    const { 
+      site, 
+      siteData, 
+      username, 
+      password, 
+      firstName,
+      lastName, 
+      email } = this.state;
 
-    const io = socket(this.state.endpoint);
+    //const io = socket(this.state.endpoint);
 
     let siteTitle = siteData.title || "";
 
@@ -166,6 +230,81 @@ class Home extends Component {
               </Card.Text>
               </Card.Body>
               </Card>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col size="md-6" >
+            <form>
+                <Input
+                  value={firstName}
+                  onChange={this.handleInputChange}
+                  name="firstName"
+                  placeholder="First Name"
+                />
+
+                <Input
+                  value={lastName}
+                  onChange={this.handleInputChange}
+                  name="lastName"
+                  placeholder="Last Name"
+                />  
+
+                <Input
+                  value={username}
+                  onChange={this.handleInputChange}
+                  name="username"
+                  placeholder="Username"
+                />
+
+                <Input
+                  value={password}
+                  onChange={this.handleInputChange}
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                />
+
+                <Input
+                  value={email}
+                  onChange={this.handleInputChange}
+                  name="email"
+                  placeholder="Email"
+                />
+                {/* TODO: Form validations and modal */}
+                <FormBtn
+                  disabled={!username && !password && !email && !firstName && !lastName}
+                  onClick={this.handleSignUp}
+                >
+                  Signup
+                </FormBtn>
+                </form>
+
+                <form>
+
+                <Input
+                  value={username}
+                  onChange={this.handleInputChange}
+                  name="username"
+                  placeholder="Username"
+                />
+
+                <Input
+                  value={password}
+                  onChange={this.handleInputChange}
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                />
+
+                {/* TODO: Form validations and modal */}
+                <FormBtn
+                  disabled={!username && !password}
+                  onClick={this.handleLogin}
+                >
+                  Login
+                </FormBtn>
+                </form>
             </Col>
           </Row>
       </Container>
