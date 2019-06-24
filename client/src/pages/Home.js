@@ -13,6 +13,7 @@ class Home extends Component {
   state = {
     site: '',
     siteData: {},
+    siteMoreData: {},
     messages: "",
     endpoint: process.env.NODE_ENV === "production" ? "/" : "localhost:3001"
   };
@@ -51,21 +52,26 @@ class Home extends Component {
     event.preventDefault();
     const { site } = this.state;
     
-    console.log("SEARCH "+site+" VIA API");
+    console.log("SEARCH "+site+" VIA APIs");
 
-
-    API.checkSite(site) .then(res => {
-      console.log("res",res);
-
-      const io = socket(this.state.endpoint, { secure: true });
-      // send site to all users
-      io.emit('fromReact', { data: site });
-
+    API.checkWappalyzer(site).then(res => {
+      console.log("wappa res:",res);
       this.setState({
-        siteData: res.data
+        siteMoreData: res.data
       })
-
     });
+
+    // API.checkSite(site) .then(res => {
+    //   console.log("res",res);
+
+    //   const io = socket(this.state.endpoint, { secure: true });
+    //   // send site to all users
+    //   io.emit('fromReact', { data: site });
+    //   this.setState({
+    //     siteData: res.data
+    //   })
+
+    // });
   
    
   };
