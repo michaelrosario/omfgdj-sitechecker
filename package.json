@@ -35,6 +35,7 @@
     "passport-local": "^1.0.0",
     "react-bootstrap": "^1.0.0-beta.9",
     "react-router": "^5.0.1",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "wappalyzer": "^5.8.2"
   }
 }

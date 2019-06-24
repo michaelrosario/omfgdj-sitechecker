@@ -158,15 +158,16 @@ class Home extends Component {
 
     return (
       <Container fluid>
-        <Row>
+        {/*<Row>
           <Col size="md-12">
-            <Jumbotron>
+          <Jumbotron>
               <h1 style={{color: "white", textShadow: "2px 2px 4px #000000"}}>JetSet Site Checker V.000001</h1>
-            </Jumbotron>
+          </Jumbotron> 
           </Col>
-        </Row>
-        <Row styleClass="justify-content-center">
-          <Col size="md-6" >
+        </Row>*/}
+        <Row>
+          <Col size="md-4">
+            {/* INSERT SEARCH BAR HERE*/}
             <form>
               <Input
                 value={site}
@@ -182,12 +183,11 @@ class Home extends Component {
                 Check
               </FormBtn>
             </form>
-          </Col>  
-          </Row>
-
-          <Row styleClass="justify-content-center">
-            <Col size="md-6" >
-              {siteTitle ? 
+          </Col>
+          
+          <Col size="md-8">
+           {/* SCRAPE RESULTS iDEALLY BADGE ICONS */}
+           {siteTitle ? 
                 <div>
                   <h5>We are now checking <u>{siteTitle}</u></h5> 
                   <p>H1: {siteData.header1.length}</p>
@@ -200,11 +200,23 @@ class Home extends Component {
                   <p>Meta: {siteData.meta.length}</p>
                   <p>Scripts: {siteData.script.length}</p>
                 </div>
-               : ""}
-
+               : "HEY THERES NO RESULTS, SO YEAH...."}
                {this.state.messages ? <div>Someone is checking {this.state.messages}</div> : ""}
+          </Col>
+        
+        </Row>
 
+
+        <Row styleClass="justify-content-center">
+          <Col size="md-6" >
+            
+          </Col>
+          </Row>
+
+          <Row styleClass="justify-content-center">
+            <Col size="md-6" >
               
+               
             </Col>
           </Row>
 
@@ -213,9 +225,8 @@ class Home extends Component {
               <Card>
               <Card.Img variant="top" src="https://images.websitebuilderexpert.com/wp-content/uploads/2018/09/crypton_trading.jpg" />
               <Card.Body>
-              <Card.Text>
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
+              <Card.Text style={{color:"white"}}>
+
               </Card.Text>
               </Card.Body>
               </Card>
@@ -224,9 +235,8 @@ class Home extends Component {
               <Card>
               <Card.Img variant="top" src="https://images.websitebuilderexpert.com/wp-content/uploads/2018/09/crypton_trading.jpg" />
               <Card.Body>
-              <Card.Text>
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
+              <Card.Text style={{color:"white"}}>
+              
               </Card.Text>
               </Card.Body>
               </Card>
@@ -242,7 +252,7 @@ class Home extends Component {
                   name="firstName"
                   placeholder="First Name"
                 />
-
+  
                 <Input
                   value={lastName}
                   onChange={this.handleInputChange}
