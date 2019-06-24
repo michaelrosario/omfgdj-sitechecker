@@ -83,7 +83,7 @@ class Home extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1 style={{color: "white", textShadow: "2px 2px 4px #000000"}}>JetSet Site Checker V.000001</h1>
+              <h1 style={{color: "white", textShadow: "2px 2px 4px #000000"}}>KoderBae | Get Recognized For Your Expertise V.003</h1>
             </Jumbotron>
           </Col>
         </Row>
@@ -97,7 +97,7 @@ class Home extends Component {
                 placeholder="Enter a URL"
               />
               
-              <Button>HEY IM BOOTSTRAP</Button>
+              <Button>Itsa Me a Bootstrap Button-o</Button>
               <FormBtn
                 disabled={!site}
                 onClick={this.handleFormSubmit}
