@@ -7,12 +7,14 @@ import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import socket from 'socket.io-client';
 import {Card} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 
 class Home extends Component {
   state = {
     site: '',
     siteData: {},
+    siteMoreData: {},
     messages: "",
     username: "",
     password: "",
@@ -108,25 +110,34 @@ class Home extends Component {
     event.preventDefault();
     const { site } = this.state;
     
-    console.log("SEARCH "+site+" VIA API");
-
+    console.log("SEARCH "+site+" VIA APIs");
 
     API.checkSite(site).then(res => {
-      console.log("res",res);
-
-      const io = socket(this.state.endpoint, { secure: true });
-      // send site to all users
-      io.emit('fromReact', { data: site });
-
+      console.log("wappa res:",res);
       this.setState({
-        siteData: res.data
-      });
+        siteMoreData: res.data
+      })
+    // });
 
-      this.saveSiteToDB();
+    // API.checkSite(site).then(res => {
+    //   console.log("res",res);
 
-    });
-  
-  };
+    // //   const io = socket(this.state.endpoint, { secure: true });
+    // //   // send site to all users
+    // //   io.emit('fromReact', { data: site });
+    // //   this.setState({
+    // //     siteData: res.data
+    // //   })
+
+    //   this.setState({
+    //     siteData: res.data
+    //   });
+
+    //   this.saveSiteToDB();
+
+    // });
+  });
+}
 
   saveSiteToDB = () => {
       const { siteData, site } = this.state;
@@ -176,6 +187,7 @@ class Home extends Component {
                 placeholder="Enter a URL"
               />
               
+              <Button>Itsa Me a Bootstrap Button-o</Button>
               <FormBtn
                 disabled={!site}
                 onClick={this.handleFormSubmit}
