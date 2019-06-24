@@ -8,10 +8,10 @@ const siteSchema = new Schema({
   site_imgsrc: { type: String, required: false },
   site_badges: [
     {
-      badge: {
+      
         type: Schema.Types.ObjectId,
         ref: 'Badges'
-      }
+      
     }
   ],
   user: {

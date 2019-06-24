@@ -1,12 +1,12 @@
 import React from "react";
+import { NavDropdown, Navbar,Form, Button,FormControl } from 'react-bootstrap';
+
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand" href="/">
-        Super Sexy Site Checker
-      </a>
-    </nav>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar.Brand href="#home">CODE HYPE</Navbar.Brand>
+    </Navbar>
   );
 }
 

@@ -1,4 +1,7 @@
 const router = require("express").Router();
+
+router.use("/site",require("./site.js"));
+  
 const axios = require("axios");
 const cheerio = require("cheerio");
 const Wappalyzer = require('wappalyzer');

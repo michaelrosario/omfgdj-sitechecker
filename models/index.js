@@ -1,3 +1,5 @@
 module.exports = {
-  Book: require("./book")
+  User: require("./user"),
+  Badges: require("./badges"),
+  Sites: require("./sites")
 };
