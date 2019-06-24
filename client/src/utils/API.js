@@ -14,9 +14,9 @@ export default {
   signup: function(data) {
     return axios.post('/user/signup',data);
   }
-
-  checkWappalyzer: function(site) {
-    return axios.get("/api/wapp/"+site);
-  }
+  // ,
+  // checkWappalyzer: function(site) {
+  //   return axios.get("/api/site/wapp/"+site);
+  // }
   
 };
