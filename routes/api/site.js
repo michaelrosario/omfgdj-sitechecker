@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const axios = require("axios");
 const cheerio = require("cheerio");
+const Wappalyzer = require('wappalyzer');
 const siteController = require("../../controllers/siteController");
 
 // Matches with "/api/books"
@@ -149,10 +150,30 @@ router.get("/check/:site", function(req,res){
         });
 
         data.links = links;
-
-
         console.log("data",data);
-        return res.json(data);
+
+
+        // WAPPALYZER
+        let url = "https://"+site;
+        console.log("---- WAPPALYZER ----");
+        
+        axios.get(`https://api.wappalyzer.com/analyze/v1/?url=${url}`, {
+          headers: {
+            "X-Api-Key": "wappalyzer.api.demo.key"
+          }
+        }).then(response => {
+          console.log("Wappa Server RES:");
+          
+              data.wappalyzer = response.data.applications;
+              return res.json(data);
+            // return console.log(jsonResponse);
+          }).catch( error => {
+            console.log(error)
+            console.log("---- WAPPALYZER FAILED ----");
+            return res.json(data);
+          });
+
+        
       }).catch( error => console.log(error));
 
 })
