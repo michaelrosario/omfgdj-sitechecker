@@ -4,7 +4,7 @@ const apiRoutes = require("./api");
 const userRoutes = require("./api/auth");
 
 // API Routes
-router.use("/api", apiRoutes);
+router.use("/api/site", apiRoutes);
 router.use("/user", userRoutes);
 
 // If no API routes are hit, send the React app

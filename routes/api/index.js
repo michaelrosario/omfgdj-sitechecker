@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
-router.use("/site",require("./site.js"));
-  
+// router.use("/site",require("./site.js"));
+const fetch = require("fetch");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const Wappalyzer = require('wappalyzer');
@@ -9,7 +9,7 @@ const Wappalyzer = require('wappalyzer');
 //router.use("/books", bookRoutes);
 
 
-router.get("/")
+// router.get("/")
 
 // router.get("/wapp/:site", function(req,res) {
 //   let site = req.params.site;
@@ -48,22 +48,17 @@ router.get("/check/:site", function(req,res){
   console.log("WE'RE NOW SCRAPING..... LOADING");
 
 
-  return fetch(`https://api.wappalyzer.com/lookup/v1/?url=${site}&callback_url=${site}`, {
+  return axios.get(`https://api.wappalyzer.com/analyze/v1/?url=${url}`, {
     headers: {
-      Authorization: `Bearer wappalyzer.api.demo.key`
+      "X-Api-Key": "wappalyzer.api.demo.key"
     }
-  }).then(res => {
+  }).then(response => {
     console.log("Wappa Server RES:");
-    console.log(res);
-    return res.json();
-  }).then(jsonResponse => {
-    console.log("Wappa JSON Data:");
-    console.log(JSON.stringify(jsonResponse));
-    let data = JSON.stringify(jsonResponse);
-    return data;
+    console.log(response);
+    return res.json(response.data.applications);
 
     // return console.log(jsonResponse);
-  })
+  }).catch( error => console.log(error));
 
 
       // let site = req.params.site;

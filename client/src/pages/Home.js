@@ -114,9 +114,9 @@ class Home extends Component {
 
     API.checkSite(site).then(res => {
       console.log("wappa res:",res);
-      this.setState({
-        siteMoreData: res.data
-      })
+      // this.setState({
+      //   siteMoreData: res.data
+      // })
     // });
 
     // API.checkSite(site).then(res => {
