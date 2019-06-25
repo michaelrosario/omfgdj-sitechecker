@@ -6,7 +6,7 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import socket from 'socket.io-client';
-import {Card} from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
 
