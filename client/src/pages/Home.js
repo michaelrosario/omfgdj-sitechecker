@@ -109,31 +109,23 @@ class Home extends Component {
     console.log("SEARCH "+site+" VIA APIs");
 
     API.checkSite(site).then(res => {
-      console.log("wappa res:",res);
-      // this.setState({
-      //   siteMoreData: res.data
-      // })
-    // });
+    console.log("res",res);
 
-    // API.checkSite(site).then(res => {
-    //   console.log("res",res);
+    const io = socket(this.state.endpoint, { secure: true });
+    // Send site to all users
+      io.emit('fromReact', { data: site });
+      this.setState({
+        siteData: res.data
+      })
 
-    // //   const io = socket(this.state.endpoint, { secure: true });
-    // //   // send site to all users
-    // //   io.emit('fromReact', { data: site });
-    // //   this.setState({
-    // //     siteData: res.data
-    // //   })
+      this.setState({
+        siteData: res.data
+      });
 
-    //   this.setState({
-    //     siteData: res.data
-    //   });
+      this.saveSiteToDB();
 
-    //   this.saveSiteToDB();
-
-    // });
-  });
-}
+    });
+  }
 
   saveSiteToDB = () => {
       const { siteData, site } = this.state;
