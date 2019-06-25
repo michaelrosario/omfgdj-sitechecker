@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-//import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-//import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import socket from 'socket.io-client';
 import { Card } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
 
 
 class Home extends Component {
@@ -44,7 +40,7 @@ class Home extends Component {
 
   componentWillUnmount() {
     const io = socket(this.state.endpoint, { secure: true });
-    socket.off("toReact");
+    io.off("toReact");
 
   }
 
@@ -169,13 +165,6 @@ class Home extends Component {
 
     return (
       <Container fluid>
-        {/*<Row>
-          <Col size="md-12">
-          <Jumbotron>
-              <h1 style={{color: "white", textShadow: "2px 2px 4px #000000"}}>JetSet Site Checker V.000001</h1>
-          </Jumbotron> 
-          </Col>
-        </Row>*/}
         <Row>
           <Col size="md-4">
             {/* INSERT SEARCH BAR HERE*/}
@@ -186,8 +175,6 @@ class Home extends Component {
                 name="site"
                 placeholder="Enter a URL"
               />
-              
-              <Button>Itsa Me a Bootstrap Button-o</Button>
               <FormBtn
                 disabled={!site}
                 onClick={this.handleFormSubmit}
@@ -254,6 +241,8 @@ class Home extends Component {
               </Card>
             </Col>
           </Row>
+
+<br/>
 
           <Row>
             <Col size="md-6" >
