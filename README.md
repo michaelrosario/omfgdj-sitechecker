@@ -35,15 +35,13 @@ Our users may add a meta tag to their sites to “claim” a site and it will be
 ## Task Breakdowns:
 ### Michael Rosario: 
 * Front-end Routing (React-Router)
-* Front-end Design  (React)
 * User authentication (Passport)
 * RESTful API routing (Express.js)
 ### Danny Lee
-* Material UI
+* Front-end Design  (React)
 * React Components (React)
 ### Omar Ong
 * React Components (React)
-
 * Axios helper functions (Axios)
 ### Franchesca Gonzalez
 * Initial Front-end Styling (Bootstrap)
@@ -68,3 +66,4 @@ Our users may add a meta tag to their sites to “claim” a site and it will be
 * [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#emphasis)
 * [Passport](http://passportjs.org/docs/username-password)
 * [Axios GET Request](https://stackoverflow.com/questions/44888996/request-parameters-showing-as-undefined/44889353#44889353)
+
