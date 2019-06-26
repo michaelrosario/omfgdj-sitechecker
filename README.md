@@ -16,6 +16,23 @@ Our users may add a meta tag to their sites to “claim” a site and it will be
 2. Users can register with Sitechecker and claim/save a website to their profile for later viewing
 2a. Registered users can also view current badges of websites they have claimed and share them with other Users.
 
+## MVP and Beyond
+
+### MVP - Initial Release
+
+* Allow users to sign up and login to their profile.
+* Allow users to searc and scan a website when the user logins.
+* Allow users to see different badges that show different element and metrics of the scannned website. 
+
+
+### MVP - Down The Road
+
+* Allow users to see a total score of the scannned website based on how many badges there are for the website. 
+* Allow users to scan a website and claim it in their profile under one login.
+* Allow users to edit their user profiles.
+* Allow users to search and scan a website and show the badges for website, as well as badge details.
+
+
 ## Built with
 * [Node.js](https://nodejs.org/en/)
 * [Express](https://expressjs.com/)
