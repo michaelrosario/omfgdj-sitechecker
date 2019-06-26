@@ -32,16 +32,6 @@ app.use(
 )
 app.use(bodyParser.json())
 
-
-// Passport
-app.use(passport.initialize())
-app.use(passport.session()) // calls the deserializeUser
-
-
-
-// Add routes, both API and view
-app.use(routes);
-
 // Connect to the Mongo DB
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/sitechecker";
@@ -57,6 +47,14 @@ app.use(
 		saveUninitialized: false //required
 	})
 )
+
+// Passport
+app.use(passport.initialize())
+app.use(passport.session()) // calls the deserializeUser
+
+
+// Add routes, both API and view
+app.use(routes);
 
 io.on('connection', function (socket) {
   socket.on('fromReact', function (site) {

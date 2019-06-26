@@ -35,7 +35,8 @@ router.post('/login', (req, res, next) => {
     },
     passport.authenticate('local'),
     (req, res) => {
-        console.log('logged in', req.user);
+        console.log('===== user!!======')
+        console.log('logged in req.user', req.user);
         var userInfo = {
           user_login: req.user.user_login
         };
@@ -45,7 +46,7 @@ router.post('/login', (req, res, next) => {
 
 router.get('/', (req, res, next) => {
     console.log('===== user!!======')
-    console.log(req.user)
+    console.log("req.user",req.user);
     if (req.user) {
         res.json({ user: req.user })
     } else {

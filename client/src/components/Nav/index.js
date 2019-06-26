@@ -9,7 +9,7 @@ function Nav() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <NavLink to="/" exact activeStyle={{ color: 'red' }}>
-        <Navbar.Brand href="#home"><img src="/assets/images/logo/logo-coderhype.svg" alt="coderhype"/></Navbar.Brand>
+       <img src="/assets/images/logo/logo-coderhype.svg" alt="coderhype"/>
       </NavLink>
       <SignInModal />
       <NavLink to="/account" exact activeStyle={{ color: 'red' }}>
