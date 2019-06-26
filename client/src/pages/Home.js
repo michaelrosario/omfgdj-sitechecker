@@ -6,17 +6,18 @@ import socket from 'socket.io-client';
 import { Card } from 'react-bootstrap';
 
 
+
 class Home extends Component {
   state = {
     site: '',
     siteData: {},
     siteMoreData: {},
     messages: "",
-    username: "",
-    password: "",
-    email: "",
-    firstName: "",
-    lastName: "",
+    // username: "",
+    // password: "",
+    // email: "",
+    // firstName: "",
+    // lastName: "",
     loggedIn: false,
     endpoint: process.env.NODE_ENV === "production" ? "/" : "localhost:3001"
   };
@@ -57,30 +58,30 @@ class Home extends Component {
     });
   }
 
-  handleLogin = event => {
-    event.preventDefault();
-    const { 
-      username, 
-      password
-    } = this.state;
+  // handleLogin = event => {
+  //   event.preventDefault();
+  //   const { 
+  //     username, 
+  //     password
+  //   } = this.state;
 
-    console.log("Login",{ username, password });
+  //   console.log("Login",{ username, password });
     
-    const user = {
-      user_login: username,
-      user_password: password
-    }
+  //   const user = {
+  //     user_login: username,
+  //     user_password: password
+  //   }
 
-    API.login(user).then(res => {
-      console.log("res", res);
-      if(res.status === 200) {
-        this.setState({
-          loggedIn: true,
-          username: res.data.user_login
-        });
-      }
-    });
-  }
+  //   API.login(user).then(res => {
+  //     console.log("res", res);
+  //     if(res.status === 200) {
+  //       this.setState({
+  //         loggedIn: true,
+  //         username: res.data.user_login
+  //       });
+  //     }
+  //   });
+  // }
 
   handleSignUp = event => {
     event.preventDefault();
