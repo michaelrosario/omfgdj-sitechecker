@@ -82,11 +82,47 @@ db.Badges
 
 const userSeed = [
     {
-      user_login: "user",
-      user_password: "password",
-      user_email: "email",
-      user_firstname: "FirstName",
-      user_lastname: "LastName",
+      user_login: "james",
+      user_password: "james123",
+      user_email: "tagorda@gmail.com",
+      user_firstname: "James",
+      user_lastname: "Tagorda",
+      user_phone: "123-456-7891",
+      user_imgsrc: "",
+      user_github: "http://github.com",
+      user_preference: "undefined",
+      user_sites: []
+    },
+    {
+      user_login: "Francesca",
+      user_password: "Francesca123",
+      user_email: "francesca@gmail.com",
+      user_firstname: "Francesca",
+      user_lastname: "Gonzalez",
+      user_phone: "123-456-7891",
+      user_imgsrc: "",
+      user_github: "http://github.com",
+      user_preference: "undefined",
+      user_sites: []
+    },
+    {
+      user_login: "Omar",
+      user_password: "omar123",
+      user_email: "omar@gmail.com",
+      user_firstname: "Omar",
+      user_lastname: "Ong",
+      user_phone: "123-456-7891",
+      user_imgsrc: "",
+      user_github: "http://github.com",
+      user_preference: "undefined",
+      user_sites: []
+    },
+    {
+      user_login: "Danny",
+      user_password: "danny123",
+      user_email: "danny@gmail.com",
+      user_firstname: "Danny",
+      user_lastname: "Lee",
       user_phone: "123-456-7891",
       user_imgsrc: "",
       user_github: "http://github.com",
@@ -94,6 +130,7 @@ const userSeed = [
       user_sites: []
     }
 ];
+
 
 db.User
 .remove({})
@@ -109,6 +146,27 @@ db.User
 
 
   const sitesSeed = [
+    {
+      site_name: "Yelp",
+      site_url: "www.yelp.com",
+      site_desc: "yelp site",
+      site_imgsrc: "",
+      site_badges: [] // how to populate with assigned badges
+    },
+    {
+      site_name: "MLB",
+      site_url: "www.mlb.com",
+      site_desc: "Major League Baseball",
+      site_imgsrc: "",
+      site_badges: [] // how to populate with assigned badges
+    },
+    {
+      site_name: "Homedepot",
+      site_url: "www.homedepot.com",
+      site_desc: "Homedepot Website",
+      site_imgsrc: "",
+      site_badges: [] // how to populate with assigned badges
+    },
     {
       site_name: "Columbia University",
       site_url: "www.columbia.edu",
