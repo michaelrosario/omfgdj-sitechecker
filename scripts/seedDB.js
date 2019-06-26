@@ -8,7 +8,7 @@ mongoose.connect(
     "mongodb://localhost/sitechecker"
 );
 
-const badgeSeed = [
+const badgeSeed = [ // Omar: These dummy entries are actually real values from the Wappalyzer API call
   {
     badge_name: "React",
     badge_version: "16.3.0",
@@ -172,8 +172,7 @@ db.User
       site_url: "www.columbia.edu",
       site_desc: "Columbia University in the city of New York",
       site_imgsrc: "/image",
-      site_badges: "HTML 5 Badge",
-      
+      site_badges: [] // how to populate with assigned badges
     }
   ];
 
