@@ -13,6 +13,9 @@ export default {
   },
   signup: function(data) {
     return axios.post('/user/signup',data);
+  },
+  checkLoggedIn: function() {
+    return axios.get('/user/');
   }
   // ,
   // checkWappalyzer: function(site) {

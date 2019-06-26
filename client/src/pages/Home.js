@@ -23,9 +23,15 @@ class Home extends Component {
  
 
   componentDidMount() {
-   /* API.getAllBadges()
-      .then()
-    */
+     
+
+    API.checkLoggedIn().then(response => {
+        console.log("response on componentDidMount",response)
+        if(response.data.user){
+            this.setState({ loggedIn: true });
+        }
+    });
+
     const io = socket(this.state.endpoint, { secure: true });
     io.on('toReact',site => {
 
@@ -127,6 +133,12 @@ class Home extends Component {
     });
   }
 
+  checkLoggedIn = () => {
+    API.checkLoggedIn().then(response => {
+      console.log("response on checkLoggedIn",response)
+    });
+  }
+
   saveSiteToDB = () => {
       const { siteData, site } = this.state;
       const info = {
@@ -159,6 +171,8 @@ class Home extends Component {
       <Container fluid>
         <Row>
           <Col size="md-4">
+
+            {this.state.loggedIn ? "YOU ARE LOGGED IN" : "YOU ARE LOGGED OUT"}
             {/* INSERT SEARCH BAR HERE*/}
             <form>
               <Input
@@ -308,6 +322,12 @@ class Home extends Component {
                   Login
                 </FormBtn>
                 </form>
+
+                <FormBtn
+                  onClick={this.checkLoggedIn}
+                >
+                  CHECK LOGIN STATUS
+                </FormBtn>
             </Col>
           </Row>
       </Container>

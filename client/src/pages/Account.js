@@ -1,16 +1,25 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
-
+import API from "../utils/API";
 
 class Account extends Component {
   state = {
-  
+    user_id: '',
+    loggedIn: false
   };
- 
 
   componentDidMount() {
   
-    
+    API.checkLoggedIn().then(response => {
+      console.log("response on componentDidMount",response)
+      if(response.data.user){
+          this.setState({ 
+            loggedIn: true,
+            user_id: response.data.user._id
+        });
+      }
+    });
+
   }
 
  
