@@ -9,12 +9,16 @@ import Nav from "./components/Nav";
 // import Books from "./pages/Books";
 // import Detail from "./pages/Detail";
 
+const siteStyle = {
+  paddingTop: 60,
+}
 
 function App() {
   return (
     <Router>
-      <div>
-        <Nav />
+       
+      <div style={siteStyle}>
+      <Nav />
         <Switch>
            {/*
             <Route exact path="/" component={Books} />
