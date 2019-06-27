@@ -15,6 +15,7 @@ export default class SignInModal extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
 
     this.state = {
       show: "",
@@ -23,11 +24,32 @@ export default class SignInModal extends React.Component {
       email: "",
       firstName: "",
       lastName: "",
+      loggedIn: false
     };
+}
+
+componentDidMount(){
+  API.checkLoggedIn().then(response => {
+    console.log("response on checkLoggedIn",response);
+    if(response.data.user){
+      this.setState({ loggedIn: true });
+    }
+  });
 }
 
 handleClose = () => {
   this.setState({ show: ""});
+}
+
+handleLogout = () => {
+  API.logout().then(res => {
+    console.log("res", res);
+    if(res.status === 200) {
+      this.setState({
+        loggedIn: false,
+      });
+    }
+  });
 }
 
 formSubmit = event => {
@@ -120,13 +142,22 @@ const {
 
 return (
 <div>
-<Button variant="primary" onClick={this.handleShowSignIn}>
-Login 
-</Button>
 
-<Button variant= "primary" onClick={this.handleShowSignup}>
-Sign Up
+{this.state.loggedIn ? ( <Button variant= "primary" onClick={this.handleLogout}>
+Logout
 </Button>
+   ) : (
+    <div>
+    <Button variant="primary" onClick={this.handleShowSignIn}>
+    Login 
+    </Button>
+    
+    <Button variant= "primary" onClick={this.handleShowSignup}>
+    Sign Up
+    </Button>
+    </div>
+  
+)}
 
 
 
@@ -156,7 +187,7 @@ placeholder="Password"
 {/* TODO: Form validations and modal */}
 <FormBtn
 disabled={!username && !password}
-onClick={this.handleShowsignin}
+onClick={this.handleLogin}
 >
 Login
 
@@ -202,7 +233,7 @@ placeholder="Email"
 {/* TODO: Form validations and modal */}
 <FormBtn
 disabled={!username && !password && !email && !firstName && !lastName}
-onClick={this.handleShowsignup}
+onClick={this.handleSignUp}
 >
 Signup
    </FormBtn>
