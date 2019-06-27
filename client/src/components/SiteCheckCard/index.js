@@ -61,7 +61,7 @@ export default class SiteCheckCard extends React.Component {
     API.checkSite(site).then(res => {
     console.log("API.checkSite res is >>>>>",res);
     
-    let resObj = res.data.data.wappalyzer;
+    let resObj = res.data.wappalyzer;
 
     console.log("Wappa Obj is >>",resObj);
 
