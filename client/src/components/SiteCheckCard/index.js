@@ -62,8 +62,9 @@ export default class SiteCheckCard extends React.Component {
     console.log("API.checkSite res is >>>>>",res);
     
     let resObj = res.data.wappalyzer;
-
     console.log("Wappa Obj is >>",resObj);
+    
+    this.loopIt(resObj);
 
     const io = socket(this.state.endpoint, { secure: true });
     // Send site to all users
@@ -80,6 +81,12 @@ export default class SiteCheckCard extends React.Component {
 
     });
   }
+
+//   loopIt = (obj) => {
+//       obj.forEach(thing => {
+//           thing.
+//       })
+//   }
 
   checkLoggedIn = () => {
     API.checkLoggedIn().then(response => {
