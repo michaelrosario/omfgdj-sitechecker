@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import 'font-awesome/css/font-awesome.min.css';
 
 
+
+
 function Nav() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -17,6 +19,9 @@ function Nav() {
       </NavLink>
       <NavLink to="/user" exact activeStyle={{ color: 'red' }}>
               <i className="fa fa-link"></i> &nbsp; Sites
+      </NavLink>
+      <NavLink to="/aboutus" exact activeStyle={{ color: 'red' }}>
+              <i className="fa fa-link"></i> &nbsp; About Us
       </NavLink>
     </Navbar>
   );

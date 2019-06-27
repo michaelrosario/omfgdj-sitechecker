@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Account from "./pages/Account";
 import Portfolio from "./pages/Portfolio";
+import Aboutus from "./pages/Aboutus";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 // import Books from "./pages/Books";
@@ -23,6 +24,8 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/user" component={Portfolio} />
           <Route exact path="/account" component={Account} />
+          <Route component={Aboutus} />
+
           
           <Route component={NoMatch} />
   
