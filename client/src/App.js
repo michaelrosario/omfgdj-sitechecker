@@ -21,7 +21,7 @@ function App() {
             <Route exact path="/books/:id" component={Detail} />
           */}
           <Route exact path="/" component={Home} />
-          <Route exact path="/user" component={Portfolio} />
+          <Route exact path="/user/" component={Portfolio} />
           <Route exact path="/account" component={Account} />
           
           <Route component={NoMatch} />
