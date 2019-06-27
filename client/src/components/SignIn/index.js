@@ -2,6 +2,7 @@ import React from "react";
 import API from "../../utils/API";
 import {Button, Modal} from 'react-bootstrap';
 import { Input, FormBtn } from "../Form";
+import 'font-awesome/css/font-awesome.min.css';
 import "./style.css";
 
 export default class SignInModal extends React.Component {
@@ -16,6 +17,8 @@ export default class SignInModal extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
+    this.validateText = this.validateText.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
 
     this.state = {
@@ -36,8 +39,22 @@ componentDidMount(){
     console.log("response on checkLoggedIn",response);
     if(response.data.message === "success"){
       this.setState({ loggedIn: true });
+      this.props.setUserSession(this.state.loggedIn);
     }
   });
+}
+
+validateEmail = email => {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+validateText = text => {
+  if(text.length > 2) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 handleClose = () => {
@@ -51,6 +68,7 @@ handleLogout = () => {
       this.setState({
         loggedIn: false,
       });
+      this.props.setUserSession(this.state.loggedIn);
     }
   });
 }
@@ -103,6 +121,7 @@ handleLogin = event => {
         user_id: res.data.user,
         message: ""
       });
+      this.props.setUserSession(this.state.loggedIn);
       this.handleClose();
 
     } else {
@@ -137,6 +156,7 @@ handleSignUp = event => {
   API.signup(user).then(res => {
     console.log("res",res);
     this.setState({ loggedIn: true });
+    this.props.setUserSession(this.state.loggedIn);
     this.handleClose();
   });
 
@@ -150,6 +170,19 @@ const {
   lastName, 
   email } = this.state;
 
+  let disableSignUp = !(
+    this.validateText(username) && 
+    this.validateEmail(email) &&
+    this.validateText(password) &&
+    this.validateText(firstName) &&
+    this.validateText(lastName)
+  );
+
+  let disableLogin = !(
+    this.validateText(username) && 
+    this.validateText(password) 
+  );
+
 return (
 <div>
 
@@ -158,112 +191,109 @@ Logout
 </Button>
    ) : (
     <div>
-    <Button variant="primary" onClick={this.handleShowSignIn} className='button-spc'>
-    Login 
-    </Button>
+      
+      <Button variant="primary" onClick={this.handleShowSignIn} className='button-spc'>
+        Login 
+      </Button>
     
-    <Button variant= "primary" onClick={this.handleShowSignup} className='button-spc'>
-    Sign Up
-    </Button>
+      <Button variant= "primary" onClick={this.handleShowSignup} className='button-spc'>
+        Sign Up
+      </Button>
+
     </div>
   
 )}
 
+  <Modal show={this.state.show !== "" } onHide={this.handleClose}>
+    
+    <Modal.Header closeButton>
+      <Modal.Title>Sign In</Modal.Title>
+    </Modal.Header>
+    
+    <Modal.Body>    
 
+      {this.state.message}
 
-<Modal show={this.state.show !== "" } onHide={this.handleClose}>
-<Modal.Header closeButton>
-<Modal.Title>Sign In</Modal.Title>
-</Modal.Header>
-<Modal.Body>  
+      {this.state.show === "signin" ? (
+        <form onSubmit={this.formSubmit}>
+          
+          <Input
+            value={username}
+            onChange={this.handleInputChange}
+            name="username"
+            placeholder="Username"
+          />
 
-{this.state.message}
+          <Input
+            value={password}
+            onChange={this.handleInputChange}
+            name="password"
+            type="password"
+            placeholder="Password"
+          />
 
-{this.state.show === "signin" ? (
+          {/* TODO: Form validations and modal */}
+          <FormBtn
+            disabled={disableLogin}
+            onClick={this.handleLogin}
+          >
+            Login
+          </FormBtn>
+        </form>) : (
+
   <form onSubmit={this.formSubmit}>
-<Input
-value={username}
-onChange={this.handleInputChange}
-name="username"
-placeholder="Username"
-/>
 
-<Input
-value={password}
-onChange={this.handleInputChange}
-name="password"
-type="password"
-placeholder="Password"
-/>
+  <p>{this.state.message}</p>
 
-{/* TODO: Form validations and modal */}
-<FormBtn
-disabled={!username && !password}
-onClick={this.handleLogin}
->
-Login
+  <Input
+  value={firstName}
+  onChange={this.handleInputChange}
+  name="firstName"
+  placeholder="First Name"
+  />
 
-</FormBtn>
-</form>) : (
+  <Input
+  value={lastName}
+  onChange={this.handleInputChange}
+  name="lastName"
+  placeholder="Last Name"
+  />  
 
-<form onSubmit={this.formSubmit}>
+  <Input
+  value={username}
+  onChange={this.handleInputChange}
+  name="username"
+  placeholder="Username"
+  />
 
-<p>{this.state.message}</p>
+  <Input
+  value={password}
+  onChange={this.handleInputChange}
+  name="password"
+  type="password"
+  placeholder="Password"
+  />
 
-<Input
-value={firstName}
-onChange={this.handleInputChange}
-name="firstName"
-placeholder="First Name"
-/>
-
-<Input
-value={lastName}
-onChange={this.handleInputChange}
-name="lastName"
-placeholder="Last Name"
-/>  
-
-<Input
-value={username}
-onChange={this.handleInputChange}
-name="username"
-placeholder="Username"
-/>
-
-<Input
-value={password}
-onChange={this.handleInputChange}
-name="password"
-type="password"
-placeholder="Password"
-/>
-
-<Input
-value={email}
-onChange={this.handleInputChange}
-name="email"
-placeholder="Email"
-/>
-{/* TODO: Form validations and modal */}
-<FormBtn
-disabled={!username && !password && !email && !firstName && !lastName}
-onClick={this.handleSignUp}
->
-Signup
-   </FormBtn>
-       </form>
-)}
-            
+  <Input
+  value={email}
+  onChange={this.handleInputChange}
+  name="email"
+  placeholder="Email"
+  />
+  {/* TODO: Form validations and modal */}
+  <FormBtn
+    disabled={disableSignUp}
+    onClick={this.handleSignUp}
+  >
+  Signup
+    </FormBtn>
+        </form>
+  )}
+              
 
 
-</Modal.Body>
-<Modal.Footer>
-<Button variant="secondary" onClick={this.handleClose}>
-Close
-</Button>
+  </Modal.Body>
 
-</Modal.Footer>
 </Modal>
 
 </div>
