@@ -2,119 +2,127 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import {Button, Modal} from 'react-bootstrap';
 import { Input, FormBtn } from "../Form";
-import { Col, Row, Container } from "../Grid";
-
-
 
 export default class SignInModal extends React.Component {
-constructor(props, context) {
-super(props, context);
+  constructor(props, context) {
+    
+    super(props, context);
 
+    this.handleShowSignIn = this.handleShowSignIn.bind(this);
+    this.handleShowSignup = this.handleShowSignup.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
 
-this.handleShowsignin = this.handleShowsignin.bind(this);
-
-this.handleShowsignup = this.handleShowsignup.bind(this);
-
-this.handleClose = this.handleClose.bind(this);
-this.handleInputChange = this.handleInputChange.bind(this);
-this.handleLogin = this.handleLogin.bind(this);
-this.handleSignUp = this.handleSignUp.bind(this);
-
-
-
-this.state = {
-show: "",
-username: "",
-password: "",
-email: "",
-firstName: "",
-lastName: "",
-};
+    this.state = {
+      show: "",
+      username: "",
+      password: "",
+      email: "",
+      firstName: "",
+      lastName: "",
+    };
 }
 
-handleClose() {
-this.setState({ show: ""});
-
+handleClose = () => {
+  this.setState({ show: ""});
 }
+
+formSubmit = event => {
+  event.preventDefault();
+  //TODO is to check for logged in error and display the error
+  this.handleClose();
+}
+
 handleInputChange = event => {
-const { name, value } = event.target;
-this.setState({
-[name]: value
-});
+  event.preventDefault();
+  const { name, value } = event.target;
+  this.setState({
+    [name]: value
+  });
 }
 
-handleShowsignin() {
-this.setState({ show: "signin"});
+handleShowSignIn = event => {
+  event.preventDefault();
+  this.setState({ show: "signin"});
 }
-handleShowsignup() {
+
+handleShowSignup = event => {
+  event.preventDefault();
   this.setState({ show: "signup" });
-  }
+}
+
 handleLogin = event => {
-event.preventDefault();
-const { 
-username, 
-password
-} = this.state;
+  event.preventDefault();
+  
+  const { 
+    username, 
+    password
+  } = this.state;
 
-console.log("Login",{ username, password });
+  console.log("Login",{ username, password });
 
-const user = {
-user_login: username,
-user_password: password
-}
+  const user = {
+    user_login: username,
+    user_password: password
+  }
 
-API.login(user).then(res => {
-console.log("res", res);
-if(res.status === 200) {
-this.setState({
-loggedIn: true,
-username: res.data.user_login
-});
-}
-});
+  API.login(user).then(res => {
+    console.log("res", res);
+    
+    if(res.status === 200) {
+      this.setState({
+        loggedIn: true,
+        username: res.data.user_login
+      });
+    }
+  });
 }
 
 handleSignUp = event => {
-event.preventDefault();
-const { 
-username, 
-password,
-firstName,
-lastName,
-email 
-} = this.state;
+  event.preventDefault();
 
-console.log("Sign Up",{ username, password, firstName, lastName, email });
+  const { 
+    username, 
+    password,
+    firstName,
+    lastName,
+    email 
+  } = this.state;
 
-const user = {
-user_login: username,
-user_password: password,
-user_email: email,
-user_firstname: firstName,
-user_lastname: lastName
-}
+  console.log("Sign Up",{ username, password, firstName, lastName, email });
 
-API.signup(user).then(res => {
-console.log("res",res);
-});
+  const user = {
+    user_login: username,
+    user_password: password,
+    user_email: email,
+    user_firstname: firstName,
+    user_lastname: lastName
+  }
+
+  API.signup(user).then(res => {
+    console.log("res",res);
+  });
 
 }
 render() {
 
 const { 
-username, 
-password, 
-firstName,
-lastName, 
-email } = this.state;
+  username, 
+  password, 
+  firstName,
+  lastName, 
+  email } = this.state;
 
 return (
 <div>
-<Button variant="primary" onClick={this.handleShowsignin}>
+<Button variant="primary" onClick={this.handleShowSignIn}>
 Login 
 </Button>
 
-<Button variant= "primary" onClick={this.handleShowsignup}>
+<Button variant= "primary" onClick={this.handleShowSignup}>
 Sign Up
 </Button>
 
@@ -127,7 +135,7 @@ Sign Up
 <Modal.Body>  
 
 {this.state.show === "signin" ? (
-  <form>
+  <form onSubmit={this.formSubmit}>
 <Input
 value={username}
 onChange={this.handleInputChange}
@@ -153,7 +161,7 @@ Login
 </FormBtn>
 </form>) : (
 
-<form>
+<form onSubmit={this.formSubmit}>
 <Input
 value={firstName}
 onChange={this.handleInputChange}
