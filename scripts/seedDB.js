@@ -165,7 +165,7 @@ db.User
       site_url: "www.mlb.com",
       site_desc: "Major League Baseball",
       site_imgsrc: "",
-      site_badges: [{_id:"5d141c9854f7cf9fdff32b3a", _id:"5d141c9854f7cf9fdff32b3d", _id:"5d141c9854f7cf9fdff32b3b"}] // how to populate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdff32b3a", _id:"5d141c9854f7cf9fdff32b3d", _id:"5d141c9854f7cf9fdff32b3b"}] // how to pop cv gn ulate with assigned badges
     },
     {
       site_name: "Homedepot",
@@ -179,7 +179,7 @@ db.User
       site_url: "www.columbia.edu",
       site_desc: "Columbia University in the city of New York",
       site_imgsrc: "/image",
-      site_badges: [{_id:"5d141c9854f7cf9fdff32b3f",_id:"5d141c9854f7cf9fdff32b3c",_id:"5d141c9854f7cf9fdff32b40"] // how to populate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdff32b3f",_id:"5d141c9854f7cf9fdff32b3c",_id:"5d141c9854f7cf9fdff32b40"}] // how to populate with assigned badges
     }
   ];
 
