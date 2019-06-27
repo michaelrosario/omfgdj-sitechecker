@@ -3,6 +3,7 @@ import { Card } from 'react-bootstrap';
 
 
 export default class SiteCard extends Component {
+    
     render() {
         return (
             <Card>

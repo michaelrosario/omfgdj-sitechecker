@@ -4,6 +4,7 @@ import socket from 'socket.io-client';
 import {Row, Col, Container } from "../Grid";
 import { Input, FormBtn } from "../Form";
 import { Card, CardGroup } from "react-bootstrap";
+import ListofBadges from "../ListofBadges";
 import "./style.css";
 
 
@@ -16,6 +17,7 @@ export default class SiteCheckCard extends React.Component {
                 siteMoreData: {},
                 messages: "",
                 loggedIn: false,
+                siteBadges : []
             };           
             
             this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -73,6 +75,10 @@ export default class SiteCheckCard extends React.Component {
             badge_icon : iconURL+thing.icon,
             badge_score : 1
         }
+    })
+
+    this.setState({
+      siteBadges: badgeArr
     })
 
     console.log ("object badgeArr to db is",badgeArr);
@@ -156,18 +162,13 @@ export default class SiteCheckCard extends React.Component {
                 <Card.Body>
                 {siteTitle ? 
                         <div>
-                        <h5>We are now checking <u>{siteTitle}</u></h5> 
-                        <p>H1: {siteData.header1.length}</p>
-                        <p>H2: {siteData.header2.length}</p>
-                        <p>H3: {siteData.header3.length}</p>
-                        <p>H4: {siteData.header4.length}</p>
-                        <p>H5: {siteData.header5.length}</p>
-                        <p>Images: {siteData.images.length}</p>
-                        <p>Links: {siteData.links.length}</p>
-                        <p>Meta: {siteData.meta.length}</p>
-                        <p>Scripts: {siteData.script.length}</p>
+                          <h5>Now Analyzing: <u>{siteTitle}</u></h5>
+                          <p># of Images: {siteData.images.length}</p>
+                          <p># of Scripts: {siteData.script.length}</p>
+                          
+                          <ListofBadges badgez={this.state.siteBadges} />
                         </div>
-                    : "HEY THERES NO RESULTS, SO YEAH...."}
+                    : "Enter Your Website For Your CodeHype Rank"}
                     {this.state.messages ? <div>Someone is checking {this.state.messages}</div> : ""}
                 </Card.Body>
                 <Card.Footer></Card.Footer>
