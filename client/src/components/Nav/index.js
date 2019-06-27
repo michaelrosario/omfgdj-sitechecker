@@ -14,16 +14,16 @@ function Nav() {
       <NavLink to="/" exact activeStyle={{ color: 'red' }} className="mr-auto">
        <img src="/assets/images/logo/logo-coderhype.svg" alt="coderhype"/>
       </NavLink>
-      <SignInModal />
       <NavLink to="/account" exact activeStyle={{ color: 'red' }} className="mr-auto">
               <i className="fa fa-user"></i> &nbsp; My Account
       </NavLink>
       <NavLink to="/user" exact activeStyle={{ color: 'red' }} className="mr-auto">
               <i className="fa fa-link"></i> &nbsp; Sites
       </NavLink>
-      <NavLink to="/aboutus" exact activeStyle={{ color: 'red' }}>
+      <NavLink to="/aboutus" exact activeStyle={{ color: 'red' }} className="mr-auto">
               <i className="fa fa-link"></i> &nbsp; About Us
       </NavLink>
+        <SignInModal />
     </Navbar>
 
   );
