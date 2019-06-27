@@ -19,6 +19,9 @@ export default {
   },
   logout: function() {
     return axios.post('/user/logout');
+  },
+  getsites : function() {
+    return axios.get('/api/site');
   }
   // ,
   // checkWappalyzer: function(site) {

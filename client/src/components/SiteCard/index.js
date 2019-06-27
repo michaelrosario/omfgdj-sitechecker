@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Card, CardImg, CardBody, CardText  } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 
-class SiteCard extends Component {
+export default class SiteCard extends Component {
     render() {
         return (
             <Card>
@@ -23,4 +23,3 @@ class SiteCard extends Component {
     }
 }
 
-export default SiteCard;
