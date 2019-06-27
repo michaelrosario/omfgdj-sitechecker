@@ -72,6 +72,8 @@
 .modal-links { position: absolute; right: 0px; }
 .modal-links.logged-in  { right: 20px; }
 
+button { outline: none; }
+
 @media(max-width: 767px){
   .main-nav .nav a { padding: 0 8px; }
   .main-nav .nav span { display: none; }

@@ -14,7 +14,6 @@ export default class SiteCheckCard extends React.Component {
                 site: '',
                 siteData: {},
                 badges: [],
-                messages: "",
                 processing: false,
                 loggedIn: false,
             };           
@@ -26,19 +25,8 @@ export default class SiteCheckCard extends React.Component {
           }
             
   componentDidMount() {
-    
     this.checkLoggedIn();
-
     const io = socket(this.state.endpoint, { secure: true });
-    io.on('toReact',site => {
-
-      console.log(site);
-      this.setState({
-        messages: site.data.data
-      });
-
-    })
-    
   }
 
   componentWillUnmount() {
@@ -173,7 +161,7 @@ export default class SiteCheckCard extends React.Component {
                             onClick={this.handleFormSubmit}
                         >
                             {this.state.processing ?   
-                              <span> &nbsp; &nbsp; <i class="fa fa-spinner fa-spin"></i> &nbsp; &nbsp; </span> : 
+                              <span> &nbsp; &nbsp; <i className="fa fa-spinner fa-spin"></i> &nbsp; &nbsp; </span> : 
                               "Check"}
                         </FormBtn>
                     </form>
@@ -198,7 +186,7 @@ export default class SiteCheckCard extends React.Component {
                         
                         </div>
                     : "HEY THERES NO RESULTS, SO YEAH...."}
-                    {this.state.messages ? <div>Someone is checking {this.state.messages}</div> : ""}
+              
                 </Card.Body>
                 <Card.Footer></Card.Footer>
             </Card>    
