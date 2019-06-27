@@ -12,7 +12,7 @@ export default class SiteCheckCard extends React.Component {
              this.state = {
                 site: '',
                 siteData: {},
-                siteMoreData: {},
+                badges: [],
                 messages: "",
                 loggedIn: false,
             };           
@@ -80,11 +80,8 @@ export default class SiteCheckCard extends React.Component {
     // Send site to all users
       io.emit('fromReact', { data: site });
       this.setState({
-        siteData: res.data
-      })
-
-      this.setState({
-        siteData: res.data
+        siteData: res.data,
+        badges: badgeArr
       });
 
       this.saveSiteToDB(badgeArr);
@@ -111,6 +108,7 @@ export default class SiteCheckCard extends React.Component {
         site_imgsrc: "",
         site_badges: pushBadges
       };
+      
       console.log("OMAR: site obj to be entered to siteDB is: ", info);
       API.saveSite(info);
   }
@@ -121,7 +119,16 @@ export default class SiteCheckCard extends React.Component {
     const { 
       site, 
       siteData, 
+      badges
     } = this.state;
+
+    let badgeIcons = "";
+
+    if(badges.length){
+        badgeIcons = badges.map(icon => {
+          return <img src={icon.badge_icon} alt={icon.badge_name} width="50" height="50" className="badge-icon" />;
+        });
+    }
 
     //const io = socket(this.state.endpoint);
 
@@ -156,6 +163,7 @@ export default class SiteCheckCard extends React.Component {
                 {siteTitle ? 
                         <div>
                         <h5>We are now checking <u>{siteTitle}</u></h5> 
+                        {badgeIcons}
                         <p>H1: {siteData.header1.length}</p>
                         <p>H2: {siteData.header2.length}</p>
                         <p>H3: {siteData.header3.length}</p>
@@ -165,6 +173,7 @@ export default class SiteCheckCard extends React.Component {
                         <p>Links: {siteData.links.length}</p>
                         <p>Meta: {siteData.meta.length}</p>
                         <p>Scripts: {siteData.script.length}</p>
+                        
                         </div>
                     : "HEY THERES NO RESULTS, SO YEAH...."}
                     {this.state.messages ? <div>Someone is checking {this.state.messages}</div> : ""}
