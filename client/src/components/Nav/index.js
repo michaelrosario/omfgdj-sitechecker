@@ -23,7 +23,7 @@ function Nav() {
       <NavLink to="/aboutus" exact activeStyle={{ color: 'red' }} className="mr-auto">
               <i className="fa fa-link"></i> &nbsp; About Us
       </NavLink>
-        <SignInModal />
+      <SignInModal />
     </Navbar>
 
   );
