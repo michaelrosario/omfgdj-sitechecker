@@ -2,7 +2,7 @@ import React from "react";
 import API from "../../utils/API";
 import socket from 'socket.io-client';
 import { Input, FormBtn } from "../Form";
-import { Card, CardGroup } from "react-bootstrap";
+import { Card, CardGroup, CardDeck } from "react-bootstrap";
 import "./style.css";
 
 
@@ -126,11 +126,20 @@ export default class SiteCheckCard extends React.Component {
 
     if(badges.length){
         badgeIcons = badges.map(icon => {
-          return <img src={icon.badge_icon} alt={icon.badge_name} width="50" height="50" className="badge-icon" />;
+          return (
+            <CardDeck>
+              <Card>
+                  <Card.Img variant="left" src={icon.badge_icon} alt={icon.badge_name} width="25" height="25" className="badge-icon" />
+                  <Card.Body style={{float: 'right'}}>
+                    <h5>{icon.badge_name}</h5>
+                    {/* <img src={icon.badge_icon} alt={icon.badge_name} width="50" height="50" className="badge-icon" /> */}
+                  </Card.Body>
+                <Card.Footer></Card.Footer>
+              </Card>
+            </CardDeck>
+          );
         });
     }
-
-    //const io = socket(this.state.endpoint);
 
     let siteTitle = siteData.title || "";
 
