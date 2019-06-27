@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const db = require("../models");
-
+const bcrypt = require('bcryptjs');
 // This file empties the Books collection and inserts the books below
 
 mongoose.connect(
@@ -131,10 +131,17 @@ const userSeed = [
     }
 ];
 
+const newUserSeed = [];
+userSeed.map(user => {
+  user.user_password = bcrypt.hashSync(user.user_password, 10);
+  newUserSeed.push(user);
+});
+
+console.log(newUserSeed);
 
 db.User
 .remove({})
-.then(() => db.User.collection.insertMany(userSeed))
+.then(() => db.User.collection.insertMany(newUserSeed))
 .then(data => {
   console.log(data.result.n + " records inserted!");
   process.exit(0);

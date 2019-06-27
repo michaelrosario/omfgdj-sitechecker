@@ -5,33 +5,20 @@ import { Input, FormBtn } from "../components/Form";
 import socket from 'socket.io-client';
 import { Card } from 'react-bootstrap';
 
-
-
 class Home extends Component {
   state = {
     site: '',
     siteData: {},
     siteMoreData: {},
     messages: "",
-    // username: "",
-    // password: "",
-    // email: "",
-    // firstName: "",
-    // lastName: "",
     loggedIn: false,
     endpoint: process.env.NODE_ENV === "production" ? "/" : "localhost:3001"
   };
  
 
   componentDidMount() {
-     
-
-    API.checkLoggedIn().then(response => {
-        console.log("response on componentDidMount",response)
-        if(response.data.user){
-            this.setState({ loggedIn: true });
-        }
-    });
+    
+    this.checkLoggedIn();
 
     const io = socket(this.state.endpoint, { secure: true });
     io.on('toReact',site => {
@@ -56,57 +43,6 @@ class Home extends Component {
     this.setState({
       [name]: value
     });
-  }
-
-  // handleLogin = event => {
-  //   event.preventDefault();
-  //   const { 
-  //     username, 
-  //     password
-  //   } = this.state;
-
-  //   console.log("Login",{ username, password });
-    
-  //   const user = {
-  //     user_login: username,
-  //     user_password: password
-  //   }
-
-  //   API.login(user).then(res => {
-  //     console.log("res", res);
-  //     if(res.status === 200) {
-  //       this.setState({
-  //         loggedIn: true,
-  //         username: res.data.user_login
-  //       });
-  //     }
-  //   });
-  // }
-
-  handleSignUp = event => {
-    event.preventDefault();
-    const { 
-      username, 
-      password,
-      firstName,
-      lastName,
-      email 
-    } = this.state;
-
-    console.log("Sign Up",{ username, password, firstName, lastName, email });
-
-    const user = {
-      user_login: username,
-      user_password: password,
-      user_email: email,
-      user_firstname: firstName,
-      user_lastname: lastName
-    }
-
-    API.signup(user).then(res => {
-      console.log("res",res);
-    });
-
   }
 
   handleFormSubmit = event => {
@@ -136,7 +72,10 @@ class Home extends Component {
 
   checkLoggedIn = () => {
     API.checkLoggedIn().then(response => {
-      console.log("response on checkLoggedIn",response)
+      console.log("response on checkLoggedIn",response);
+      if(response.data.user){
+        this.setState({ loggedIn: true });
+      }
     });
   }
 
@@ -158,11 +97,7 @@ class Home extends Component {
     const { 
       site, 
       siteData, 
-      username, 
-      password, 
-      firstName,
-      lastName, 
-      email } = this.state;
+    } = this.state;
 
     //const io = socket(this.state.endpoint);
 
@@ -211,126 +146,6 @@ class Home extends Component {
           </Col>
         
         </Row>
-
-
-        <Row styleClass="justify-content-center">
-          <Col size="md-6" >
-            
-          </Col>
-          </Row>
-
-          <Row styleClass="justify-content-center">
-            <Col size="md-6" >
-              
-               
-            </Col>
-          </Row>
-
-          <Row>
-            <Col size="md-6">
-              <Card>
-              <Card.Img variant="top" src="https://images.websitebuilderexpert.com/wp-content/uploads/2018/09/crypton_trading.jpg" />
-              <Card.Body>
-              <Card.Text style={{color:"white"}}>
-
-              </Card.Text>
-              </Card.Body>
-              </Card>
-            </Col>
-            <Col size="md-6">
-              <Card>
-              <Card.Img variant="top" src="https://images.websitebuilderexpert.com/wp-content/uploads/2018/09/crypton_trading.jpg" />
-              <Card.Body>
-              <Card.Text style={{color:"white"}}>
-              
-              </Card.Text>
-              </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-
-<br/>
-
-          <Row>
-            <Col size="md-6" >
-            <form>
-                <Input
-                  value={firstName}
-                  onChange={this.handleInputChange}
-                  name="firstName"
-                  placeholder="First Name"
-                />
-  
-                <Input
-                  value={lastName}
-                  onChange={this.handleInputChange}
-                  name="lastName"
-                  placeholder="Last Name"
-                />  
-
-                <Input
-                  value={username}
-                  onChange={this.handleInputChange}
-                  name="username"
-                  placeholder="Username"
-                />
-
-                <Input
-                  value={password}
-                  onChange={this.handleInputChange}
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                />
-
-                <Input
-                  value={email}
-                  onChange={this.handleInputChange}
-                  name="email"
-                  placeholder="Email"
-                />
-                {/* TODO: Form validations and modal */}
-                <FormBtn
-                  disabled={!username && !password && !email && !firstName && !lastName}
-                  onClick={this.handleSignUp}
-                >
-                  Signup
-                </FormBtn>
-                </form>
-
-                <form>
-
-                <Input
-                  value={username}
-                  onChange={this.handleInputChange}
-                  name="username"
-                  placeholder="Username"
-                />
-
-                <Input
-                  value={password}
-                  onChange={this.handleInputChange}
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                />
-
-                {/* TODO: Form validations and modal */}
-                <FormBtn
-                  disabled={!username && !password}
-                  onClick={this.handleLogin}
-                >
-                  Login
-                </FormBtn>
-                </form>
-
-                <FormBtn
-                  onClick={this.checkLoggedIn}
-                >
-                  CHECK LOGIN STATUS
-                </FormBtn>
-            </Col>
-          </Row>
       </Container>
     );
   }
