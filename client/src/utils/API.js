@@ -26,9 +26,5 @@ export default {
   getIconByTitle: function(title) {
     return axios.get(`/api/badge/title?title=${title}`);
   }
-  // ,
-  // checkWappalyzer: function(site) {
-  //   return axios.get("/api/site/wapp/"+site);
-  // }
   
 };

@@ -3,10 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 
 class Aboutus extends Component {
 
-
-
     render() {
-
 
         return (
             <Container fluid>
