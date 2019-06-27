@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import API from "../utils/API";
-import { Card, CardImg, CardBody, CardText, CardColumns  } from 'react-bootstrap';
+import { CardColumns  } from 'react-bootstrap';
 import SiteCard from '../SiteCard';
 
 export default class SiteShowcase extends Component {

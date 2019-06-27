@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import socket from 'socket.io-client';
-import { Card } from 'react-bootstrap';
 import SiteShowcase from '../components/SiteShowcase';
 import SiteCheckCard from '../components/SiteCheckCard';
 

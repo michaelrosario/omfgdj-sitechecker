@@ -1,7 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
 import socket from 'socket.io-client';
-import {Row, Col, Container } from "../Grid";
 import { Input, FormBtn } from "../Form";
 import { Card, CardGroup } from "react-bootstrap";
 import "./style.css";
@@ -76,10 +75,6 @@ export default class SiteCheckCard extends React.Component {
     })
 
     console.log ("object badgeArr to db is",badgeArr);
-
-
-    console.log("Wappa Obj is >>",resObj);
-
 
     const io = socket(this.state.endpoint, { secure: true });
     // Send site to all users
