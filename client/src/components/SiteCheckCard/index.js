@@ -21,6 +21,7 @@ export default class SiteCheckCard extends React.Component {
             this.handleFormSubmit = this.handleFormSubmit.bind(this);
             this.checkLoggedIn= this.checkLoggedIn.bind(this);
             this.saveSiteToDB = this.saveSiteToDB.bind(this);
+
           }
             
   componentDidMount() {
@@ -61,10 +62,21 @@ export default class SiteCheckCard extends React.Component {
     API.checkSite(site).then(res => {
     console.log("API.checkSite res is >>>>>",res);
     
-    let resObj = res.data.wappalyzer;
+    let resObj = res.data.wappalyzer; // omar
     console.log("Wappa Obj is >>",resObj);
     
-    this.loopIt(resObj);
+    const iconURL = "https://www.wappalyzer.com/images/icons/";
+
+    const badgeArr = resObj.map(thing => {
+        return {
+            badge_name : thing.name,
+            badge_icon : iconURL+thing.icon,
+            badge_score : 1
+        }
+    })
+
+    console.log ("object badgeArr to db is",badgeArr);
+
 
     const io = socket(this.state.endpoint, { secure: true });
     // Send site to all users
@@ -81,12 +93,6 @@ export default class SiteCheckCard extends React.Component {
 
     });
   }
-
-//   loopIt = (obj) => {
-//       obj.forEach(thing => {
-//           thing.
-//       })
-//   }
 
   checkLoggedIn = () => {
     API.checkLoggedIn().then(response => {
