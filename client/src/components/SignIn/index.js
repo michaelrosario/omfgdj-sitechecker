@@ -58,7 +58,7 @@ validateText = text => {
 }
 
 handleClose = () => {
-  this.setState({ show: ""});
+  this.setState({ show: "", message: "" });
 }
 
 handleLogout = () => {
@@ -245,8 +245,6 @@ Logout
         </form>) : (
 
   <form onSubmit={this.formSubmit}>
-
-  <p>{this.state.message}</p>
 
   <Input
   value={firstName}

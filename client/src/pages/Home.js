@@ -1,30 +1,15 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
-import socket from 'socket.io-client';
 import SiteShowcase from '../components/SiteShowcase';
 import SiteCheckCard from '../components/SiteCheckCard';
 
-
 class Home extends Component {
   state = {
-    site: '',
-    siteDB: [],
-    messages: "",
-    endpoint: process.env.NODE_ENV === "production" ? "/" : "localhost:3001"
+    siteDB: []
   };
  
-
   componentDidMount() {
-    
-    const io = socket(this.state.endpoint, { secure: true });
-    
-    io.on('toReact',site => {
-      console.log(site);
-      this.setState({
-        messages: site.data.data
-      });
-    })
     
     API.getsites().then(res => {
       console.log("getsites res",res);
@@ -32,12 +17,11 @@ class Home extends Component {
         siteDB: res.data
       });
     });
+
   }
 
   componentWillUnmount() {
-    const io = socket(this.state.endpoint, { secure: true });
-    io.off("toReact");
-
+ 
   }
 
   render() {
