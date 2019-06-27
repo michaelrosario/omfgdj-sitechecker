@@ -77,9 +77,6 @@ export default class SiteCheckCard extends React.Component {
 
     console.log ("object badgeArr to db is",badgeArr);
 
-
-    console.log("Wappa Obj is >>",resObj);
-
     const io = socket(this.state.endpoint, { secure: true });
     // Send site to all users
       io.emit('fromReact', { data: site });
