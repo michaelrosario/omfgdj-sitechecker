@@ -59,7 +59,11 @@ export default class SiteCheckCard extends React.Component {
     console.log("SEARCH "+site+" VIA APIs");
 
     API.checkSite(site).then(res => {
-    console.log("res",res);
+    console.log("API.checkSite res is >>>>>",res);
+    
+    let resObj = res.data.data.wappalyzer;
+
+    console.log("Wappa Obj is >>",resObj);
 
     const io = socket(this.state.endpoint, { secure: true });
     // Send site to all users
@@ -93,7 +97,7 @@ export default class SiteCheckCard extends React.Component {
         site_url: site,
         site_desc: "test",
         site_imgsrc: "",
-        site_badges:[]
+        site_badges: {}
       };
       API.saveSite(info);
   }

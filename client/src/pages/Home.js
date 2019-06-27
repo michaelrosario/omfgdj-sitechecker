@@ -12,11 +12,6 @@ class Home extends Component {
     site: '',
     siteDB: [],
     messages: "",
-<<<<<<< HEAD
-=======
-    user_id: "",
-    loggedIn: false,
->>>>>>> d15a02ac2205b90fdba279757a530e261f0b639f
     endpoint: process.env.NODE_ENV === "production" ? "/" : "localhost:3001"
   };
  
@@ -58,7 +53,6 @@ class Home extends Component {
   //   event.preventDefault();
   //   const { site } = this.state;
     
-<<<<<<< HEAD
   //   console.log("SEARCH "+site+" VIA APIs");
 
   //   API.checkSite(site).then(res => {
@@ -100,52 +94,6 @@ class Home extends Component {
   //     };
   //     API.saveSite(info);
   // }
-=======
-    console.log("SEARCH "+site+" VIA APIs");
-
-    API.checkSite(site).then(res => {
-    console.log("res",res);
-
-    const io = socket(this.state.endpoint, { secure: true });
-    // Send site to all users
-      io.emit('fromReact', { data: site });
-      this.setState({
-        siteData: res.data
-      })
-
-      this.setState({
-        siteData: res.data
-      });
-
-      this.saveSiteToDB();
-
-    });
-  }
-
-  checkLoggedIn = () => {
-    API.checkLoggedIn().then(res => {
-      console.log("response on componentDidMount",res)
-      if(res.data.message === "success") {
-          this.setState({ 
-            loggedIn: true,
-            user_id: res.data.user
-        });
-      }
-    });
-  }
-
-  saveSiteToDB = () => {
-      const { siteData, site } = this.state;
-      const info = {
-        site_name: siteData.title,
-        site_url: site,
-        site_desc: "test",
-        site_imgsrc: "",
-        site_badges:[]
-      };
-      API.saveSite(info);
-  }
->>>>>>> d15a02ac2205b90fdba279757a530e261f0b639f
 
 
   render() {
