@@ -207,7 +207,10 @@ Logout
   <Modal show={this.state.show !== "" } onHide={this.handleClose}>
     
     <Modal.Header closeButton>
-      <Modal.Title>Sign In</Modal.Title>
+    {this.state.show === "signin" ? 
+      <Modal.Title><i className="fa fa-user"></i> &nbsp; Sign In</Modal.Title> :
+      <Modal.Title><i className="fa fa-sign-in"></i> &nbsp; Sign Up</Modal.Title>
+    }
     </Modal.Header>
     
     <Modal.Body>    
