@@ -158,28 +158,28 @@ db.User
       site_url: "www.yelp.com",
       site_desc: "yelp site",
       site_imgsrc: "",
-      site_badges: [] // how to populate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdff32b3c", _id:"5d141c9854f7cf9fdff32b3a", _id:"5d141c9854f7cf9fdff32b3b", _id:"5d141c9854f7cf9fdff32b39"}] // how to populate with assigned badges
     },
     {
       site_name: "MLB",
       site_url: "www.mlb.com",
       site_desc: "Major League Baseball",
       site_imgsrc: "",
-      site_badges: [] // how to populate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdff32b3a", _id:"5d141c9854f7cf9fdff32b3d", _id:"5d141c9854f7cf9fdff32b3b"}] // how to populate with assigned badges
     },
     {
       site_name: "Homedepot",
       site_url: "www.homedepot.com",
       site_desc: "Homedepot Website",
       site_imgsrc: "",
-      site_badges: [] // how to populate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdff32b3e", _id:"5d141c9854f7cf9fdff32b3a", _id:"5d141c9854f7cf9fdff32b3b"}] // how to populate with assigned badges
     },
     {
       site_name: "Columbia University",
       site_url: "www.columbia.edu",
       site_desc: "Columbia University in the city of New York",
       site_imgsrc: "/image",
-      site_badges: [] // how to populate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdff32b3f",_id:"5d141c9854f7cf9fdff32b3c",_id:"5d141c9854f7cf9fdff32b40"] // how to populate with assigned badges
     }
   ];
 
