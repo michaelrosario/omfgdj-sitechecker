@@ -47,11 +47,12 @@
 }
 
 .main-nav {
-  height: 55px;
+  height: 56px;
+  z-index: 999;
   position: fixed;
   width: 100%;
   top: 0px;
-  background:rgba(255,255,255,0.1) !important;
+  background:rgba(10,10,10,0.9) !important;
 
 }
 .main-nav .nav a {

@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import socket from 'socket.io-client';
 import { Input, FormBtn } from "../Form";
 import { Card, CardGroup, CardDeck } from "react-bootstrap";
+import 'font-awesome/css/font-awesome.min.css';
 import "./style.css";
 
 
@@ -14,6 +15,7 @@ export default class SiteCheckCard extends React.Component {
                 siteData: {},
                 badges: [],
                 messages: "",
+                processing: false,
                 loggedIn: false,
             };           
             
@@ -58,33 +60,43 @@ export default class SiteCheckCard extends React.Component {
     
     console.log("SEARCH "+site+" VIA APIs");
 
+    this.setState({
+      processing: true
+    });
+
     API.checkSite(site).then(res => {
-    console.log("API.checkSite res is >>>>>",res);
-    
-    let resObj = res.data.wappalyzer; // omar
-    console.log("Wappa Obj is >>",resObj);
-    
-    const iconURL = "https://www.wappalyzer.com/images/icons/";
+      
+      console.log("API.checkSite res is >>>>>",res);
+      
+      let resObj = res.data.wappalyzer; // omar
+      console.log("Wappa Obj is >>",resObj);
+      
+      const iconURL = "https://www.wappalyzer.com/images/icons/";
 
-    const badgeArr = resObj.map(thing => {
-        return {
-            badge_name : thing.name,
-            badge_icon : iconURL+thing.icon,
-            badge_score : 1
-        }
-    })
+      const badgeArr = resObj ? resObj.map(thing => {
+          return {
+              badge_name : thing.name,
+              badge_icon : iconURL+thing.icon,
+              badge_score : 1
+          }
+      }) : [];
 
-    console.log ("object badgeArr to db is",badgeArr);
-
-    const io = socket(this.state.endpoint, { secure: true });
-    // Send site to all users
-      io.emit('fromReact', { data: site });
       this.setState({
-        siteData: res.data,
-        badges: badgeArr
+        site: '',
+        processing: false
       });
 
-      this.saveSiteToDB(badgeArr);
+      console.log ("object badgeArr to db is",badgeArr);
+
+      const io = socket(this.state.endpoint, { secure: true });
+      // Send site to all users
+        io.emit('fromReact', { data: site });
+        this.setState({
+          siteData: res.data,
+          badges: badgeArr
+        });
+
+        this.saveSiteToDB(badgeArr);
 
     });
   }
@@ -125,9 +137,9 @@ export default class SiteCheckCard extends React.Component {
     let badgeIcons = "";
 
     if(badges.length){
-        badgeIcons = badges.map(icon => {
+        badgeIcons = badges.map((icon,index) => {
           return (
-            <CardDeck>
+            <CardDeck key={`card`+index}>
               <Card>
                   <Card.Img variant="left" src={icon.badge_icon} alt={icon.badge_name} width="25" height="25" className="badge-icon" />
                   <Card.Body style={{float: 'right'}}>
@@ -147,8 +159,7 @@ export default class SiteCheckCard extends React.Component {
         <CardGroup className="sitecheckcard">
             <Card className="thirty">
                 <Card.Body>
-                    {this.state.loggedIn ? "YOU ARE LOGGED IN" : "YOU ARE LOGGED OUT"}
-                    {/* INSERT SEARCH BAR HERE*/}
+                  
 
                     <form>
                         <Input
@@ -158,10 +169,12 @@ export default class SiteCheckCard extends React.Component {
                             placeholder="Enter a URL"
                         />
                         <FormBtn
-                            disabled={!site}
+                            disabled={!(site && !this.state.processing)}
                             onClick={this.handleFormSubmit}
                         >
-                            Check
+                            {this.state.processing ?   
+                              <span> &nbsp; &nbsp; <i class="fa fa-spinner fa-spin"></i> &nbsp; &nbsp; </span> : 
+                              "Check"}
                         </FormBtn>
                     </form>
                 </Card.Body>
