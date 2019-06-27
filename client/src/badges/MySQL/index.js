@@ -11,4 +11,4 @@ function MySQL(props) {
   );
 }
 
-export default Alert;
+export default MySQL;

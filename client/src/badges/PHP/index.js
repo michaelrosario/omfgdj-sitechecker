@@ -11,4 +11,4 @@ function PHP(props) {
   );
 }
 
-export default Alert;
+export default PHP;

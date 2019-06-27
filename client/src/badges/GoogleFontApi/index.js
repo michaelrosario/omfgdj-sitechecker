@@ -11,4 +11,4 @@ function GoogleFontApi(props) {
   );
 }
 
-export default Alert;
+export default GoogleFontApi;

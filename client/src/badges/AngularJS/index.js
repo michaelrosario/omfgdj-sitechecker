@@ -11,4 +11,4 @@ function AngularJS(props) {
   );
 }
 
-export default Alert;
+export default AngularJS;

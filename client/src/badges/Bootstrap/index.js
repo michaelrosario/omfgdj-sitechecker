@@ -11,4 +11,4 @@ function Bootstrap(props) {
   );
 }
 
-export default Alert;
+export default Bootstrap;

@@ -11,4 +11,4 @@ function CloudFlare(props) {
   );
 }
 
-export default Alert;
+export default CloudFlare;

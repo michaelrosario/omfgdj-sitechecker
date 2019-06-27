@@ -11,4 +11,4 @@ function React(props) {
   );
 }
 
-export default Alert;
+export default React;

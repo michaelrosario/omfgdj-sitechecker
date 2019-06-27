@@ -11,4 +11,4 @@ function FontAwesome(props) {
   );
 }
 
-export default Alert;
+export default FontAwesome;
