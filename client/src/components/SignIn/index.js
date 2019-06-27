@@ -33,7 +33,7 @@ handleClose = () => {
 formSubmit = event => {
   event.preventDefault();
   //TODO is to check for logged in error and display the error
-  this.handleClose();
+  //this.handleClose();
 }
 
 handleInputChange = event => {
@@ -77,6 +77,7 @@ handleLogin = event => {
         loggedIn: true,
         username: res.data.user_login
       });
+      this.handleClose();
     }
   });
 }
@@ -104,6 +105,7 @@ handleSignUp = event => {
 
   API.signup(user).then(res => {
     console.log("res",res);
+    this.handleClose();
   });
 
 }
