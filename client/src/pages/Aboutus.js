@@ -1,18 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 
-
 class Aboutus extends Component {
-    state = {
-
-    };
-
-
-    componentDidMount() {
-
-
-    }
-
 
 
 
@@ -32,3 +21,4 @@ class Aboutus extends Component {
 }
 
 export default Aboutus;
+

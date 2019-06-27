@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import 'font-awesome/css/font-awesome.min.css';
 import "./style.css";
 
+
+
 function Nav() {
   return (
 
@@ -18,6 +20,9 @@ function Nav() {
       </NavLink>
       <NavLink to="/user" exact activeStyle={{ color: 'red' }} className="mr-auto">
               <i className="fa fa-link"></i> &nbsp; Sites
+      </NavLink>
+      <NavLink to="/aboutus" exact activeStyle={{ color: 'red' }}>
+              <i className="fa fa-link"></i> &nbsp; About Us
       </NavLink>
     </Navbar>
 
