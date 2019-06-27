@@ -20,8 +20,11 @@ export default {
   logout: function() {
     return axios.post('/user/logout');
   },
-  getsites : function() {
+  getsites: function() {
     return axios.get('/api/site');
+  },
+  getIconByTitle: function(title) {
+    return axios.get(`/api/badge/title?title=${title}`);
   }
   // ,
   // checkWappalyzer: function(site) {

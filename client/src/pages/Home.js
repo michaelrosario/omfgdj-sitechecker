@@ -16,7 +16,7 @@ class Home extends Component {
  
 
   componentDidMount() {
-    
+  
     // this.checkLoggedIn();
     const io = socket(this.state.endpoint, { secure: true });
     
