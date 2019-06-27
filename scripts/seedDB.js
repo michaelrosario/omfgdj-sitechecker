@@ -10,6 +10,7 @@ mongoose.connect(
 
 const badgeSeed = [ // Omar: These dummy entries are actually real values from the Wappalyzer API call
   {
+    _id: "5d141c9854f7cf9fdff32b39",
     badge_name: "React",
     badge_version: "16.3.0",
     badge_icon: "React.png",
@@ -17,6 +18,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 1,
   },
   {
+    _id: "5d141c9854f7cf9fdff32b3a",
     badge_name: "Nginx",
     badge_version: "", // Omar: RES object is NULL, this field is not required in Schema so i am leaving the dummy data blank 
     badge_icon: "Nginx.svg",
@@ -24,6 +26,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 1,
   },
   {
+    _id: "5d141c9854f7cf9fdff32b3b",
     badge_name: "jQuery",
     badge_version: "1.8.3",
     badge_icon: "jQuery.svg",
@@ -31,6 +34,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 1,
   },
   {
+    _id: "5d141c9854f7cf9fdff32b3c",
     badge_name: "Google Analytics",
     badge_version: "", // Omar: another NULL response, we dont really need this so I guess we can remote this in the Schema and here???
     badge_icon: "Google Analytics.svg",
@@ -38,6 +42,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 1,
   },
   {
+    _id: "5d141c9854f7cf9fdff32b3d",
     badge_name: "Twitter",
     badge_version: "",
     badge_icon: "Twitter.svg",
@@ -45,6 +50,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 1,
   },
   {
+    _id: "5d141c9854f7cf9fdff32b3e",
     badge_name: "Bootstrap",
     badge_version: "",
     badge_icon: "Bootstrap.png",
@@ -52,6 +58,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 1,
   },
   {
+    _id: "5d141c9854f7cf9fdff32b3f",
     badge_name: "AngularJS",
     badge_version: "",
     badge_icon: "AngularJS.svg",
@@ -59,6 +66,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 1,
   },
   {
+    _id: "5d141c9854f7cf9fdff32b40",
     badge_name: "Apache",
     badge_version: "",
     badge_icon: "Apache.svg",
@@ -158,28 +166,28 @@ db.User
       site_url: "www.yelp.com",
       site_desc: "yelp site",
       site_imgsrc: "",
-      site_badges: [{_id:"5d141c9854f7cf9fdff32b3c", _id:"5d141c9854f7cf9fdff32b3a", _id:"5d141c9854f7cf9fdff32b3b", _id:"5d141c9854f7cf9fdff32b39"}] // how to populate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdff32b3c"}, {_id:"5d141c9854f7cf9fdff32b3a"}, {_id:"5d141c9854f7cf9fdff32b3b"}, {_id:"5d141c9854f7cf9fdff32b39"}] // how to populate with assigned badges
     },
     {
       site_name: "MLB",
       site_url: "www.mlb.com",
       site_desc: "Major League Baseball",
       site_imgsrc: "",
-      site_badges: [{_id:"5d141c9854f7cf9fdff32b3a", _id:"5d141c9854f7cf9fdff32b3d", _id:"5d141c9854f7cf9fdff32b3b"}] // how to pop cv gn ulate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdff32b3a"}, {_id:"5d141c9854f7cf9fdff32b3d"}, {_id:"5d141c9854f7cf9fdff32b3b"}] // how to pop cv gn ulate with assigned badges
     },
     {
       site_name: "Homedepot",
       site_url: "www.homedepot.com",
       site_desc: "Homedepot Website",
       site_imgsrc: "",
-      site_badges: [{_id:"5d141c9854f7cf9fdff32b3e", _id:"5d141c9854f7cf9fdff32b3a", _id:"5d141c9854f7cf9fdff32b3b"}] // how to populate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdff32b3e"}, {_id:"5d141c9854f7cf9fdff32b3a"}, {_id:"5d141c9854f7cf9fdff32b3b"}] // how to populate with assigned badges
     },
     {
       site_name: "Columbia University",
       site_url: "www.columbia.edu",
       site_desc: "Columbia University in the city of New York",
       site_imgsrc: "/image",
-      site_badges: [{_id:"5d141c9854f7cf9fdff32b3f",_id:"5d141c9854f7cf9fdff32b3c",_id:"5d141c9854f7cf9fdff32b40"}] // how to populate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdff32b3f"}, {_id:"5d141c9854f7cf9fdff32b3c"}, {_id:"5d141c9854f7cf9fdff32b40"}] // how to populate with assigned badges
     }
   ];
 
