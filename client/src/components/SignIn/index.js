@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import API from "../../utils/API";
 import {Button, Modal} from 'react-bootstrap';
 import { Input, FormBtn } from "../Form";
@@ -19,6 +19,8 @@ export default class SignInModal extends React.Component {
 
     this.state = {
       show: "",
+      message: "",
+      user_id: "",
       username: "",
       password: "",
       email: "",
@@ -31,7 +33,7 @@ export default class SignInModal extends React.Component {
 componentDidMount(){
   API.checkLoggedIn().then(response => {
     console.log("response on checkLoggedIn",response);
-    if(response.data.user){
+    if(response.data.message === "success"){
       this.setState({ loggedIn: true });
     }
   });
@@ -58,8 +60,7 @@ formSubmit = event => {
   //this.handleClose();
 }
 
-handleInputChange = event => {
-  event.preventDefault();
+handleInputChange = event => { 
   const { name, value } = event.target;
   this.setState({
     [name]: value
@@ -94,12 +95,19 @@ handleLogin = event => {
   API.login(user).then(res => {
     console.log("res", res);
     
-    if(res.status === 200) {
+    if(res.data.message === "success") {
+      
       this.setState({
         loggedIn: true,
-        username: res.data.user_login
+        user_id: res.data.user,
+        message: ""
       });
       this.handleClose();
+
+    } else {
+
+      this.setState({ message: "Incorrect Login Information" });
+
     }
   });
 }
@@ -127,6 +135,7 @@ handleSignUp = event => {
 
   API.signup(user).then(res => {
     console.log("res",res);
+    this.setState({ loggedIn: true });
     this.handleClose();
   });
 
@@ -167,6 +176,8 @@ Logout
 </Modal.Header>
 <Modal.Body>  
 
+{this.state.message}
+
 {this.state.show === "signin" ? (
   <form onSubmit={this.formSubmit}>
 <Input
@@ -195,6 +206,9 @@ Login
 </form>) : (
 
 <form onSubmit={this.formSubmit}>
+
+<p>{this.state.message}</p>
+
 <Input
 value={firstName}
 onChange={this.handleInputChange}

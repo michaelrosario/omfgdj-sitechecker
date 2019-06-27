@@ -10,12 +10,12 @@ class Account extends Component {
 
   componentDidMount() {
   
-    API.checkLoggedIn().then(response => {
-      console.log("response on componentDidMount",response)
-      if(response.data.user){
+    API.checkLoggedIn().then(res => {
+      console.log("response on componentDidMount",res)
+      if(res.data.message === "success") {
           this.setState({ 
             loggedIn: true,
-            user_id: response.data.user._id
+            user_id: res.data.user
         });
       }
     });

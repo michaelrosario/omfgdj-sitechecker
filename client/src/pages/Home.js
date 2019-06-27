@@ -11,6 +11,7 @@ class Home extends Component {
     siteData: {},
     siteMoreData: {},
     messages: "",
+    user_id: "",
     loggedIn: false,
     endpoint: process.env.NODE_ENV === "production" ? "/" : "localhost:3001"
   };
@@ -71,10 +72,13 @@ class Home extends Component {
   }
 
   checkLoggedIn = () => {
-    API.checkLoggedIn().then(response => {
-      console.log("response on checkLoggedIn",response);
-      if(response.data.user){
-        this.setState({ loggedIn: true });
+    API.checkLoggedIn().then(res => {
+      console.log("response on componentDidMount",res)
+      if(res.data.message === "success") {
+          this.setState({ 
+            loggedIn: true,
+            user_id: res.data.user
+        });
       }
     });
   }
