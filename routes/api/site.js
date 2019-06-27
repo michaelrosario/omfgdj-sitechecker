@@ -10,6 +10,7 @@ router
   .get(siteController.findAll)
   .post(siteController.create);
 
+
 router
   .route("/:id")
   .get(siteController.findById)

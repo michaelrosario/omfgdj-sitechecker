@@ -2,21 +2,34 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
-import socket from 'socket.io-client';
-import { Card } from 'react-bootstrap';
+import { Card, CardImg, CardBody, CardText  } from 'react-bootstrap';
 
-class Home extends Component {
-  state = {
-    site: '',
-    siteDB: [],
-    siteData: {},
-    siteMoreData: {},
-    messages: "",
-    loggedIn: false,
-    endpoint: process.env.NODE_ENV === "production" ? "/" : "localhost:3001"
-  };
- 
+export default class SiteCheckCard extends React.Component {
+    constructor(props, context) {
+        constructor(props, context) {
+            super(props, context);
+            
+            
+            this.handleFormSubmit = this.handleFormSubmit.bind(this);
+            
+            this.checkLoggedIn= this.checkLoggedIn.bind(this);
+            
+            this.saveSiteToDB = this.saveSiteToDB.bind(this);
+            this.saveSite = this.saveSite.bind(this);
+            this.handleLogin = this.handleLogin.bind(this);
+            this.handleSignUp = this.handleSignUp.bind(this);
+            
+            
+            
+            this.state = {
+                site: '',
+                siteData: {},
+                siteMoreData: {},
+                messages: "",
+                loggedIn: false,
+            };
 
+            
   componentDidMount() {
     
     this.checkLoggedIn();
@@ -150,18 +163,7 @@ class Home extends Component {
           </Col>
         
         </Row>
-        <Row>
-            <Col size="md-1" />
-            <Col size="md-10">
-              <SiteShowcase 
-                sitez={this.state.siteDB}
-              />
-            </Col>
-            <Col size="md-1" />
-        </Row>
       </Container>
     );
   }
 }
-
-export default Home;
