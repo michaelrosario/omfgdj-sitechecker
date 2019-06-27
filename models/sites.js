@@ -6,14 +6,7 @@ const siteSchema = new Schema({
   site_url: { type: String, required: true },
   site_desc: { type: String, required: true },
   site_imgsrc: { type: String, required: false },
-  site_badges: [
-    {
-      
-        type: Schema.Types.ObjectId,
-        ref: 'Badges'
-      
-    }
-  ],
+  site_badges: { type: [], required: false},
   user: {
     type: Schema.Types.ObjectId,
     ref: 'Users'

@@ -87,7 +87,7 @@ export default class SiteCheckCard extends React.Component {
         siteData: res.data
       });
 
-      this.saveSiteToDB();
+      this.saveSiteToDB(badgeArr);
 
     });
   }
@@ -101,15 +101,17 @@ export default class SiteCheckCard extends React.Component {
     });
   }
 
-  saveSiteToDB = () => {
+  saveSiteToDB = (badgeArr) => {
       const { siteData, site } = this.state;
+      const pushBadges = badgeArr;
       const info = {
         site_name: siteData.title,
         site_url: site,
         site_desc: "test",
         site_imgsrc: "",
-        site_badges: {}
+        site_badges: pushBadges
       };
+      console.log("OMAR: site obj to be entered to siteDB is: ", info);
       API.saveSite(info);
   }
 
