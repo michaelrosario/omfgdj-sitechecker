@@ -2,6 +2,7 @@ import React from "react";
 import API from "../../utils/API";
 import {Button, Modal} from 'react-bootstrap';
 import { Input, FormBtn } from "../Form";
+import "./style.css";
 
 export default class SignInModal extends React.Component {
   constructor(props, context) {
@@ -157,11 +158,11 @@ Logout
 </Button>
    ) : (
     <div>
-    <Button variant="primary" onClick={this.handleShowSignIn}>
+    <Button variant="primary" onClick={this.handleShowSignIn} className='button-spc'>
     Login 
     </Button>
     
-    <Button variant= "primary" onClick={this.handleShowSignup}>
+    <Button variant= "primary" onClick={this.handleShowSignup} className='button-spc'>
     Sign Up
     </Button>
     </div>
