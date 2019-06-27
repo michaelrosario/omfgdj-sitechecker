@@ -82,7 +82,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 10,
   },
   {
-    _id: "011111",
+    _id: "5d141c9854f7cf9fdf011111",
     badge_name: "CloudFlare",
     // badge_component: "CloudFlare",
     badge_version: "",
@@ -91,7 +91,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 10
   },
   {
-    _id: "022222",
+    _id: "5d141c9854f7cf9fdf022222",
     badge_name: "Font Awesome",
     // badge_component: "FontAwesome",
     badge_version: "",
@@ -100,7 +100,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 10
   },
   {
-    _id: "033333",
+    _id: "5d141c9854f7cf9fdf033333",
     badge_name: "Google Analytics",
     // badge_component: "GoogleAnalytics",
     badge_version: "",
@@ -109,7 +109,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 10
   },
   {
-    _id: "044444",
+    _id: "5d141c9854f7cf9fdf044444",
     badge_name: "Google Font API",
     // badge_component: "GoogleFontAPI",
     badge_version: "",
@@ -118,7 +118,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 10
   },
   {
-    _id: "055555",
+    _id: "5d141c9854f7cf9fdf055555",
     badge_name: "Gravatar",
     // badge_component: "Gravatar",
     badge_version: "",
@@ -127,7 +127,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 10
   },
   {
-    _id: "066666",
+    _id: "5d141c9854f7cf9fdf066666",
     badge_name: "WooCommerce",
     // badge_component: "WooCommerce",
     badge_version: "",
@@ -136,7 +136,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 10
   },
   {
-    _id: "077777",
+    _id: "5d141c9854f7cf9fdf077777",
     badge_name: "WordPress",
     // badge_component: "WordPress",
     badge_version: "",
@@ -145,7 +145,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 10
   },
   {
-    _id: "088888",
+    _id: "5d141c9854f7cf9fdf088888",
     badge_name: "PHP",
     // badge_component: "PHP",
     badge_version: "",
@@ -154,7 +154,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 10
   },
   {
-    _id: "099999",
+    _id: "5d141c9854f7cf9fdf099999",
     badge_name: "MySQL",
     // badge_component: "MySQL",
     badge_version: "",
