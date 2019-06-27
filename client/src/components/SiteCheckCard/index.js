@@ -62,8 +62,6 @@ export default class SiteCheckCard extends React.Component {
     API.checkSite(site).then(res => {
     console.log("API.checkSite res is >>>>>",res);
     
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     let resObj = res.data.wappalyzer; // omar
     console.log("Wappa Obj is >>",resObj);
     
@@ -79,16 +77,9 @@ export default class SiteCheckCard extends React.Component {
 
     console.log ("object badgeArr to db is",badgeArr);
 
-=======
-    let resObj = res.data.data.wappalyzer;
 
     console.log("Wappa Obj is >>",resObj);
->>>>>>> Stashed changes
-=======
-    let resObj = res.data.data.wappalyzer;
 
-    console.log("Wappa Obj is >>",resObj);
->>>>>>> Stashed changes
 
     const io = socket(this.state.endpoint, { secure: true });
     // Send site to all users
