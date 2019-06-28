@@ -3,7 +3,7 @@ import * as Badges from "../../badges/";
 import API from "../../utils/API";
 import socket from 'socket.io-client';
 import { Input, FormBtn } from "../Form";
-import { Card, CardGroup, CardDeck } from "react-bootstrap";
+import { Card, CardGroup, CardColumns } from "react-bootstrap";
 import 'font-awesome/css/font-awesome.min.css';
 import "./style.css";
 
@@ -173,7 +173,7 @@ export default class SiteCheckCard extends React.Component {
    });
    
     
-    let BadgeIcons = [];
+    let badgeIcons = [];
 
     // if(siteBadges.length == 4) {
 
@@ -204,39 +204,40 @@ export default class SiteCheckCard extends React.Component {
 
     // }
 
-    /*
+    
 
     if(badges.length){
         badgeIcons = badges.map((icon,index) => {
           return (
-            <CardDeck key={`card`+index}>
-              <Card>
-                  <Card.Img variant="left" src={icon.badge_icon} alt={icon.badge_name} width="25" height="25" className="badge-icon" />
-                  <Card.Body style={{float: 'right'}}>
-                    <h5>{icon.badge_name}</h5>
+              <Card className="badgeCard" key={`card`+index}>
+                  {/* <Card.Img variant="left" src={icon.badge_icon} alt={icon.badge_name} width="25" height="25" className="badge-icon" /> */}
+                  <Card.Body variant="left" className="badgeContent">
+                    <img src={icon.badge_icon} alt={icon.badge_name} width="25" height="25" className="badgeIcon" />
                   </Card.Body>
-                <Card.Footer></Card.Footer>
+                <Card.Footer className="badgeFooter"><p>{icon.badge_name}</p></Card.Footer>
               </Card>
-            </CardDeck>
           );
         });
     }
-    */
+    
+
+
 
     let siteTitle = siteData.title || "";
 
     return (
         <CardGroup className="sitecheckcard">
-            <Card className="thirty">
-                <Card.Body>
+            <Card className="thirty bgdarko">
+                <Card.Body className="">
                
 
                     <form>
                         <Input
                             value={site}
+                            className="bgdarkish"
                             onChange={this.handleInputChange}
                             name="site"
-                            placeholder="Enter a URL"
+                            placeholder="  Enter your URL"
                         />
                         <FormBtn
                             disabled={!(site && !this.state.processing)}
@@ -246,19 +247,21 @@ export default class SiteCheckCard extends React.Component {
                               <span> &nbsp; &nbsp; <i className="fa fa-spinner fa-spin"></i> &nbsp; &nbsp; </span> : 
                               "Check"}
                         </FormBtn>
-                        {siteTitle ? (<h5>SCORE: {this.state.user_score}</h5>) : ""}
+                        {siteTitle ? (<h5 className="text-light">SCORE: {this.state.user_score}</h5>) : ""}
                     </form>
                 </Card.Body>
                 <Card.Footer></Card.Footer>
             </Card>
-            <Card className="seventy">
-                <Card.Body>
+            <Card className="seventy bgdarko">
+                <Card.Body className="text-light jetsetfont1">
                 <Suspense fallback={<div>Loading...</div>}>{components}</Suspense>
                 {siteTitle ? 
                         <div>
-                        <h5>We are now checking <u>{siteTitle}</u></h5> 
-                        
-                        <p>H1: {siteData.header1.length}</p>
+                        <h5 className="jetsetfont1">Here's the awesome tech we found on your site >>{siteTitle}</h5>
+                <CardColumns>
+                  {badgeIcons}
+                </CardColumns>
+                        {/* <p>H1: {siteData.header1.length}</p>
                         <p>H2: {siteData.header2.length}</p>
                         <p>H3: {siteData.header3.length}</p>
                         <p>H4: {siteData.header4.length}</p>
@@ -266,10 +269,9 @@ export default class SiteCheckCard extends React.Component {
                         <p>Images: {siteData.images.length}</p>
                         <p>Links: {siteData.links.length}</p>
                         <p>Meta: {siteData.meta.length}</p>
-                        <p>Scripts: {siteData.script.length}</p>
-                        
+                        <p>Scripts: {siteData.script.length}</p> */}
                         </div>
-                    : "HEY THERES NO RESULTS, SO YEAH...."}
+                    : <h4 className="jetsetfont1">Enter your URL and CodeHype will perform an algorithmic scan and reward you with DevChops badges and a CodeHype Score. The more advanced tools you use, the higher your badge count and score will be!</h4>}
               
                 </Card.Body>
                 <Card.Footer></Card.Footer>
