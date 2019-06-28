@@ -1,7 +1,7 @@
 import React from "react";
 import 'font-awesome/css/font-awesome.min.css';
 
-const WooCommerce = (props) => {
+const GoogleTagManager = (props) => {
 
   let siteData = props.siteData || {};
   let showStyle = {
@@ -19,9 +19,8 @@ const WooCommerce = (props) => {
       }
     }
   } else {
-    console.log(props.badge.badge_name + " NOT FOUND");
+    //console.log(props.badge.badge_name + " NOT FOUND");
   }
-
 
 return (
     <div style={showStyle}>
@@ -35,4 +34,4 @@ return (
   );
 }
 
-export default WooCommerce;
+export default GoogleTagManager;

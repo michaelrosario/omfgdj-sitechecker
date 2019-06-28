@@ -16,6 +16,9 @@ const PHP = lazy(() => import(`./PHP`));
 const Twitter = lazy(() => import(`./Twitter`));
 const WooCommerce = lazy(() => import(`./WooCommerce`));
 const WordPress = lazy(() => import(`./WordPress`));
+const GoogleTagManager = lazy(() => import(`./GoogleTagManager`));
+const MetaTags = lazy(() => import(`./MetaTags`));
+const Typekit = lazy(() => import(`./Typekit`));
 
 export { 
     AngularJS,
@@ -33,5 +36,8 @@ export {
     PHP,
     Twitter,
     WooCommerce,
-    WordPress
+    WordPress,
+    GoogleTagManager,
+    MetaTags,
+    Typekit
 };

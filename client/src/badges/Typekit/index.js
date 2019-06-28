@@ -1,13 +1,12 @@
 import React from "react";
 import 'font-awesome/css/font-awesome.min.css';
 
-const WooCommerce = (props) => {
+const Typekit = (props) => {
 
   let siteData = props.siteData || {};
   let showStyle = {
     display: "none"
   }
-  //console.log(siteData);
   
   if(Object.keys(siteData).length !== 0 && siteData.constructor === Object && siteData.wappalyzer.length) {
     if(siteData.wappalyzer.some(item => item.name === props.badge.badge_name)){
@@ -19,7 +18,7 @@ const WooCommerce = (props) => {
       }
     }
   } else {
-    console.log(props.badge.badge_name + " NOT FOUND");
+    //console.log(props.badge.badge_name + " NOT FOUND");
   }
 
 
@@ -35,4 +34,4 @@ return (
   );
 }
 
-export default WooCommerce;
+export default Typekit;
