@@ -159,7 +159,7 @@ export default class SiteCheckCard extends React.Component {
 
    const components = siteBadges.map(badge => {
      //console.log(badge.badge_name + " component is being lazy loaded");
-     const Component = Badges[badge] ? Badges[badge] : Badges.AngularJS;
+     const Component = Badges[badge.badge_component] ? Badges[badge.badge_component] : Badges.AngularJS;
      return <Component key={badge._id} siteData={siteData} updateScore={this.handleAddScore} badge={badge} />;
    });
    

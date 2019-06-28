@@ -3,11 +3,13 @@ import 'font-awesome/css/font-awesome.min.css';
 
 const jQuery = (props) => {
 
+  console.log("meta");
+  
   let siteData = props.siteData || {};
   let showStyle = {
     display: "none"
   }
-  //console.log(siteData);
+  
   
   if(Object.keys(siteData).length !== 0 && siteData.constructor === Object && siteData.wappalyzer.length) {
     if(siteData.wappalyzer.some(item => item.name === props.badge.badge_name)){
