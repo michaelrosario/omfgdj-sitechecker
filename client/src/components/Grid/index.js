@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 // import { PromiseProvider } from "mongoose";
 
 // Exporting the Container, Row, and Col components from this file
