@@ -45,16 +45,21 @@ export default class SiteCheckCard extends React.Component {
   }
 
   handleAddScore = (number,id) => {
+
+    console.log("SCORE", number);
     const { 
       user_score,
       siteBadgeId } = this.state;
 
-      console.log(siteBadgeId);
+      console.log("SCORE siteBadgeId",siteBadgeId);
     
     if((siteBadgeId.length && siteBadgeId.indexOf(id) === -1) || siteBadgeId.length === 0){
+      
+      let newBadgeArr =  siteBadgeId.push(id);
+
       this.setState({
         user_score: user_score+number,
-        siteBadgeId: siteBadgeId.push(id)
+        siteBadgeId: newBadgeArr
       })
     }
     
@@ -229,7 +234,8 @@ export default class SiteCheckCard extends React.Component {
         <CardGroup className="sitecheckcard">
             <Card className="thirty bgdarko">
                 <Card.Body className="">
-               
+
+                <h5 className="text-light">SCORE: {this.state.user_score}</h5>
 
                     <form>
                         <Input

@@ -23,7 +23,7 @@ const AngularJS = (props) => {
 
 
 return (
-    <div style={showStyle}>
+   <div style={showStyle}>
       <img 
         src={"https://www.wappalyzer.com/images/icons/"+props.badge.badge_icon} 
         alt={props.badge.badge_name} 
