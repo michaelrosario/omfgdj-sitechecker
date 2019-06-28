@@ -10,6 +10,17 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByUrl: function(req, res) {
+    db.Sites
+      .findOne({ site_url: req.query.url })
+      .then(dbModel => {
+        // only send back id and lastSave
+        const { _id, site_lastSave } = dbModel;
+        res.json({_id,site_lastSave});
+
+      })
+      .catch(err => res.status(200).json("new"));
+  },
   findById: function(req, res) {
     db.Sites
       .findById(req.params.id)

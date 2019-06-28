@@ -5,12 +5,14 @@ const Wappalyzer = require('wappalyzer');
 const captureWebsite = require('capture-website');
 const siteController = require("../../controllers/siteController");
 
-// Matches with "/api/books"
 router
   .route("/")
   .get(siteController.findAll)
   .post(siteController.create);
 
+router
+  .route("/url")
+  .get(siteController.findByUrl);
 
 router
   .route("/:id")

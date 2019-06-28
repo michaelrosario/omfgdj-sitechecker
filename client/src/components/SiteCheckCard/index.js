@@ -12,6 +12,7 @@ export default class SiteCheckCard extends React.Component {
             super(props, context);
              this.state = {
                 site: '',
+                siteId: '',
                 siteImage: "",
                 userScore: [],
                 siteBadgeId: [],
@@ -84,43 +85,59 @@ export default class SiteCheckCard extends React.Component {
       processing: true
     });
 
-    API.checkSite(site).then(res => {
-      
-      console.log("API.checkSite res is >>>>>",res);
-      
-      let resObj = res.data.wappalyzer; // omar
-      console.log("Wappa Obj is >>",resObj);
-      
-      const iconURL = "https://www.wappalyzer.com/images/icons/";
+   API.getSiteByUrl(site).then(siteRes => {
+      console.log("siteRes",siteRes);
 
-      const badgeArr = resObj ? resObj.map(thing => {
-          return {
-              badge_name : thing.name,
-              badge_icon : iconURL+thing.icon,
-              badge_score : 1
-          }
-      }) : [];
+      if(siteRes.data === "new"){
 
-      // empty score and array
-      this.setState({
-        userScore: [],
-        siteBadgeId: [],
-        processing: false
-      });
-
-      console.log ("object badgeArr to db is",badgeArr);
-
-      const io = socket(this.state.endpoint, { secure: true });
-      // Send site to all users
-        io.emit('fromReact', { data: site });
+      } else {
         this.setState({
-          siteData: res.data,
-          badges: badgeArr
+          siteId: siteRes.data._id
+        })
+      }
+  
+      API.checkSite(site).then(res => {
+      
+        console.log("API.checkSite res is >>>>>",res);
+        
+        let resObj = res.data.wappalyzer; // omar
+        console.log("Wappa Obj is >>",resObj);
+        
+        const iconURL = "https://www.wappalyzer.com/images/icons/";
+  
+        const badgeArr = resObj ? resObj.map(thing => {
+            return {
+                badge_name : thing.name,
+                badge_icon : iconURL+thing.icon,
+                badge_score : 1
+            }
+        }) : [];
+  
+        // empty score and array
+        this.setState({
+          userScore: [],
+          siteBadgeId: [],
+          processing: false
         });
+  
+        console.log ("object badgeArr to db is",badgeArr);
+  
+        const io = socket(this.state.endpoint, { secure: true });
+        // Send site to all users
+          io.emit('fromReact', { data: site });
+          this.setState({
+            siteData: res.data,
+            badges: badgeArr
+          });
+          
+        
+          this.saveSiteToDB();
 
-        this.saveSiteToDB();
+          
+      });
+    
 
-    });
+   });
   }
 
   checkLoggedIn = () => {
@@ -133,7 +150,7 @@ export default class SiteCheckCard extends React.Component {
   }
 
   saveSiteToDB = () => {
-      const { siteData, site, siteBadgeId } = this.state;
+      const { siteData, site, siteBadgeId, siteId } = this.state;
       const pushBadges = [];
       siteBadgeId.map(id => { 
         pushBadges.push({_id: id }); //format data
@@ -146,9 +163,15 @@ export default class SiteCheckCard extends React.Component {
         site_imgsrc: siteData.image,
         site_badges: pushBadges
       };
-      
-      console.log("OMAR: site obj to be entered to siteDB is: ", info);
-      API.saveSite(info);
+      console.log("siteId",siteId);
+      if(siteId){
+        console.log("UPDATING SITE", info);
+        API.updateSite(info,siteId);
+      } else {
+        console.log("SAVING SITE", info);
+        API.saveSite(info);
+      }
+     
   }
 
   render() {
