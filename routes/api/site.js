@@ -34,7 +34,13 @@ router.get("/check/:site", function(req,res){
         width: 640,
         height: 480,
         type: 'jpeg',
-        quality: .50
+        quality: .50,
+        launchOptions: {
+          'args' : [
+            '--no-sandbox',
+            '--disable-setuid-sandbox'
+          ]
+        }
       }).then(image => {
         
         imagemin.buffer(image, {
