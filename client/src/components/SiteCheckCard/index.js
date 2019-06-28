@@ -1,4 +1,5 @@
-import React from "react";
+import React,{ lazy, Suspense, Component } from "react";
+import * as Badges from "../../badges/";
 import API from "../../utils/API";
 import socket from 'socket.io-client';
 import { Input, FormBtn } from "../Form";
@@ -17,20 +18,21 @@ export default class SiteCheckCard extends React.Component {
                 badges: [],
                 siteBadges: [],
                 processing: false,
-                loggedIn: false,
+                loggedIn: false
             };           
             
             this.handleFormSubmit = this.handleFormSubmit.bind(this);
             this.checkLoggedIn= this.checkLoggedIn.bind(this);
             this.saveSiteToDB = this.saveSiteToDB.bind(this);
-
+            this.handleAddScore = this.handleAddScore.bind(this);
           }
             
-  componentDidMount() {
+  async componentDidMount() {
     this.checkLoggedIn();
     API.getAllBadges().then(badges =>{
       this.setState({ siteBadges: badges.data });
       console.log("siteBadges",badges.data);
+      //badges.data.map(async type => await this.addComponent(type.badge_component))
     });
     const io = socket(this.state.endpoint, { secure: true });
   }
@@ -124,24 +126,59 @@ export default class SiteCheckCard extends React.Component {
       console.log("OMAR: site obj to be entered to siteDB is: ", info);
       API.saveSite(info);
   }
-
+/*
+  addComponent = async type => {
+    console.log(`Loading ${type} component...`);
+    
+    import(`../../badges/${type}/`)
+      .then(component => {
+        console.log("component",component);
+        this.setState({
+          components: this.state.components.concat(component.default)
+        });
+        
+      })
+      .catch(error => {
+        console.error(`"${type}" not yet supported`);
+      });
+  };
+*/
 
   render() {
-
     const { 
       site, 
       siteData, 
       badges,
       siteBadges
     } = this.state;
+
+    /*
+    const componentsElements = components ? components.map((Component,index) => (
+      <Component key={'component'+index} />
+    )) : [];
+    */
+   const components = siteBadges.map((badge,index) => {
+     const Component = Badges[badge] ? Badges[badge] : Badges.AngularJS;
+     return <Component key={badge._id} siteData={siteData} updateScore={this.handleAddScore} badge={badge} />;
+   });
+   
     
-    let badgeIcons = [];
+    let BadgeIcons = [];
 
-    if(siteBadges.length) {
+    // if(siteBadges.length == 4) {
 
-      badgeIcons = siteBadges.map(icon => {
-        let iconWap = 'https://www.wappalyzer.com/images/icons/'+icon.badge_icon;
-        return (
+      // BadgeIcons = siteBadges.map(icon => {
+      //   let iconWap = 'https://www.wappalyzer.com/images/icons/'+icon.badge_icon;
+      //   return Loadable({
+      //     loader: () => import(`../../badges/${icon.badge_component}`),
+      //     loading() {
+      //       return <div>Loading...</div>
+      //     }
+      //   });
+
+  
+
+        /*(
           <CardDeck key={icon._id}>
             <Card>
                 <Card.Img variant="left" src={iconWap} alt={icon.badge_name} width="25" height="25" className="badge-icon" />
@@ -152,10 +189,10 @@ export default class SiteCheckCard extends React.Component {
               <Card.Footer></Card.Footer>
             </Card>
           </CardDeck>
-        );
-      });
+        );*/
+    //   });
 
-    }
+    // }
 
     /*
 
@@ -206,7 +243,7 @@ export default class SiteCheckCard extends React.Component {
             </Card>
             <Card className="seventy">
                 <Card.Body>
-                badges: {badgeIcons}
+                <Suspense fallback={<div>Loading...</div>}>{components}</Suspense>
                 {siteTitle ? 
                         <div>
                         <h5>We are now checking <u>{siteTitle}</u></h5> 

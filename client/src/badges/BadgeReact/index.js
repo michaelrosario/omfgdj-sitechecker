@@ -1,7 +1,7 @@
 import React from "react";
 import 'font-awesome/css/font-awesome.min.css';
 
-function React(props) {
+function BadgeReact(props) {
 
   
   return (
@@ -11,4 +11,4 @@ function React(props) {
   );
 }
 
-export default React;
+export default BadgeReact;
