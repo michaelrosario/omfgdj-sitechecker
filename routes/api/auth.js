@@ -28,29 +28,25 @@ router.post('/signup', (req, res) => {
     })
 })
 
-router.post('/login', (req, res, next) => {
-        console.log('routes/user.js, login, req.body: ');
-        console.log(req.body)
-        next()
-    },
-    passport.authenticate('local'),
-    (req, res) => {
-        console.log('===== user!!======')
-        console.log('logged in req.user', req.user);
-        var userInfo = {
-          user_login: req.user.user_login
-        };
-        res.send(userInfo);
-    }
-)
+router.post('/login', function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+      if (err) { return next(err); }
+      if (!user) { return res.json({ message: "failure" }); }
+      req.logIn(user, function(err) {
+        if (err) { return next(err); }
+        console.log("user.user_login",user.user_login);
+        return res.json({ message: "success", user: user._id });
+      });
+    })(req, res, next);
+  });
 
 router.get('/', (req, res, next) => {
     console.log('===== user!!======')
     console.log("req.user",req.user);
     if (req.user) {
-        res.json({ user: req.user })
+        res.json({ message: "success", user: req.user })
     } else {
-        res.json({ user: null })
+        res.json({ message: "failure", user: null })
     }
 })
 

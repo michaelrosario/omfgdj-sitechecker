@@ -9,12 +9,16 @@ import Nav from "./components/Nav";
 // import Books from "./pages/Books";
 // import Detail from "./pages/Detail";
 
+const siteStyle = {
+  paddingTop: 60,
+}
 
 function App() {
   return (
     <Router>
-      <div>
-        <Nav />
+       
+      <div style={siteStyle}>
+      <Nav />
         <Switch>
            {/*
             <Route exact path="/" component={Books} />
@@ -22,7 +26,7 @@ function App() {
             <Route exact path="/books/:id" component={Detail} />
           */}
           <Route exact path="/" component={Home} />
-          <Route exact path="/user" component={Portfolio} />
+          <Route exact path="/user/" component={Portfolio} />
           <Route exact path="/account" component={Account} />
           <Route component={Aboutus} />
 

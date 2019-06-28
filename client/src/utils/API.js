@@ -19,10 +19,12 @@ export default {
   },
   logout: function() {
     return axios.post('/user/logout');
+  },
+  getsites: function() {
+    return axios.get('/api/site');
+  },
+  getIconByTitle: function(title) {
+    return axios.get(`/api/badge/title?title=${title}`);
   }
-  // ,
-  // checkWappalyzer: function(site) {
-  //   return axios.get("/api/site/wapp/"+site);
-  // }
   
 };

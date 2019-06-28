@@ -1,0 +1,93 @@
+.list-overflow-container {
+  max-height: 545px;
+  border: 1px #DDDDDD solid;
+  border-radius: 4px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.list-overflow-container ul {
+  margin: 0;
+}
+
+.list-overflow-container li {
+  border-radius: 0px;
+  border-left: none;
+  border-right: none;
+}
+
+.list-overflow-container li * {
+  cursor: pointer;
+}
+
+.list-overflow-container li a {
+  color: #2A878C;
+}
+
+.list-overflow-container li:first-child {
+  border-top: none;
+}
+
+.list-overflow-container li:last-child {
+  border-bottom: none;
+}
+
+.logo { 
+  position: absolute; 
+  left: 20px;
+  top: 14px;
+  width: 250px;
+  height: auto;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+  float: left;
+}
+
+.main-nav {
+  height: 56px;
+  z-index: 999;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  background:rgba(10,10,10,0.9) !important;
+
+}
+.main-nav .nav a {
+  text-decoration: none;
+  transition: all linear 0.3s;
+  padding: 0 15px;
+}
+
+.main-nav .nav a:hover {
+  text-decoration: none;
+  color: white;
+  transition: all linear 0.3s;
+}
+
+.main-nav .nav { position: absolute; right: 200px;}
+.main-nav .nav.logged-in { right: 100px; }
+.modal-links { position: absolute; right: 0px; }
+.modal-links.logged-in  { right: 20px; }
+
+button { outline: none; }
+
+@media(max-width: 767px){
+  .main-nav .nav a { padding: 0 8px; }
+  .main-nav .nav span { display: none; }
+}
+
+@media(max-width: 640px){
+  
+  .logo { width: 190px; top: 18px; left: 10px; }
+
+}
+
+
+@media(max-width: 492px){
+  .logo { top: 15px; left: 20px; overflow: hidden;  height: 50px; width: 38px; }
+  .logo img {  width: 190px; height: auto; }
+}
+  

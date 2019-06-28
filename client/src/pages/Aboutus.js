@@ -4,10 +4,7 @@ import { Card, CardDeck} from "react-bootstrap";
 
 class Aboutus extends Component {
 
-
-
     render() {
-
 
         return (
             <Container fluid center >

@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import API from "../../utils/API";
 import {Button, Modal} from 'react-bootstrap';
 import { Input, FormBtn } from "../Form";
+import 'font-awesome/css/font-awesome.min.css';
+import "./style.css";
 
 export default class SignInModal extends React.Component {
   constructor(props, context) {
@@ -15,10 +17,14 @@ export default class SignInModal extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
+    this.validateText = this.validateText.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
 
     this.state = {
       show: "",
+      message: "",
+      user_id: "",
       username: "",
       password: "",
       email: "",
@@ -31,14 +37,28 @@ export default class SignInModal extends React.Component {
 componentDidMount(){
   API.checkLoggedIn().then(response => {
     console.log("response on checkLoggedIn",response);
-    if(response.data.user){
+    if(response.data.message === "success"){
       this.setState({ loggedIn: true });
+      this.props.setUserSession(this.state.loggedIn);
     }
   });
 }
 
+validateEmail = email => {
+  const re = /\S+@\S+\.\S+/;
+  return re.test(String(email).toLowerCase());
+}
+
+validateText = text => {
+  if(text.length > 2) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 handleClose = () => {
-  this.setState({ show: ""});
+  this.setState({ show: "", message: "" });
 }
 
 handleLogout = () => {
@@ -48,6 +68,7 @@ handleLogout = () => {
       this.setState({
         loggedIn: false,
       });
+      this.props.setUserSession(this.state.loggedIn);
     }
   });
 }
@@ -58,8 +79,7 @@ formSubmit = event => {
   //this.handleClose();
 }
 
-handleInputChange = event => {
-  event.preventDefault();
+handleInputChange = event => { 
   const { name, value } = event.target;
   this.setState({
     [name]: value
@@ -94,12 +114,20 @@ handleLogin = event => {
   API.login(user).then(res => {
     console.log("res", res);
     
-    if(res.status === 200) {
+    if(res.data.message === "success") {
+      
       this.setState({
         loggedIn: true,
-        username: res.data.user_login
+        user_id: res.data.user,
+        message: ""
       });
+      this.props.setUserSession(this.state.loggedIn);
       this.handleClose();
+
+    } else {
+
+      this.setState({ message: "Incorrect Login Information" });
+
     }
   });
 }
@@ -127,6 +155,8 @@ handleSignUp = event => {
 
   API.signup(user).then(res => {
     console.log("res",res);
+    this.setState({ loggedIn: true });
+    this.props.setUserSession(this.state.loggedIn);
     this.handleClose();
   });
 
@@ -140,6 +170,19 @@ const {
   lastName, 
   email } = this.state;
 
+  let disableSignUp = !(
+    this.validateText(username) && 
+    this.validateEmail(email) &&
+    this.validateText(password) &&
+    this.validateText(firstName) &&
+    this.validateText(lastName)
+  );
+
+  let disableLogin = !(
+    this.validateText(username) && 
+    this.validateText(password) 
+  );
+
 return (
 <div>
 
@@ -148,107 +191,110 @@ Logout
 </Button>
    ) : (
     <div>
-    <Button variant="primary" onClick={this.handleShowSignIn}>
-    Login 
-    </Button>
+      
+      <Button variant="primary" onClick={this.handleShowSignIn} className='button-spc'>
+        Login 
+      </Button>
     
-    <Button variant= "primary" onClick={this.handleShowSignup}>
-    Sign Up
-    </Button>
+      <Button variant= "primary" onClick={this.handleShowSignup} className='button-spc'>
+        Sign Up
+      </Button>
+
     </div>
   
 )}
 
+  <Modal show={this.state.show !== "" } onHide={this.handleClose}>
+    
+    <Modal.Header closeButton>
+    {this.state.show === "signin" ? 
+      <Modal.Title><i className="fa fa-user"></i> &nbsp; Sign In</Modal.Title> :
+      <Modal.Title><i className="fa fa-sign-in"></i> &nbsp; Sign Up</Modal.Title>
+    }
+    </Modal.Header>
+    
+    <Modal.Body>    
 
+      {this.state.message}
 
-<Modal show={this.state.show !== "" } onHide={this.handleClose}>
-<Modal.Header closeButton>
-<Modal.Title>Sign In</Modal.Title>
-</Modal.Header>
-<Modal.Body>  
+      {this.state.show === "signin" ? (
+        <form onSubmit={this.formSubmit}>
+          
+          <Input
+            value={username}
+            onChange={this.handleInputChange}
+            name="username"
+            placeholder="Username"
+          />
 
-{this.state.show === "signin" ? (
+          <Input
+            value={password}
+            onChange={this.handleInputChange}
+            name="password"
+            type="password"
+            placeholder="Password"
+          />
+
+          {/* TODO: Form validations and modal */}
+          <FormBtn
+            disabled={disableLogin}
+            onClick={this.handleLogin}
+          >
+            Login
+          </FormBtn>
+        </form>) : (
+
   <form onSubmit={this.formSubmit}>
-<Input
-value={username}
-onChange={this.handleInputChange}
-name="username"
-placeholder="Username"
-/>
 
-<Input
-value={password}
-onChange={this.handleInputChange}
-name="password"
-type="password"
-placeholder="Password"
-/>
+  <Input
+  value={firstName}
+  onChange={this.handleInputChange}
+  name="firstName"
+  placeholder="First Name"
+  />
 
-{/* TODO: Form validations and modal */}
-<FormBtn
-disabled={!username && !password}
-onClick={this.handleLogin}
->
-Login
+  <Input
+  value={lastName}
+  onChange={this.handleInputChange}
+  name="lastName"
+  placeholder="Last Name"
+  />  
 
-</FormBtn>
-</form>) : (
+  <Input
+  value={username}
+  onChange={this.handleInputChange}
+  name="username"
+  placeholder="Username"
+  />
 
-<form onSubmit={this.formSubmit}>
-<Input
-value={firstName}
-onChange={this.handleInputChange}
-name="firstName"
-placeholder="First Name"
-/>
+  <Input
+  value={password}
+  onChange={this.handleInputChange}
+  name="password"
+  type="password"
+  placeholder="Password"
+  />
 
-<Input
-value={lastName}
-onChange={this.handleInputChange}
-name="lastName"
-placeholder="Last Name"
-/>  
-
-<Input
-value={username}
-onChange={this.handleInputChange}
-name="username"
-placeholder="Username"
-/>
-
-<Input
-value={password}
-onChange={this.handleInputChange}
-name="password"
-type="password"
-placeholder="Password"
-/>
-
-<Input
-value={email}
-onChange={this.handleInputChange}
-name="email"
-placeholder="Email"
-/>
-{/* TODO: Form validations and modal */}
-<FormBtn
-disabled={!username && !password && !email && !firstName && !lastName}
-onClick={this.handleSignUp}
->
-Signup
-   </FormBtn>
-       </form>
-)}
-            
+  <Input
+  value={email}
+  onChange={this.handleInputChange}
+  name="email"
+  placeholder="Email"
+  />
+  {/* TODO: Form validations and modal */}
+  <FormBtn
+    disabled={disableSignUp}
+    onClick={this.handleSignUp}
+  >
+  Signup
+    </FormBtn>
+        </form>
+  )}
+              
 
 
-</Modal.Body>
-<Modal.Footer>
-<Button variant="secondary" onClick={this.handleClose}>
-Close
-</Button>
+  </Modal.Body>
 
-</Modal.Footer>
 </Modal>
 
 </div>
