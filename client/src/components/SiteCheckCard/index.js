@@ -138,11 +138,23 @@ export default class SiteCheckCard extends React.Component {
       siteBadgeId.map(id => { 
         pushBadges.push({_id: id }); //format data
       });
+
+      let metaDescription = "No Description";
+      if(siteData.meta) {
+
+        siteData.meta.map(item => {
+          if(item.name === "description") {
+            metaDescription = item.content;
+          }
+        })
+
+      }
+      
       console.log("pushBadges",pushBadges);
       const info = {
         site_name: siteData.title,
         site_url: site,
-        site_desc: "test",
+        site_desc: metaDescription,
         site_imgsrc: siteData.image,
         site_badges: pushBadges
       };
@@ -226,15 +238,7 @@ export default class SiteCheckCard extends React.Component {
                 <CardColumns>
                   {badgeIcons}
                 </CardColumns>
-                        {/* <p>H1: {siteData.header1.length}</p>
-                        <p>H2: {siteData.header2.length}</p>
-                        <p>H3: {siteData.header3.length}</p>
-                        <p>H4: {siteData.header4.length}</p>
-                        <p>H5: {siteData.header5.length}</p>
-                        <p>Images: {siteData.images.length}</p>
-                        <p>Links: {siteData.links.length}</p>
-                        <p>Meta: {siteData.meta.length}</p>
-                        <p>Scripts: {siteData.script.length}</p> */}
+                   
                         </div>
                     : <h4 className="jetsetfont1">Enter your URL and CodeHype will perform an algorithmic scan and reward you with DevChops badges and a CodeHype Score. The more advanced tools you use, the higher your badge count and score will be!</h4>}
               
