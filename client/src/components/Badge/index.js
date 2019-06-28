@@ -5,9 +5,17 @@ import './style.css';
 const Badge = (props) => {
 
   let showStyle = props.show ? { display: "block"} : { display: "none" };
+  let badgeType = "";
+  if(props.score > 0){
+    badgeType = "score-badge positive";
+  } else if(props.score < 0){
+    badgeType = "score-badge negative";
+  } else {
+    badgeType = "score-badge neutral";
+  }
 
 return (
-    <div className="score-badge" style={showStyle}>
+    <div className={badgeType} style={showStyle}>
       <span className="score-icon"><img 
         src={props.icon} 
         alt={props.name} 

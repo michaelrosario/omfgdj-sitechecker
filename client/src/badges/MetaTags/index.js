@@ -3,7 +3,6 @@ import Badge from "../../components/Badge";
 
 const MetaTags = (props) => {
 
-  console.log("meta");
   let siteData = props.siteData || {};
   let showStyle = false;
   
@@ -14,10 +13,7 @@ const MetaTags = (props) => {
       props.updateScore(props.badge.badge_score,props.badge._id);
       showStyle = true;
     }
-  } else {
-    console.log(props.badge.badge_name + " NOT FOUND");
-  }
-
+  } 
 
 return <Badge 
           show={showStyle} 
