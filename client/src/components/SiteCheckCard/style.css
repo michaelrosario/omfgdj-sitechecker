@@ -10,3 +10,23 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
+
+.badgeCard {
+    background-color: purple;
+}
+
+.badgeContent {
+    margin: 0 auto;
+    padding: 10px 15px;
+    float: left;
+}
+
+p {
+    color: white;
+    font-size: 10pt;
+    font-style: oblique;
+    text-transform: uppercase;
+    
+    padding: 0;
+    margin: 0;
+}
