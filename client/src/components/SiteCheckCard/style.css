@@ -43,3 +43,12 @@ p {
     padding: 0;
     margin: 0;
 }
+
+.site-screen {
+    width: 100%;
+    height: auto;
+    border: 1px solid #FFF;
+    display: inline-block;
+    border-radius: 3px;
+    margin: 0 0 15px 0;
+}

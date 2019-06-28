@@ -272,7 +272,7 @@ userSeed.map(user => {
   newUserSeed.push(user);
 });
 
-console.log(newUserSeed);
+//console.log(newUserSeed);
 
 db.User
 .remove({})
@@ -318,15 +318,16 @@ db.User
     }
   ];
 
-  db.Sites
-  .remove({})
-  .then(() => db.Sites.collection.insertMany(sitesSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+
+db.Sites
+.remove({})
+.then(() => db.Sites.collection.insertMany(sitesSeed))
+.then(data => {
+  console.log(data.result.n + " records inserted!");
+  process.exit(0);
+})
+.catch(err => {
+  console.error(err);
+  process.exit(1);
+});
 
