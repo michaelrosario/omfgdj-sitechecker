@@ -2,7 +2,7 @@ import React from "react";
 import API from "../../utils/API";
 import socket from 'socket.io-client';
 import { Input, FormBtn } from "../Form";
-import { Card, CardGroup, CardDeck } from "react-bootstrap";
+import { Card, CardGroup, CardColumns } from "react-bootstrap";
 import 'font-awesome/css/font-awesome.min.css';
 import "./style.css";
 
@@ -127,19 +127,18 @@ export default class SiteCheckCard extends React.Component {
     if(badges.length){
         badgeIcons = badges.map((icon,index) => {
           return (
-            <CardDeck key={`card`+index}>
-              <Card>
-                  <Card.Img variant="left" src={icon.badge_icon} alt={icon.badge_name} width="25" height="25" className="badge-icon" />
-                  <Card.Body style={{float: 'right'}}>
-                    <h5>{icon.badge_name}</h5>
-                    {/* <img src={icon.badge_icon} alt={icon.badge_name} width="50" height="50" className="badge-icon" /> */}
+              <Card className="badgeCard" key={`card`+index}>
+                  {/* <Card.Img variant="left" src={icon.badge_icon} alt={icon.badge_name} width="25" height="25" className="badge-icon" /> */}
+                  <Card.Body variant="left" className="badgeContent">
+                    <img src={icon.badge_icon} alt={icon.badge_name} width="25" height="25" className="badgeIcon" />
                   </Card.Body>
-                <Card.Footer></Card.Footer>
+                <Card.Footer className="badgeFooter"><p>{icon.badge_name}</p></Card.Footer>
               </Card>
-            </CardDeck>
           );
         });
     }
+
+
 
     let siteTitle = siteData.title || "";
 
@@ -147,8 +146,6 @@ export default class SiteCheckCard extends React.Component {
         <CardGroup className="sitecheckcard">
             <Card className="thirty">
                 <Card.Body>
-                  
-
                     <form>
                         <Input
                             value={site}
@@ -172,9 +169,11 @@ export default class SiteCheckCard extends React.Component {
                 <Card.Body>
                 {siteTitle ? 
                         <div>
-                        <h5>We are now checking <u>{siteTitle}</u></h5> 
-                        {badgeIcons}
-                        <p>H1: {siteData.header1.length}</p>
+                        <h5>We are now checking <u>{siteTitle}</u></h5>
+                <CardColumns>
+                  {badgeIcons}
+                </CardColumns>
+                        {/* <p>H1: {siteData.header1.length}</p>
                         <p>H2: {siteData.header2.length}</p>
                         <p>H3: {siteData.header3.length}</p>
                         <p>H4: {siteData.header4.length}</p>
@@ -182,7 +181,7 @@ export default class SiteCheckCard extends React.Component {
                         <p>Images: {siteData.images.length}</p>
                         <p>Links: {siteData.links.length}</p>
                         <p>Meta: {siteData.meta.length}</p>
-                        <p>Scripts: {siteData.script.length}</p>
+                        <p>Scripts: {siteData.script.length}</p> */}
                         
                         </div>
                     : "HEY THERES NO RESULTS, SO YEAH...."}

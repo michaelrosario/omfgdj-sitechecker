@@ -192,11 +192,11 @@ Logout
    ) : (
     <div>
       
-      <Button variant="primary" onClick={this.handleShowSignIn} className='button-spc'>
+      <Button variant="dark" onClick={this.handleShowSignIn} className='button-spc'>
         Login 
       </Button>
     
-      <Button variant= "primary" onClick={this.handleShowSignup} className='button-spc'>
+      <Button variant= "dark" onClick={this.handleShowSignup} className='button-spc'>
         Sign Up
       </Button>
 
