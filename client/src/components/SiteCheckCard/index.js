@@ -29,8 +29,11 @@ export default class SiteCheckCard extends React.Component {
             
   componentDidMount() {
     this.checkLoggedIn();
+
+    // get all badges from DB
     API.getAllBadges().then(badges =>{
       
+      // store all badges to state
       this.setState({ siteBadges: badges.data });
       console.log("siteBadges",badges.data);
       
@@ -155,12 +158,11 @@ export default class SiteCheckCard extends React.Component {
     } = this.state;
 
    const components = siteBadges.map(badge => {
+     //console.log(badge.badge_name + " component is being lazy loaded");
      const Component = Badges[badge] ? Badges[badge] : Badges.AngularJS;
      return <Component key={badge._id} siteData={siteData} updateScore={this.handleAddScore} badge={badge} />;
    });
    
-   console.log("siteBadgeId",siteBadgeId);
-    
     let badgeIcons = [];
     let calculatedScore = userScore.length ? userScore.reduce((a, b) => a + b, 0) : 0;
 
