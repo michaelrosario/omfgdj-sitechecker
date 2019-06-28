@@ -6,6 +6,7 @@ const siteSchema = new Schema({
   site_url: { type: String, required: true },
   site_desc: { type: String, required: true },
   site_imgsrc: { type: String, required: false },
+  site_lastSave : { type: Number, default: (new Date()).getTime() },
   site_badges:[
     {
       type: Schema.Types.ObjectId, 

@@ -8,6 +8,9 @@ export default {
   saveSite: function(data) {
     return axios.post("/api/site", data);
   },
+  updateSite: function(data,id) {
+    return axios.put(`/api/site/${id}`, data);
+  },
   login: function(data) {
     return axios.post('/user/login',data);
   },
@@ -25,6 +28,9 @@ export default {
   },
   getIconByTitle: function(title) {
     return axios.get(`/api/badge/title?title=${title}`);
+  },
+  getSiteByUrl: function(url) {
+    return axios.get(`/api/site/url?url=${url}`);
   },
   getAllBadges: function(){
     return axios.get('/api/badge');
