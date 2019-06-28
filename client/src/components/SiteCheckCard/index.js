@@ -134,7 +134,11 @@ export default class SiteCheckCard extends React.Component {
 
   saveSiteToDB = () => {
       const { siteData, site, siteBadgeId } = this.state;
-      const pushBadges = siteBadgeId || [];
+      const pushBadges = [];
+      siteBadgeId.map(id => { 
+        pushBadges.push({_id: id }); //format data
+      });
+      console.log("pushBadges",pushBadges);
       const info = {
         site_name: siteData.title,
         site_url: site,
