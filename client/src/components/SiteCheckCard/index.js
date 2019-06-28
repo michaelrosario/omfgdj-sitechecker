@@ -12,7 +12,7 @@ export default class SiteCheckCard extends React.Component {
             super(props, context);
              this.state = {
                 site: '',
-                userScore: 0,
+                userScore: [],
                 siteBadgeId: [],
                 siteData: {},
                 badges: [],
@@ -44,18 +44,18 @@ export default class SiteCheckCard extends React.Component {
 
   }
 
-  handleAddScore = (number,id) => {
+  handleAddScore = (points,id) => {
     let { 
       siteBadgeId,
       userScore
     } = this.state;
     
-    console.log(siteBadgeId+" BEFORE ADDING "+id)
+    console.log("SCORE"+userScore);
 
     if((Array.isArray(siteBadgeId) && siteBadgeId.indexOf(id) === -1) || siteBadgeId.length === 0){
       siteBadgeId.push(id);
-      userScore = parseInt(userScore)+parseInt(number);
-      console.log("Updating Score for "+id+" for "+number+" points");
+      userScore.push(points);
+      console.log("Updating Score for "+id+" for "+points+" points");
       this.setState({ 
         siteBadgeId,
         userScore
@@ -73,8 +73,7 @@ export default class SiteCheckCard extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { site } = this.state;
-    
+    const { site } = this.state;  
     console.log("SEARCH "+site+" VIA APIs");
 
     this.setState({
@@ -98,7 +97,10 @@ export default class SiteCheckCard extends React.Component {
           }
       }) : [];
 
+      // empty score and array
       this.setState({
+        userScore: [],
+        siteBadgeId: [],
         processing: false
       });
 
@@ -147,6 +149,7 @@ export default class SiteCheckCard extends React.Component {
       site, 
       siteData, 
       badges,
+      userScore,
       siteBadgeId,
       siteBadges
     } = this.state;
@@ -159,6 +162,7 @@ export default class SiteCheckCard extends React.Component {
    console.log("siteBadgeId",siteBadgeId);
     
     let badgeIcons = [];
+    let calculatedScore = userScore.length ? userScore.reduce((a, b) => a + b, 0) : 0;
 
 
     if(badges.length){
@@ -182,8 +186,6 @@ export default class SiteCheckCard extends React.Component {
             <Card className="thirty bgdarko">
                 <Card.Body className="">
 
-                <h5 className="text-light">SCORE: {this.state.userScore}</h5>
-
                     <form>
                         <Input
                             value={site}
@@ -200,7 +202,7 @@ export default class SiteCheckCard extends React.Component {
                               <span> &nbsp; &nbsp; <i className="fa fa-spinner fa-spin"></i> &nbsp; &nbsp; </span> : 
                               "Check"}
                         </FormBtn>
-                        {siteTitle ? (<h5 className="text-light">SCORE: {this.state.userScore}</h5>) : ""}
+                        {siteTitle ? (<h5 className="text-light">SCORE: {calculatedScore}</h5>) : ""}
                     </form>
                 </Card.Body>
                 <Card.Footer></Card.Footer>
