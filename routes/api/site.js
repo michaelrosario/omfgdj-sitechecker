@@ -3,7 +3,11 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const Wappalyzer = require('wappalyzer');
 const captureWebsite = require('capture-website');
+const imagemin = require('imagemin');
+const imageminJpegtran = require('imagemin-jpegtran');
+const imageminMozjpeg = require('imagemin-mozjpeg');
 const siteController = require("../../controllers/siteController");
+
 
 // Matches with "/api/books"
 router
@@ -30,9 +34,19 @@ router.get("/check/:site", function(req,res){
         type: 'jpeg',
         quality: .50
       }).then(image => {
-        var base64data = new Buffer(image).toString('base64');
-        console.log(base64data);
-        data.image = "data:image/png;base64,"+base64data;
+        
+        imagemin.buffer(image, {
+          plugins: [
+            imageminJpegtran(),
+            imageminMozjpeg({quality: 50})
+          ]
+        }).then(file => {
+
+          var base64data = new Buffer(file).toString('base64');
+          console.log(base64data);
+          data.image = "data:image/png;base64,"+base64data;
+
+        });
       });
     })();
     
