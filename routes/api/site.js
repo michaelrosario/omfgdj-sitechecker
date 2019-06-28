@@ -28,7 +28,7 @@ router.get("/check/:site", function(req,res){
     let site = req.params.site;
     let website = "https://"+site;
     const data = {};
-    // remove http amd https and use www  
+    
     (async () => {
       await captureWebsite.base64(website,{
         width: 640,
