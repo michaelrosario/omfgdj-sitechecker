@@ -118,7 +118,7 @@ export default class SiteCheckCard extends React.Component {
           badges: badgeArr
         });
 
-        this.saveSiteToDB(badgeArr);
+        this.saveSiteToDB();
 
     });
   }
@@ -132,9 +132,9 @@ export default class SiteCheckCard extends React.Component {
     });
   }
 
-  saveSiteToDB = (badgeArr) => {
-      const { siteData, site } = this.state;
-      const pushBadges = badgeArr;
+  saveSiteToDB = () => {
+      const { siteData, site, siteBadgeId } = this.state;
+      const pushBadges = siteBadgeId || [];
       const info = {
         site_name: siteData.title,
         site_url: site,
