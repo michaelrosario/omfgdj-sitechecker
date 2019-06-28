@@ -10,7 +10,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByTitle: function(req, res) {
-    console.log(req);
     db.Badges
       .findOne({ badge_name: req.query.title })
       .then(dbModel => res.json(dbModel))

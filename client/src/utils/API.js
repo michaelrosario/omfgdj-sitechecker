@@ -25,6 +25,9 @@ export default {
   },
   getIconByTitle: function(title) {
     return axios.get(`/api/badge/title?title=${title}`);
+  },
+  getAllBadges: function(){
+    return axios.get('/api/badge');
   }
   
 };

@@ -11,8 +11,8 @@ mongoose.connect(
 const badgeSeed = [ // Omar: These dummy entries are actually real values from the Wappalyzer API call
   {
     _id: "5d141c9854f7cf9fdff32b39",
-    badge_name: "React",
-    // badge_component: "React",
+    badge_name: "BadgeReact",
+    badge_component: "BadgeReact",
     badge_version: "16.3.0",
     badge_icon: "React.png",
     badge_category: "Javascript Frameworks", // Omar: view RES object. need to properly get this data from res
@@ -21,7 +21,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
   {
     _id: "5d141c9854f7cf9fdff32b3a",
     badge_name: "Nginx",
-    // badge_component: "Nginx",
+    badge_component: "Nginx",
     badge_version: "", // Omar: RES object is NULL, this field is not required in Schema so i am leaving the dummy data blank 
     badge_icon: "Nginx.svg",
     badge_category: "Web Servers",
@@ -39,7 +39,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
   {
     _id: "5d141c9854f7cf9fdff32b3c",
     badge_name: "Google Analytics",
-    // badge_component: "GoogleAnalytics",
+    badge_component: "GoogleAnalytics",
     badge_version: "", // Omar: another NULL response, we dont really need this so I guess we can remote this in the Schema and here???
     badge_icon: "Google Analytics.svg",
     badge_category: "Analytics",
@@ -48,7 +48,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
   {
     _id: "5d141c9854f7cf9fdff32b3d",
     badge_name: "Twitter",
-    // badge_component: "Twitter",
+    badge_component: "Twitter",
     badge_version: "",
     badge_icon: "Twitter.svg",
     badge_category: "Widgets",
@@ -57,7 +57,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
   {
     _id: "5d141c9854f7cf9fdff32b3e",
     badge_name: "Bootstrap",
-    // badge_component: "Bootstrap",
+    badge_component: "Bootstrap",
     badge_version: "",
     badge_icon: "Bootstrap.png",
     badge_category: "Web Frameworks",
@@ -66,7 +66,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
   {
     _id: "5d141c9854f7cf9fdff32b3f",
     badge_name: "AngularJS",
-    // badge_component: "AngularJS",
+    badge_component: "AngularJS",
     badge_version: "",
     badge_icon: "AngularJS.svg",
     badge_category: "JavaScript Frameworks",
@@ -75,88 +75,88 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
   {
     _id: "5d141c9854f7cf9fdff32b40",
     badge_name: "Apache",
-    // badge_component: "Apache",
+    badge_component: "Apache",
     badge_version: "",
     badge_icon: "Apache.svg",
     badge_category: "Web Servers",
     badge_score: 10,
   },
   {
-    _id: "011111",
+    _id: "5d141c9854f7cf9fdf011111",
     badge_name: "CloudFlare",
-    // badge_component: "CloudFlare",
+    badge_component: "CloudFlare",
     badge_version: "",
     badge_icon: "CloudFlare.svg",
     badge_category:"Network Services",
     badge_score: 10
   },
   {
-    _id: "022222",
+    _id: "5d141c9854f7cf9fdf022222",
     badge_name: "Font Awesome",
-    // badge_component: "FontAwesome",
+    badge_component: "FontAwesome",
     badge_version: "",
     badge_icon: "Font Awesome.png",
     badge_category: "Web Framework",
     badge_score: 10
   },
   {
-    _id: "033333",
+    _id: "5d141c9854f7cf9fdf033333",
     badge_name: "Google Analytics",
-    // badge_component: "GoogleAnalytics",
+    badge_component: "GoogleAnalytics",
     badge_version: "",
     badge_icon: "Google Analytics.svg",
     badge_category: "Web Analytics Service",
     badge_score: 10
   },
   {
-    _id: "044444",
+    _id: "5d141c9854f7cf9fdf044444",
     badge_name: "Google Font API",
-    // badge_component: "GoogleFontAPI",
+    badge_component: "GoogleFontAPI",
     badge_version: "",
     badge_icon: "Google Font API.png",
     badge_category: "Web Service",
     badge_score: 10
   },
   {
-    _id: "055555",
+    _id: "5d141c9854f7cf9fdf055555",
     badge_name: "Gravatar",
-    // badge_component: "Gravatar",
+    badge_component: "Gravatar",
     badge_version: "",
     badge_icon: "Gravatar.png",
     badge_category: "Web Service",
     badge_score: 10
   },
   {
-    _id: "066666",
+    _id: "5d141c9854f7cf9fdf066666",
     badge_name: "WooCommerce",
-    // badge_component: "WooCommerce",
+    badge_component: "WooCommerce",
     badge_version: "",
     badge_icon: "WooCommerce.png",
     badge_category: "Web Service",
     badge_score: 10
   },
   {
-    _id: "077777",
+    _id: "5d141c9854f7cf9fdf077777",
     badge_name: "WordPress",
-    // badge_component: "WordPress",
+    badge_component: "WordPress",
     badge_version: "",
     badge_icon: "WordPress.svg",
     badge_category: "Content Management System",
     badge_score: 10
   },
   {
-    _id: "088888",
+    _id: "5d141c9854f7cf9fdf088888",
     badge_name: "PHP",
-    // badge_component: "PHP",
+    badge_component: "PHP",
     badge_version: "",
     badge_icon: "PHP.svg",
     badge_category: "Programming Language",
     badge_score: 10
   },
   {
-    _id: "099999",
+    _id: "5d141c9854f7cf9fdf099999",
     badge_name: "MySQL",
-    // badge_component: "MySQL",
+    badge_component: "MySQL",
     badge_version: "",
     badge_icon: "MySQL.svg",
     badge_category: "Programming Language",

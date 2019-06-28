@@ -1,6 +1,7 @@
 import React from "react";
+import 'font-awesome/css/font-awesome.min.css';
 
-const AngularJS = (props) => {
+const BadgeReact = (props) => {
 
   let siteData = props.siteData || {};
   let showStyle = {
@@ -34,4 +35,4 @@ return (
   );
 }
 
-export default AngularJS;
+export default BadgeReact;
