@@ -24,14 +24,12 @@ const AngularJS = (props) => {
 
 return (
     <div style={showStyle}>
-
-      Hello AngularJS! 
-      {siteData.title}
-      {props.badge.badge_name}<br />
-      {props.badge._id}<br />
-      {props.badge.badge_image}<br />
-      {props.badge.badge_score}<br />
-      <button onClick={() => props.updateScore(props.badge.badge_score)}>CLICK</button>
+      <img 
+        src={"https://www.wappalyzer.com/images/icons/"+props.badge.badge_icon} 
+        alt={props.badge.badge_name} 
+        width={100} height={100} />
+      <h3>{props.badge.badge_name}</h3>
+      
     </div>
   );
 }
