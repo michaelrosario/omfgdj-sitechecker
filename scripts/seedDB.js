@@ -11,7 +11,7 @@ mongoose.connect(
 const badgeSeed = [ // Omar: These dummy entries are actually real values from the Wappalyzer API call
   {
     _id: "5d141c9854f7cf9fdff32b39",
-    badge_name: "BadgeReact",
+    badge_name: "React",
     badge_component: "BadgeReact",
     badge_version: "16.3.0",
     badge_icon: "React.png",
@@ -34,15 +34,6 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_version: "1.8.3",
     badge_icon: "jQuery.svg",
     badge_category: "JavaScript Libraries",
-    badge_score: 10,
-  },
-  {
-    _id: "5d141c9854f7cf9fdff32b3c",
-    badge_name: "Google Analytics",
-    badge_component: "GoogleAnalytics",
-    badge_version: "", // Omar: another NULL response, we dont really need this so I guess we can remote this in the Schema and here???
-    badge_icon: "Google Analytics.svg",
-    badge_category: "Analytics",
     badge_score: 10,
   },
   {
