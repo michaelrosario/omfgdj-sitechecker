@@ -2,6 +2,7 @@ const router = require("express").Router();
 const axios = require("axios");
 const cheerio = require("cheerio");
 const Wappalyzer = require('wappalyzer');
+const captureWebsite = require('capture-website');
 const siteController = require("../../controllers/siteController");
 
 // Matches with "/api/books"
@@ -19,15 +20,26 @@ router
 
 router.get("/check/:site", function(req,res){
     let site = req.params.site;
+    let website = "https://"+site;
+    const data = {};
     // remove http amd https and use www  
+    (async () => {
+      await captureWebsite.base64(website,{
+        width: 640,
+        height: 480,
+        type: 'jpeg',
+        quality: .50
+      }).then(image => {
+        var base64data = new Buffer(image).toString('base64');
+        console.log(base64data);
+        data.image = "data:image/png;base64,"+base64data;
+      });
+    })();
     
-    console.log(site);
-    axios.get("https://"+site)
+    axios.get(website)
       .then(response => {
         //console.log(response.data);
         const $  = cheerio.load(response.data);
-
-        const data = {};
 
         // data
         let title = "";

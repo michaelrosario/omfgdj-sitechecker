@@ -12,6 +12,7 @@ export default class SiteCheckCard extends React.Component {
             super(props, context);
              this.state = {
                 site: '',
+                siteImage: "",
                 userScore: [],
                 siteBadgeId: [],
                 siteData: {},
@@ -157,15 +158,14 @@ export default class SiteCheckCard extends React.Component {
       siteBadges
     } = this.state;
 
-   const components = siteBadges.map(badge => {
+   const components = siteData ? siteBadges.map(badge => {
      //console.log(badge.badge_name + " component is being lazy loaded");
      const Component = Badges[badge.badge_component] ? Badges[badge.badge_component] : Badges.AngularJS;
      return <Component key={badge._id} siteData={siteData} updateScore={this.handleAddScore} badge={badge} />;
-   });
+   }) : {};
    
     let badgeIcons = [];
     let calculatedScore = userScore.length ? userScore.reduce((a, b) => a + b, 0) : 0;
-
 
     if(badges.length){
         badgeIcons = badges.map((icon,index) => {
@@ -179,8 +179,7 @@ export default class SiteCheckCard extends React.Component {
           );
         });
     }
-    
-
+  
     let siteTitle = siteData.title || "";
 
     return (
@@ -204,7 +203,12 @@ export default class SiteCheckCard extends React.Component {
                               <span> &nbsp; &nbsp; <i className="fa fa-spinner fa-spin"></i> &nbsp; &nbsp; </span> : 
                               "Check"}
                         </FormBtn>
-                        {siteTitle ? (<h5 className="text-light">SCORE: {calculatedScore}</h5>) : ""}
+                        {siteTitle ? (
+                          <div>
+                            <img className="site-screen" src={siteData.image} alt={siteTitle} />
+                            <h5 className="text-light">Coder Rank Score: {calculatedScore}</h5>
+                          </div>
+                        ) : ""}
                     </form>
                 </Card.Body>
                 <Card.Footer></Card.Footer>
