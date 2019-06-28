@@ -11,4 +11,4 @@ function WordPress(props) {
   );
 }
 
-export default Alert;
+export default WordPress;

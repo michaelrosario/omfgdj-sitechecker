@@ -11,4 +11,4 @@ function Twitter(props) {
   );
 }
 
-export default Alert;
+export default Twitter;

@@ -1,12 +1,12 @@
 import React from "react";
 import 'font-awesome/css/font-awesome.min.css';
 
-const FontAwesome = (props) => {
+const BadgeReact(props) => {
   let siteData = props.siteData;
 
 return (
     <div>
-      Hello FontAwesome! 
+      Hello React! 
       {siteData.title}
       {props.badge.badge_name}<br />
       {props.badge._id}<br />
@@ -17,4 +17,4 @@ return (
   );
 }
 
-export default FontAwesome;
+export default BadgeReact;

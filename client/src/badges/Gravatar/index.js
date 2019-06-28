@@ -11,4 +11,4 @@ function Gravatar(props) {
   );
 }
 
-export default Alert;
+export default Gravatar;

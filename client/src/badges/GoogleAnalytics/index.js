@@ -11,4 +11,4 @@ function GoogleAnalytics(props) {
   );
 }
 
-export default Alert;
+export default GoogleAnalytics;

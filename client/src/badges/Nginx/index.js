@@ -11,4 +11,4 @@ function Nginx(props) {
   );
 }
 
-export default Alert;
+export default Nginx;

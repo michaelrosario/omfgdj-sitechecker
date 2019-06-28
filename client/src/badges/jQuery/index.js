@@ -11,4 +11,4 @@ function jQuery(props) {
   );
 }
 
-export default Alert;
+export default jQuery;

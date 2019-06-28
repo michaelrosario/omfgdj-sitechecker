@@ -11,4 +11,4 @@ function WooCommerce(props) {
   );
 }
 
-export default Alert;
+export default WooCommerce;
