@@ -1,68 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Build Status](https://jtagorda.github.io/passing.svg)](https://)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge)](https://sitechecker-score.herokuapp.com/)
 
-## Available Scripts
 
-In the project directory, you can run:
+# SiteChecker
 
-### `npm start`
+## Description
+Sitechecker is a platform that scrapes and verifies site-specific elements, functionality, issues and many more relevant web metrics.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The ambition behind Sitechecker is to encourage our users to test their websites and receive a score and badges for any metrics that Sitechecker currently checks for.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Our users may add a meta tag to their sites to “claim” a site and it will be added to their profile along with the badges and a tally of scores.  It can be used on their linkedin profile and even serve as a portfolio.
 
-### `npm test`
+## User Stories
+1. Users navigates to Sitechecker and searches for his website.
+2. Users can register with Sitechecker and claim/save a website to their profile for later viewing
+2a. Registered users can also view current badges of websites they have claimed and share them with other Users.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## MVP and Beyond
 
-### `npm run build`
+### MVP - Initial Release
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Allow users to sign up and login to their profile.
+* Allow users to searc and scan a website when the user logins.
+* Allow users to see different badges that show different element and metrics of the scannned website. 
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### MVP - Down The Road
 
-### `npm run eject`
+* Allow users to see a total score of the scannned website based on how many badges there are for the website. 
+* Allow users to scan a website and claim it in their profile under one login.
+* Allow users to edit their user profiles.
+* Allow users to search and scan a website and show the badges for website, as well as badge details.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Built with
+* [Node.js](https://nodejs.org/en/)
+* [Express](https://expressjs.com/)
+* [Mongo](https://docs.mongodb.com/manual/)
+* [React](https://facebook.github.io/react/)
+* [Passport](https://github.com/passport/)
+* [Axios](https://github.com/mzabriskie/axios/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Project Members: 
+### Michael Rosario - <https://github.com/michaelrosarion/>
+### Danny Lee - <https://github.com/dcldev/>
+### Omar Ong - <https://github.com/jetsetPanda/>
+### Franchesca Gonzalez - <https://github.com/Frenshy1031/>
+### Gian Jalaan- <https://github.com/geeyancode/>
+### James Tagorda - <https://github.com/JTagorda/>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Task Breakdowns:
+### Michael Rosario: 
+* Front-end Routing (React-Router)
+* User authentication (Passport)
+* RESTful API routing (Express.js)
+### Danny Lee
+* Front-end Design  (React)
+* React Components (React)
+### Omar Ong
+* React Components (React)
+* Axios helper functions (Axios)
+### Franchesca Gonzalez
+* Initial Front-end Styling (Bootstrap)
+### Gian Jalaan
+*
+### James Tagorda
+*
+## Useful resources: 
 
-## Learn More
+* [Mongodb error index](https://stackoverflow.com/questions/24430220/*e11000-duplicate-key-error-index-in-mongodb-mongoose)
+* [mLab](http://docs.mlab.com/migrating/)
+* [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#emphasis)
+* [Passport](http://passportjs.org/docs/username-password)
+* [Axios GET Request](https://stackoverflow.com/questions/44888996/request-parameters-showing-as-undefined/44889353#44889353)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
