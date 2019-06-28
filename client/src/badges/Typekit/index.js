@@ -1,16 +1,15 @@
 import React from "react";
 import 'font-awesome/css/font-awesome.min.css';
 
-const BadgeReact = (props) => {
+const Typekit = (props) => {
 
   let siteData = props.siteData || {};
   let showStyle = {
     display: "none"
   }
-  //console.log(siteData);
   
   if(Object.keys(siteData).length !== 0 && siteData.constructor === Object && siteData.wappalyzer.length) {
-    if(siteData.wappalyzer.some(item => item.name === "React")){
+    if(siteData.wappalyzer.some(item => item.name === props.badge.badge_name)){
       console.log(props.badge.badge_name + " FOUND");
       // run only once
       props.updateScore(props.badge.badge_score,props.badge._id);
@@ -35,4 +34,4 @@ return (
   );
 }
 
-export default BadgeReact;
+export default Typekit;

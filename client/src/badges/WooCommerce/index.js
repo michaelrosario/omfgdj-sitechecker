@@ -19,7 +19,7 @@ const WooCommerce = (props) => {
       }
     }
   } else {
-    //console.log(props.badge.badge_name + " NOT FOUND");
+    console.log(props.badge.badge_name + " NOT FOUND");
   }
 
 
