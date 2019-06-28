@@ -14,6 +14,7 @@ export default class SiteCheckCard extends React.Component {
              this.state = {
                 site: '',
                 user_score: 0,
+                siteBadgeId: [],
                 siteData: {},
                 badges: [],
                 siteBadges: [],
@@ -43,11 +44,20 @@ export default class SiteCheckCard extends React.Component {
 
   }
 
-  handleAddScore = number => {
-    const score = this.state.user_score;
-    this.setState({
-      user_score: score+number
-    })
+  handleAddScore = (number,id) => {
+    const { 
+      user_score,
+      siteBadgeId } = this.state;
+
+      console.log(siteBadgeId);
+    
+    if((siteBadgeId.length && siteBadgeId.indexOf(id) === -1) || siteBadgeId.length === 0){
+      this.setState({
+        user_score: user_score+number,
+        siteBadgeId: siteBadgeId.push(id)
+      })
+    }
+    
   }
 
   handleInputChange = event => {

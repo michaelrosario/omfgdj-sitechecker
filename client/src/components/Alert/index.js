@@ -17,6 +17,7 @@ function Alert(props) {
     borderRadius: 0,
     borderRadius: '0px',
     float: 'right',
+    top: 56,
     textDecoration: 'none',
     transition: 'all linear .07s',
     background: 'rgba(76, 96, 60, 0.8)'
