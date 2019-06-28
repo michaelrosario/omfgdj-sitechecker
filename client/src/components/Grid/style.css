@@ -1,0 +1,38 @@
+
+.bgdarko {
+    background-color: #1a1a1a6e !important;
+}
+.fiftyfifty {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.jetsetfont1 {
+    font-family: 'Concert One', cursive;
+}
+.codehypefont {
+    font-family: hotel-solid, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.container-fluid {
+    color: #fff;
+}
+.row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.span {
+    color: rgb(191, 37, 214);
+}
+.card {
+    font-family: 'Concert One', cursive;
+    background-color: #1a1a1a6e !important;
+    border: 1px solid grey;
+}
+.card-link {
+    color: rgb(191, 37, 214);
+}
+.text-center {
+    text-align: center;
+}
