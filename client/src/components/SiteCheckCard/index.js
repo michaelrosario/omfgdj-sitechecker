@@ -139,7 +139,7 @@ export default class SiteCheckCard extends React.Component {
         site_name: siteData.title,
         site_url: site,
         site_desc: "test",
-        site_imgsrc: "",
+        site_imgsrc: siteData.image,
         site_badges: pushBadges
       };
       
