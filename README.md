@@ -54,6 +54,7 @@ Our users may add a meta tag to their sites to “claim” a site and it will be
 * Front-end Routing (React-Router)
 * User authentication (Passport)
 * RESTful API routing (Express.js)
+* React Components (React)
 ### Danny Lee
 * Front-end Design  (React)
 * React Components (React)
@@ -62,10 +63,15 @@ Our users may add a meta tag to their sites to “claim” a site and it will be
 * Axios helper functions (Axios)
 ### Franchesca Gonzalez
 * Initial Front-end Styling (Bootstrap)
+* Front-end Design  (React)
 ### Gian Jalaan
-*
+* MongoDB Schemas
+* Seed for DB
+* React Components (React)
 ### James Tagorda
-*
+* MongoDB Schemas
+* Seed for DB
+* Front-end Design  (React)
 ## Useful resources: 
 
 * [Mongodb error index](https://stackoverflow.com/questions/24430220/*e11000-duplicate-key-error-index-in-mongodb-mongoose)
