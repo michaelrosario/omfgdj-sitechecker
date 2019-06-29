@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import UserContext from "./context/UserContext";
 import Home from "./pages/Home";
 import Account from "./pages/Account";
 import Portfolio from "./pages/Portfolio";
@@ -13,30 +14,43 @@ const siteStyle = {
   paddingTop: 60,
 }
 
-function App() {
-  return (
-    <Router>
-       
-      <div style={siteStyle}>
-      <Nav />
-        <Switch>
-           {/*
-            <Route exact path="/" component={Books} />
-            <Route exact path="/books" component={Books} />
-            <Route exact path="/books/:id" component={Detail} />
-          */}
-          <Route exact path="/" component={Home} />
-          <Route exact path="/user/" component={Portfolio} />
-          <Route exact path="/account" component={Account} />
-          <Route component={Aboutus} />
-
-          
-          <Route component={NoMatch} />
+class App extends Component {
   
-        </Switch>
-      </div>
-    </Router>
-  );
+  state = {
+    userModal: ""
+  };
+
+  updateValue = (key, val) => {
+    this.setState({[key]: val});
+  }
+
+  render() {
+
+    return (
+      <Router>
+        <UserContext.Provider value={{state: this.state, updateValue: this.updateValue}}>   
+        <div style={siteStyle}>
+        <Nav />
+          <Switch>
+            {/*
+              <Route exact path="/" component={Books} />
+              <Route exact path="/books" component={Books} />
+              <Route exact path="/books/:id" component={Detail} />
+            */}
+            <Route exact path="/" component={Home} />
+            <Route exact path="/user/" component={Portfolio} />
+            <Route exact path="/account" component={Account} />
+            <Route component={Aboutus} />
+
+            
+            <Route component={NoMatch} />
+    
+          </Switch>
+        </div>
+        </UserContext.Provider>
+      </Router>
+    );
+  }
 }
 
 export default App;
