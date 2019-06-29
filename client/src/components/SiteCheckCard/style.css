@@ -74,5 +74,5 @@ p {
 
 @media(max-width: 767px){
     .thirty,
-    .seventy { width: 100%; }
+    .seventy { width: 100% !important; min-width: 100%; }
 }
