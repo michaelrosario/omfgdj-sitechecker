@@ -1,42 +1,65 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../components/Grid";
 import API from "../utils/API";
+import { Col, Row, Container } from "../components/Grid";
+import Jumbotron from "../components/Jumbotron";
+import { Redirect } from 'react-router-dom'
+
 
 class Portfolio extends Component {
   state = {
-    user_id: '',
-    loggedIn: false
+    siteId: '',
+    userId: '',
+    firstName: '',
+    lastName: ''
   };
- 
 
   componentDidMount() {
     
+    this.checkLoggedIn();
 
-    API.checkLoggedIn().then(res => {
-      console.log("response on componentDidMount",res)
-      if(res.data.message === "success") {
-          this.setState({ 
-            loggedIn: true,
-            user_id: res.data.user
-        });
-      }
-    });
   }
 
+  componentWillUnmount() {
  
+  }
+ 
+  checkLoggedIn = () => {
+    API.checkLoggedIn().then(response => {
+      console.log("response on checkLoggedIn",response);
+      if(response.data.user){
+        this.setState({ 
+          userId: response.data.user._id,
+          loggedIn: true 
+        });
+      } 
+    });
+  }
 
 
   render() {
 
-   
     return (
-      <Container fluid>
+
+    
+        <div>
+         
+                        <Jumbotron>
+                            <h1 class="text-white">Sites by {this.state.firstName} {this.state.lastName}</h1>
+                        </Jumbotron>
+                   
+      <Container>
         <Row>
-          <Col size="md-4">
-            <h1>Your Sites</h1>
+           <Col size="md-12">
+              
+           </Col>
+        </Row>
+        <Row>
+          <Col size="md-12">
+          
           </Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }
