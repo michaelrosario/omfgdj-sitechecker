@@ -42,34 +42,9 @@ class Team extends Component {
                 </div>
 
                 <div className="row">
-                    <OwlCarousel
-                        className="owl-theme team-slides"
-                        dots= {false}
-                        autoplay= {true}
-                        loop= {true}
-                        margin={30}
-                        nav={true}
-                        smartSpeed= {1000}
-                        autoplayHoverPause= {true}
-                        navText= {[
-                            "<i class='icofont-arrow-left'></i>", 
-                            "<i class='icofont-arrow-right'></i>"
-                        ]}
-                        responsive={{
-                            0: { items: 1 },
-                            768: {
-                                items: 2
-                            },
-                            1024: {
-                                items: 3
-                            },
-                            1200: {
-                                items: 3
-                            }
-                        }}
-                    >
+                    
                         {teamdata}
-                    </OwlCarousel>
+                    
                 </div>
             </div>
         </section>   
@@ -118,13 +93,13 @@ Team.defaultProps = {
         {
             Image: require("../../assets/img/Franchesca.jpg"),
             Name: "Franchesca Gonzalez",
-            Profession: "Sexy Hot CEO",
+            Profession: "",
             facebookLink: "/#0",
             linkedinLink: "https://www.linkedin.com/in/franchesca-gonzalez-263ba037/",
             twitterLink: "/#0",
         },
         {
-            Image: require("../../assets/img/Danny.jpg"),
+            Image: require("../../assets/img/Danny.png"),
             Name: "Danny Lee",
             Profession: "",
             facebookLink: "/#0",

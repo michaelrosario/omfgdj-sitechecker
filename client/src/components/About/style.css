@@ -1,5 +1,5 @@
 .bgdarko, .about-us {
-    background-color: #1a1a1a6e !important;
+    background:none;
 }
 .fiftyfifty {
     margin-top: 2rem;
@@ -44,6 +44,8 @@
     color: #f5f8f9;
 }
 
+h2 { opacity: 0; }
+
 h2, a:focus {
     color: #fff;
 }
@@ -66,14 +68,20 @@ p {
 }
 
 .team-box{
+    border: 7px solid #000;
+    width: 16.6666666667% !important;
     overflow: hidden;
     position: relative;
     margin-top: 30px;
+    padding: 7px;
 }
+@media(max-width: 787px){
+    .team-box{  width: 33.33% !important; }  
+}
+
 .team-box:before{
     content: "";
     display: block;
-    border: 30px solid rgba(255, 255, 255, 0.3);
     position: absolute;
     top: 5px;
     left: 5px;
@@ -84,11 +92,10 @@ p {
     transition: all 1s ease 0s;
     -webkit-transition: all 1s ease 0s;
 }
-.team-box:hover:before{ border: 1px solid rgba(255, 255, 255, 0.18); }
+.team-box:hover:before{  }
 .team-box:after{
     content: "";
     display: block;
-    border: 10px solid rgba(255, 255, 255, 0.7);
     position: absolute;
     top: 35px;
     left: 35px;
