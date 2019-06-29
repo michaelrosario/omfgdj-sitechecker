@@ -198,6 +198,26 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_icon: "Typekit.png",
     badge_category: "Font Scripts",
     badge_score: 10
+  },
+  {
+    _id: "5d141c9854f7cf9fdf100003",
+    badge_name: "Handlebars",
+    badge_component: "Handlebars",
+    badge_description: "Hold on tight, come along for a rendering ride!",
+    badge_version: "1.0",
+    badge_icon: "Handlebars.png",
+    badge_category: "Javascript Framework",
+    badge_score: 10
+  },
+  {
+    _id: "5d141c9854f7cf9fdf100004",
+    badge_name: "Responsive",
+    badge_component: "Responsive",
+    badge_description: "Be like water, fill any container!",
+    badge_version: "1.0",
+    badge_icon: "responsive.svg",
+    badge_category: "DOM",
+    badge_score: 10
   }
 ];
 

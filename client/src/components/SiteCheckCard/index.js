@@ -82,6 +82,7 @@ export default class SiteCheckCard extends React.Component {
     console.log("SEARCH "+site+" VIA APIs");
 
     this.setState({
+      userScore: [],
       processing: true
     });
 
