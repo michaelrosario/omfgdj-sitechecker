@@ -247,7 +247,10 @@ export default class SiteCheckCard extends React.Component {
                         {siteTitle ? (
                           <div>
                             <img className="site-screen" src={siteData.image} alt={siteTitle} />
-                            <h5 className="text-light">Coder Rank Score: {calculatedScore}</h5>
+                            <button type="button" class="btn btn-dark">
+                            Coder Rank Score: <span class="badge badge-light">{calculatedScore}</span>
+                            </button>
+                            {/* <h5 className="text-light">Coder Rank Score: {calculatedScore}</h5> */}
                           </div>
                         ) : ""}
                     </form>
