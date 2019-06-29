@@ -55,7 +55,7 @@ About.defaultProps = {
     SectionbgTitle: "About",
     sectionTitle: "About Us",
     sectionDescription:
-        "CodeHype is a platform that scrapes and verifies site-specific elements, functionality, issues and many more relevant web metrics. The ambition behind CodeHype is to encourage our users to test their websites and receive a score and badges for any metrics that CodeHype currently checks for. Our users may add a meta tag to their sites to “claim” a site and it will be added to their profile along with the badges and a tally of scores.  It can be used on their linkedin profile and even serve as a portfolio.",
+        "CoderHype is a platform that scrapes and verifies site-specific elements, functionality, issues and many more relevant web metrics. The ambition behind CoderHype is to encourage our users to test their websites and receive a score and badges for any metrics that CoderHype currently checks for. Our users may add a meta tag to their sites to “claim” a site and it will be added to their profile along with the badges and a tally of scores.  It can be used on their linkedin profile and even serve as a portfolio.",
         aboutsData: [
 /*
         {

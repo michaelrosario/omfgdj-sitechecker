@@ -300,7 +300,7 @@ export default class SiteCheckCard extends React.Component {
                 </CardColumns>
                    
                         </div>
-                    : <h4 className="jetsetfont1">Enter your URL and CodeHype will perform an algorithmic scan and reward you with DevChops badges and a CodeHype Score. The more advanced tools you use, the higher your badge count and score will be!</h4>}
+                    : <h4 className="jetsetfont1">Enter your URL and CoderHype will perform an algorithmic scan and reward you with DevChops badges and a CoderHype Score. The more advanced tools you use, the higher your badge count and score will be!</h4>}
               
                 </Card.Body>
                 <Card.Footer></Card.Footer>
