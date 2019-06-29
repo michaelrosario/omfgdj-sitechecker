@@ -21,6 +21,10 @@ const MetaTags = lazy(() => import(`./MetaTags`));
 const Typekit = lazy(() => import(`./Typekit`));
 const Handlebars = lazy(() => import(`./Handlebars`));
 const Responsive = lazy(() => import(`./Responsive`));
+const Chartbeat = lazy(() => import(`./Chartbeat`));
+const NewRelic = lazy(() => import(`./NewRelic`));
+const Titan = lazy(() => import(`./Titan`));
+const OWLCarousel = lazy(() => import(`./OWLCarousel`));
 
 export { 
     AngularJS,
@@ -43,5 +47,9 @@ export {
     MetaTags,
     Typekit,
     Handlebars,
-    Responsive
+    Responsive,
+    Chartbeat,
+    NewRelic,
+    Titan,
+    OWLCarousel
 };
