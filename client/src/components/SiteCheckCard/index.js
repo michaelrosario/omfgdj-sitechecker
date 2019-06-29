@@ -1,9 +1,11 @@
 import React,{ lazy, Suspense, Component } from "react";
+import { Link } from "react-router-dom";
 import * as Badges from "../../badges/";
 import API from "../../utils/API";
 import socket from 'socket.io-client';
 import { Input, FormBtn } from "../Form";
-import { Badge,Card, CardGroup, CardColumns } from "react-bootstrap";
+import { Badge, Card, CardGroup, CardColumns } from "react-bootstrap";
+import UserContext from "../../context/UserContext";
 import 'font-awesome/css/font-awesome.min.css';
 import "./style.css";
 
@@ -194,7 +196,7 @@ export default class SiteCheckCard extends React.Component {
       siteData, 
       badges,
       userScore,
-      siteBadgeId,
+      loggedIn,
       siteBadges
     } = this.state;
 
@@ -252,6 +254,23 @@ export default class SiteCheckCard extends React.Component {
                             CoderHype Score <Badge variant="secondary">{calculatedScore}</Badge>
                             </h3>
                             {/* <h5 className="text-light">Coder Rank Score: {calculatedScore}</h5> */}
+                            <UserContext.Consumer>
+                              {(context) => {
+                                return <div>
+                                {loggedIn ? (
+                                  <Link to={`/claim/${site}`}>
+                                    <button type="button" class="btn btn-claim">
+                                      Claim this Site
+                                    </button>
+                                  </Link>
+                                ) : (
+                                  <button onClick={() => context.updateValue('userModal','signup')} type="button" class="btn btn-claim btn-gray">
+                                    Claim this Site
+                                  </button>
+                                )}
+                                </div>
+                              }}
+                            </UserContext.Consumer>
                           </div>
                         ) : ""}
                     </form>
