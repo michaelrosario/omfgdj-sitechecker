@@ -66,8 +66,7 @@ Our users may add a meta tag to their sites to “claim” a site and it will be
 * Axios helper functions (Axios)
 * Implimented Wappalyzer API
 ### Franchesca Gonzalez
-* Initial Front-end Styling (Bootstrap)
-* Front-end Design  (React)
+* Sign-in & Login Modal Component Implimentation (React)
 * Presentation
 ### Gian Jalaan
 * MongoDB Schemas
