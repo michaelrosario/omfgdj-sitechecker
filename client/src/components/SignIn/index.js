@@ -1,5 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
+import UserContext from "../../context/UserContext";
 import {Button, Modal} from 'react-bootstrap';
 import { Input, FormBtn } from "../Form";
 import 'font-awesome/css/font-awesome.min.css';
@@ -89,11 +90,13 @@ handleInputChange = event => {
 handleShowSignIn = event => {
   event.preventDefault();
   this.setState({ show: "signin"});
+  this.context.updateValue('userModal', "signin");
 }
 
 handleShowSignup = event => {
   event.preventDefault();
   this.setState({ show: "signup" });
+  this.context.updateValue('userModal', "signup");
 }
 
 handleLogin = event => {
@@ -184,7 +187,10 @@ const {
   );
 
 return (
-<div>
+  <UserContext.Consumer>
+  {(context) => {
+    console.log('context',context);
+    return <div>
 
 {this.state.loggedIn ? ( <Button variant= "primary" onClick={this.handleLogout}>
 Logout
@@ -192,22 +198,23 @@ Logout
    ) : (
     <div>
       
-      <Button variant="dark" onClick={this.handleShowSignIn} className='button-spc'>
+      <Button variant="dark" onClick={() => context.updateValue('userModal','signin')} className='button-spc'>
         Login 
       </Button>
     
-      <Button variant= "dark" onClick={this.handleShowSignup} className='button-spc'>
+      <Button variant= "dark" onClick={() => context.updateValue('userModal','signup')} className='button-spc'>
         Sign Up
       </Button>
+      
 
     </div>
   
 )}
 
-  <Modal show={this.state.show !== "" } onHide={this.handleClose}>
+    <Modal show={context.state.userModal !== "" } onHide={() => context.updateValue('userModal','')}>
     
     <Modal.Header closeButton>
-    {this.state.show === "signin" ? 
+    {context.state.userModal === "signin" ? 
       <Modal.Title><i className="fa fa-user"></i> &nbsp; Sign In</Modal.Title> :
       <Modal.Title><i className="fa fa-sign-in"></i> &nbsp; Sign Up</Modal.Title>
     }
@@ -217,7 +224,7 @@ Logout
 
       {this.state.message}
 
-      {this.state.show === "signin" ? (
+      {context.state.userModal === "signin" ? (
         <form onSubmit={this.formSubmit}>
           
           <Input
@@ -242,6 +249,7 @@ Logout
           >
             Login
           </FormBtn>
+          <p>Need an account? <button className="text-button" onClick={() => context.updateValue('userModal','signup')}>Sign-up</button></p>
         </form>) : (
 
   <form onSubmit={this.formSubmit}>
@@ -288,6 +296,7 @@ Logout
   >
   Signup
     </FormBtn>
+    <p>Have an account? <button className="text-button" onClick={() => context.updateValue('userModal','signin')}>Login</button></p>
         </form>
   )}
               
@@ -295,9 +304,12 @@ Logout
 
   </Modal.Body>
 
-</Modal>
+  </Modal>
 
 </div>
+  }}
+  </UserContext.Consumer>
+  
 
 );
 }
