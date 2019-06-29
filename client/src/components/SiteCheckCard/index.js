@@ -229,7 +229,7 @@ export default class SiteCheckCard extends React.Component {
                     <form>
                         <Input
                             value={site}
-                            className="bgdarkish"
+                            className="bgdarkish text-light"
                             onChange={this.handleInputChange}
                             name="site"
                             placeholder="  Enter your URL"
