@@ -12,6 +12,8 @@ export default class SiteCheckCard extends React.Component {
             super(props, context);
              this.state = {
                 site: '',
+                siteId: '',
+                siteImage: "",
                 userScore: [],
                 siteBadgeId: [],
                 siteData: {},
@@ -83,43 +85,59 @@ export default class SiteCheckCard extends React.Component {
       processing: true
     });
 
-    API.checkSite(site).then(res => {
-      
-      console.log("API.checkSite res is >>>>>",res);
-      
-      let resObj = res.data.wappalyzer; // omar
-      console.log("Wappa Obj is >>",resObj);
-      
-      const iconURL = "https://www.wappalyzer.com/images/icons/";
+   API.getSiteByUrl(site).then(siteRes => {
+      console.log("siteRes",siteRes);
 
-      const badgeArr = resObj ? resObj.map(thing => {
-          return {
-              badge_name : thing.name,
-              badge_icon : iconURL+thing.icon,
-              badge_score : 1
-          }
-      }) : [];
+      if(siteRes.data === "new"){
 
-      // empty score and array
-      this.setState({
-        userScore: [],
-        siteBadgeId: [],
-        processing: false
-      });
-
-      console.log ("object badgeArr to db is",badgeArr);
-
-      const io = socket(this.state.endpoint, { secure: true });
-      // Send site to all users
-        io.emit('fromReact', { data: site });
+      } else {
         this.setState({
-          siteData: res.data,
-          badges: badgeArr
+          siteId: siteRes.data._id
+        })
+      }
+  
+      API.checkSite(site).then(res => {
+      
+        console.log("API.checkSite res is >>>>>",res);
+        
+        let resObj = res.data.wappalyzer; // omar
+        console.log("Wappa Obj is >>",resObj);
+        
+        const iconURL = "https://www.wappalyzer.com/images/icons/";
+  
+        const badgeArr = resObj ? resObj.map(thing => {
+            return {
+                badge_name : thing.name,
+                badge_icon : iconURL+thing.icon,
+                badge_score : 1
+            }
+        }) : [];
+  
+        // empty score and array
+        this.setState({
+          userScore: [],
+          siteBadgeId: [],
+          processing: false
         });
+  
+        console.log ("object badgeArr to db is",badgeArr);
+  
+        const io = socket(this.state.endpoint, { secure: true });
+        // Send site to all users
+          io.emit('fromReact', { data: site });
+          this.setState({
+            siteData: res.data,
+            badges: badgeArr
+          });
+          
+        
+          this.saveSiteToDB();
 
-        this.saveSiteToDB(badgeArr);
+          
+      });
+    
 
-    });
+   });
   }
 
   checkLoggedIn = () => {
@@ -131,19 +149,41 @@ export default class SiteCheckCard extends React.Component {
     });
   }
 
-  saveSiteToDB = (badgeArr) => {
-      const { siteData, site } = this.state;
-      const pushBadges = badgeArr;
+  saveSiteToDB = () => {
+      const { siteData, site, siteBadgeId, siteId } = this.state;
+      const pushBadges = [];
+      siteBadgeId.map(id => { 
+        pushBadges.push({_id: id }); //format data
+      });
+
+      let metaDescription = "No Description";
+      if(siteData.meta) {
+
+        siteData.meta.map(item => {
+          if(item.name === "description") {
+            metaDescription = item.content;
+          }
+        })
+
+      }
+      
+      console.log("pushBadges",pushBadges);
       const info = {
         site_name: siteData.title,
         site_url: site,
-        site_desc: "test",
-        site_imgsrc: "",
+        site_desc: metaDescription,
+        site_imgsrc: siteData.image,
         site_badges: pushBadges
       };
-      
-      console.log("OMAR: site obj to be entered to siteDB is: ", info);
-      API.saveSite(info);
+      console.log("siteId",siteId);
+      if(siteId){
+        console.log("UPDATING SITE", info);
+        API.updateSite(info,siteId);
+      } else {
+        console.log("SAVING SITE", info);
+        API.saveSite(info);
+      }
+     
   }
 
   render() {
@@ -157,15 +197,14 @@ export default class SiteCheckCard extends React.Component {
       siteBadges
     } = this.state;
 
-   const components = siteBadges.map(badge => {
+   const components = siteData ? siteBadges.map(badge => {
      //console.log(badge.badge_name + " component is being lazy loaded");
      const Component = Badges[badge.badge_component] ? Badges[badge.badge_component] : Badges.AngularJS;
      return <Component key={badge._id} siteData={siteData} updateScore={this.handleAddScore} badge={badge} />;
-   });
+   }) : {};
    
     let badgeIcons = [];
     let calculatedScore = userScore.length ? userScore.reduce((a, b) => a + b, 0) : 0;
-
 
     if(badges.length){
         badgeIcons = badges.map((icon,index) => {
@@ -179,8 +218,7 @@ export default class SiteCheckCard extends React.Component {
           );
         });
     }
-    
-
+  
     let siteTitle = siteData.title || "";
 
     return (
@@ -191,12 +229,14 @@ export default class SiteCheckCard extends React.Component {
                     <form>
                         <Input
                             value={site}
-                            className="bgdarkish"
+                            className="bgdarkish text-light heightz inputz"
                             onChange={this.handleInputChange}
                             name="site"
                             placeholder="  Enter your URL"
+                            height="600"
                         />
                         <FormBtn
+                            className="inputz"
                             disabled={!(site && !this.state.processing)}
                             onClick={this.handleFormSubmit}
                         >
@@ -204,7 +244,12 @@ export default class SiteCheckCard extends React.Component {
                               <span> &nbsp; &nbsp; <i className="fa fa-spinner fa-spin"></i> &nbsp; &nbsp; </span> : 
                               "Check"}
                         </FormBtn>
-                        {siteTitle ? (<h5 className="text-light">SCORE: {calculatedScore}</h5>) : ""}
+                        {siteTitle ? (
+                          <div>
+                            <img className="site-screen" src={siteData.image} alt={siteTitle} />
+                            <h5 className="text-light">Coder Rank Score: {calculatedScore}</h5>
+                          </div>
+                        ) : ""}
                     </form>
                 </Card.Body>
                 <Card.Footer></Card.Footer>
@@ -218,15 +263,7 @@ export default class SiteCheckCard extends React.Component {
                 <CardColumns>
                   {badgeIcons}
                 </CardColumns>
-                        {/* <p>H1: {siteData.header1.length}</p>
-                        <p>H2: {siteData.header2.length}</p>
-                        <p>H3: {siteData.header3.length}</p>
-                        <p>H4: {siteData.header4.length}</p>
-                        <p>H5: {siteData.header5.length}</p>
-                        <p>Images: {siteData.images.length}</p>
-                        <p>Links: {siteData.links.length}</p>
-                        <p>Meta: {siteData.meta.length}</p>
-                        <p>Scripts: {siteData.script.length}</p> */}
+                   
                         </div>
                     : <h4 className="jetsetfont1">Enter your URL and CodeHype will perform an algorithmic scan and reward you with DevChops badges and a CodeHype Score. The more advanced tools you use, the higher your badge count and score will be!</h4>}
               

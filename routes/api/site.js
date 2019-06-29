@@ -2,14 +2,21 @@ const router = require("express").Router();
 const axios = require("axios");
 const cheerio = require("cheerio");
 const Wappalyzer = require('wappalyzer');
+const captureWebsite = require('capture-website');
+const imagemin = require('imagemin');
+const imageminJpegtran = require('imagemin-jpegtran');
+const imageminMozjpeg = require('imagemin-mozjpeg');
 const siteController = require("../../controllers/siteController");
 
-// Matches with "/api/books"
+
 router
   .route("/")
   .get(siteController.findAll)
   .post(siteController.create);
 
+router
+  .route("/url")
+  .get(siteController.findByUrl);
 
 router
   .route("/:id")
@@ -19,15 +26,42 @@ router
 
 router.get("/check/:site", function(req,res){
     let site = req.params.site;
-    // remove http amd https and use www  
+    let website = "https://"+site;
+    const data = {};
     
-    console.log(site);
-    axios.get("https://"+site)
+    (async () => {
+      await captureWebsite.base64(website,{
+        width: 640,
+        height: 480,
+        type: 'jpeg',
+        quality: .50,
+        launchOptions: {
+          'args' : [
+            '--no-sandbox',
+            '--disable-setuid-sandbox'
+          ]
+        }
+      }).then(image => {
+        
+        imagemin.buffer(image, {
+          plugins: [
+            imageminJpegtran(),
+            imageminMozjpeg({quality: 50})
+          ]
+        }).then(file => {
+
+          var base64data = new Buffer(file).toString('base64');
+          console.log(base64data);
+          data.image = "data:image/png;base64,"+base64data;
+
+        });
+      });
+    })();
+    
+    axios.get(website)
       .then(response => {
         //console.log(response.data);
         const $  = cheerio.load(response.data);
-
-        const data = {};
 
         // data
         let title = "";

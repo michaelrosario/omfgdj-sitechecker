@@ -39,9 +39,9 @@ class Home extends Component {
         <Row>
           <Col size="md-1" />
           <Col size="md-10">
-            <h1 className="text-secondary mb-4 ml-1" style={{ fontFamily: "'hotel-open', sans-serif", fontWeight: "400",fontStyle: "normal" }}>
+            <h3 className="text-secondary mb-4 ml-1" style={{ fontFamily: "'hotel-open', sans-serif", fontWeight: "400",fontStyle: "normal" }}>
             CodeHype Community Showcase
-            </h1>
+            </h3>
             <SiteShowcase 
               sitez={this.state.siteDB}
             />
