@@ -298,22 +298,22 @@ db.User
     {
       site_name: "MLB",
       site_url: "www.mlb.com",
-      site_desc: "Major League Baseball (MLB) is a professional baseball organization. A total of 30 teams play in the National League (NL) and American League (AL), with 15 teams in each league.",
-      site_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/v1561738721/site%20snapshots/mlbSite_fqsucs.jpg",
+      site_desc: "Major League Baseball (MLB) is a professional baseball organization in the United States. There is a total of 30 teams that play in both the National League (NL) and American League (AL), with 15 teams in each league.",
+      site_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/c_scale,h_598,w_1096/v1561738721/site%20snapshots/mlbSite_fqsucs.jpg",
       site_badges: [{_id:"5d141c9854f7cf9fdff32b3a"}, {_id:"5d141c9854f7cf9fdff32b3d"}, {_id:"5d141c9854f7cf9fdff32b3b"}] // how to pop cv gn ulate with assigned badges
     },
     {
       site_name: "Homedepot",
       site_url: "www.homedepot.com",
-      site_desc: "Home Depot is an American home improvement supplies retailing company that sells tools, construction products, and services. The company is headquartered in Atlanta, Georgia",
-      site_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/v1561738721/site%20snapshots/homedepotSite_pm0ei6.jpg",
+      site_desc: "Home Depot is an American home improvement supplies retailing and warehouse company that sells tools, construction products, and services. The company is headquartered in the suburbs of Atlanta, Georgia in the United States.",
+      site_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/v1561738721/c_scale,h_598,w_1096/site%20snapshots/homedepotSite_pm0ei6.jpg",
       site_badges: [{_id:"5d141c9854f7cf9fdff32b3e"}, {_id:"5d141c9854f7cf9fdff32b3a"}, {_id:"5d141c9854f7cf9fdff32b3b"}] // how to populate with assigned badges
     },
     {
       site_name: "Columbia University",
       site_url: "www.columbia.edu",
       site_desc: "Columbia University is a private Ivy League research university in New York City. Established in 1754, Columbia is the oldest institution of higher education in New York and the fifth-oldest institution of higher learning in the United States",
-      site_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/v1561738721/site%20snapshots/columbiaSite_wrawyp.jpg",
+      site_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/c_scale,h_598,w_1096/v1561738721/site%20snapshots/columbiaSite_wrawyp.jpg",
       site_badges: [{_id:"5d141c9854f7cf9fdff32b3f"}, {_id:"5d141c9854f7cf9fdff32b3c"}, {_id:"5d141c9854f7cf9fdff32b40"}] // how to populate with assigned badges
     }
   ];
@@ -330,4 +330,3 @@ db.Sites
   console.error(err);
   process.exit(1);
 });
-

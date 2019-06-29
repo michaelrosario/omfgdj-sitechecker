@@ -5,8 +5,8 @@ import { Card } from 'react-bootstrap';
 export default class SiteCard extends Component {
     render() {
         return (
-            <Card className="bgdarko fiftyfifty">
-                <Card.Body className="text-light ">
+            <Card className="bgdarko fiftyfifty" >
+                <Card.Body className="text-light " style={{minHeight: "18rem;"}}>
                     <Card.Title className="codehypefont">
                         <h3 className="codehypefont">
                             {this.props.site.site_name}

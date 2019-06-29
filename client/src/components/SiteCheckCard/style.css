@@ -52,3 +52,15 @@ p {
     border-radius: 3px;
     margin: 0 0 15px 0;
 }
+
+.heightz {
+    height: 40px;
+}
+
+.inputz {
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+}

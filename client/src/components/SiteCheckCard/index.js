@@ -229,12 +229,14 @@ export default class SiteCheckCard extends React.Component {
                     <form>
                         <Input
                             value={site}
-                            className="bgdarkish"
+                            className="bgdarkish text-light heightz inputz"
                             onChange={this.handleInputChange}
                             name="site"
                             placeholder="  Enter your URL"
+                            height="600"
                         />
                         <FormBtn
+                            className="inputz"
                             disabled={!(site && !this.state.processing)}
                             onClick={this.handleFormSubmit}
                         >
