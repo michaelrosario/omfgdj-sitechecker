@@ -3,7 +3,7 @@ import * as Badges from "../../badges/";
 import API from "../../utils/API";
 import socket from 'socket.io-client';
 import { Input, FormBtn } from "../Form";
-import { Card, CardGroup, CardColumns } from "react-bootstrap";
+import { Badge,Card, CardGroup, CardColumns } from "react-bootstrap";
 import 'font-awesome/css/font-awesome.min.css';
 import "./style.css";
 
@@ -248,9 +248,9 @@ export default class SiteCheckCard extends React.Component {
                         {siteTitle ? (
                           <div>
                             <img className="site-screen" src={siteData.image} alt={siteTitle} />
-                            <button type="button" class="btn btn-dark">
-                            Coder Rank Score: <span class="badge badge-light">{calculatedScore}</span>
-                            </button>
+                            <h3>
+                            CoderHype Score <Badge variant="secondary">{calculatedScore}</Badge>
+                            </h3>
                             {/* <h5 className="text-light">Coder Rank Score: {calculatedScore}</h5> */}
                           </div>
                         ) : ""}

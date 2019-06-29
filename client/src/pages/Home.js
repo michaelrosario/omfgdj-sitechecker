@@ -40,7 +40,7 @@ class Home extends Component {
           <Col size="md-1" />
           <Col size="md-10">
             <h3 className="text-secondary mb-4 ml-1" style={{ fontFamily: "'hotel-open', sans-serif", fontWeight: "400",fontStyle: "normal" }}>
-            CodeHype Community Showcase
+            CoderHype Community Showcase
             </h3>
             <SiteShowcase 
               sitez={this.state.siteDB}
