@@ -189,6 +189,18 @@ export default class SiteCheckCard extends React.Component {
      
   }
 
+  componentDidUpdate(){
+    const {  
+      siteData, 
+      loggedIn,
+    } = this.state;
+
+    if(!loggedIn && siteData){
+      this.checkLoggedIn();
+    } 
+
+  }
+
   render() {
 
     const { 
