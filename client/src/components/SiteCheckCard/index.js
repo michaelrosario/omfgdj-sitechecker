@@ -252,6 +252,9 @@ export default class SiteCheckCard extends React.Component {
                             Coder Rank Score: <span class="badge badge-light">{calculatedScore}</span>
                             </button>
                             {/* <h5 className="text-light">Coder Rank Score: {calculatedScore}</h5> */}
+                            <button type="button" class="btn">
+                                Claim this Site
+                            </button>
                           </div>
                         ) : ""}
                     </form>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import SignInModal from "../SignIn"
+import SignInModal from "../SignIn";
+import UserContext from "../../context/UserContext";
 import { Navbar } from 'react-bootstrap';
 import { NavLink } from "react-router-dom";
 import Alert from "../Alert";
@@ -79,8 +80,13 @@ class Nav extends Component {
           </li>
           
         </ul>
-      
-        <div className={this.state.isLoggedIn ? "modal-links logged-in" : "modal-links logged-out"}><SignInModal setUserSession={this.handleLoggedIn} /></div>
+        <UserContext.Consumer>
+            {(context) => {
+              return <div className={this.state.isLoggedIn ? "modal-links logged-in" : "modal-links logged-out"}>
+                <SignInModal context={context} setUserSession={this.handleLoggedIn} />
+              </div>
+            }}
+        </UserContext.Consumer>
       </Navbar>
     
       <Alert message={this.state.alert} />

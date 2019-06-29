@@ -96,7 +96,7 @@ handleShowSignIn = event => {
 handleShowSignup = event => {
   event.preventDefault();
   this.setState({ show: "signup" });
-  this.context.updateValue('userModal', "signup");
+  this.props.context.updateValue('userModal', "signup");
 }
 
 handleLogin = event => {
@@ -125,7 +125,7 @@ handleLogin = event => {
         message: ""
       });
       this.props.setUserSession(this.state.loggedIn);
-      this.handleClose();
+      this.props.context.updateValue('userModal','');
 
     } else {
 
@@ -160,7 +160,7 @@ handleSignUp = event => {
     console.log("res",res);
     this.setState({ loggedIn: true });
     this.props.setUserSession(this.state.loggedIn);
-    this.handleClose();
+    this.context.updateValue('userModal','');
   });
 
 }
