@@ -28,13 +28,19 @@ router.get("/check/:site", function(req,res){
     let site = req.params.site;
     let website = "https://"+site;
     const data = {};
-    // remove http amd https and use www  
+    
     (async () => {
       await captureWebsite.base64(website,{
         width: 640,
         height: 480,
         type: 'jpeg',
-        quality: .50
+        quality: .50,
+        launchOptions: {
+          'args' : [
+            '--no-sandbox',
+            '--disable-setuid-sandbox'
+          ]
+        }
       }).then(image => {
         
         imagemin.buffer(image, {
