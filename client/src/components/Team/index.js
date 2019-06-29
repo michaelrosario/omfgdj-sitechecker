@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import Icofont from 'react-icofont';
+import 'font-awesome/css/font-awesome.min.css';
 import { Link } from 'react-router-dom';
-import OwlCarousel from "react-owl-carousel3";
 import ScrollAnimation from 'react-animate-on-scroll';
 
 class Team extends Component {
+
+  goToLink(link) {
+    window.open(link);
+  }
+
   render() {
     //Team loop start
     const teamdata = this.props.teamsData.map((team, index) => (
@@ -16,9 +20,8 @@ class Team extends Component {
                     <h3 className="title">{team.Name}</h3>
                     <span className="post">{team.Profession}</span>
                     <ul className="icon">
-                        <li><Link to={team.facebookLink}><Icofont icon="icofont-facebook" /></Link></li>
-                        <li><Link to={team.linkedinLink}><Icofont icon="icofont-linkedin" /></Link></li>
-                        <li><Link to={team.twitterLink}><Icofont icon="icofont-twitter" /></Link></li>
+                        <li><button onClick={() => this.goToLink(team.GithubLink)}><i className="fa fa-github" /></button></li>
+                        <li><button onClick={() => this.goToLink(team.linkedinLink)}><i className="fa fa-linkedin" /></button></li>
                     </ul>
                 </div>
             </div>
@@ -67,50 +70,50 @@ Team.defaultProps = {
     sectionDescription: "",
         teamsData: [
         {
-            Image: require("../../assets/img/Michael.jpg"),
+            Image: "/assets/images/team/Michael.jpg",
             Name: "Michael Rosario",
             Profession: "",
-            facebookLink: "/#0",
+            GithubLink: "https://github.com/michaelrosario/",
             linkedinLink: "https://www.linkedin.com/in/michaelrosario/",
             twitterLink: "/#0",
         },
         {
-            Image: require("../../assets/img/Gian.jpg"),
+            Image: "/assets/images/team/Gian.jpg",
             Name: "Gian Jalaan",
             Profession: "",
-            facebookLink: "/#0",
+            GithubLink: "https://github.com/geeyancode",
             linkedinLink: "https://www.linkedin.com/in/gian-jalaan-1b352b7/",
             twitterLink: "/#0",
         },
         {
-            Image: require("../../assets/img/Omar.jpg"),
+            Image: "/assets/images/team/Omar.jpg",
             Name: "Marion Ong",
             Profession: "",
-            facebookLink: "/#0",
+            GithubLink: "https://github.com/jetsetPanda",
             linkedinLink: "https://www.linkedin.com/in/marion-omar-ong-6461663/",
             twitterLink: "/#0",
         },
         {
-            Image: require("../../assets/img/Franchesca.jpg"),
+            Image: "/assets/images/team/Franchesca.jpg",
             Name: "Franchesca Gonzalez",
             Profession: "",
-            facebookLink: "/#0",
+            GithubLink: "https://github.com/frenshy1031",
             linkedinLink: "https://www.linkedin.com/in/franchesca-gonzalez-263ba037/",
             twitterLink: "/#0",
         },
         {
-            Image: require("../../assets/img/Danny.png"),
+            Image: "/assets/images/team/Danny.png",
             Name: "Danny Lee",
             Profession: "",
-            facebookLink: "/#0",
+            GithubLink: "https://github.com/dcldev",
             linkedinLink: "https://www.linkedin.com/in/danny-lee-2952099b/",
             twitterLink: "/#0",
         },
         {
-            Image: require("../../assets/img/James.jpg"),
+            Image: "/assets/images/team/James.jpg",
             Name: "James Tagorda",
             Profession: "",
-            facebookLink: "/#0",
+            GithubLink: "https://github.com/JTagorda",
             linkedinLink: "https://www.linkedin.com/in/jamestagorda/",
             twitterLink: "/#0",
         }

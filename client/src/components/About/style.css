@@ -173,6 +173,7 @@ p {
     padding: 0;
     margin: 0;
     list-style: none;
+    
 }
 .team-box .icon li{ display: inline-block; }
 .team-box .icon li a{
@@ -181,14 +182,15 @@ p {
     height: 40px;
     line-height: 40px;
     background: #fff;
+    color: purple !important;
     margin-right: 10px;
     font-size: 18px;
     transition: all 0.3s ease 0s;
     -webkit-transition: all 0.3s ease 0s;
 }
 .team-box .icon li a:hover{
-    color: #fff !important;
     border-radius: 50%;
+    color: white !important;
 }
 .team-slides .owl-nav {
     position: relative;
