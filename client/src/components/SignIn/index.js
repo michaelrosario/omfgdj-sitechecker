@@ -189,7 +189,7 @@ const {
 return (
   <UserContext.Consumer>
   {(context) => {
-    console.log('context',context);
+    
     return <div>
 
 {this.state.loggedIn ? ( <Button variant= "primary" onClick={this.handleLogout}>
