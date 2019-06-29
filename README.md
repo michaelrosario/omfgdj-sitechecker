@@ -68,6 +68,7 @@ Our users may add a meta tag to their sites to “claim” a site and it will be
 ### Franchesca Gonzalez
 * Initial Front-end Styling (Bootstrap)
 * Front-end Design  (React)
+* Presentation
 ### Gian Jalaan
 * MongoDB Schemas
 * Seed for DB
@@ -75,7 +76,7 @@ Our users may add a meta tag to their sites to “claim” a site and it will be
 ### James Tagorda
 * MongoDB Schemas
 * Seed for DB
-* About Us Page Design  (React)
+* Edited Content About Us Page  (React)
 ## Useful resources: 
 
 * [Mongodb error index](https://stackoverflow.com/questions/24430220/*e11000-duplicate-key-error-index-in-mongodb-mongoose)
