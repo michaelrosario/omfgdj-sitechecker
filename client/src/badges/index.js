@@ -19,6 +19,8 @@ const WordPress = lazy(() => import(`./WordPress`));
 const GoogleTagManager = lazy(() => import(`./GoogleTagManager`));
 const MetaTags = lazy(() => import(`./MetaTags`));
 const Typekit = lazy(() => import(`./Typekit`));
+const Handlebars = lazy(() => import(`./Handlebars`));
+const Responsive = lazy(() => import(`./Responsive`));
 
 export { 
     AngularJS,
@@ -39,5 +41,7 @@ export {
     WordPress,
     GoogleTagManager,
     MetaTags,
-    Typekit
+    Typekit,
+    Handlebars,
+    Responsive
 };
