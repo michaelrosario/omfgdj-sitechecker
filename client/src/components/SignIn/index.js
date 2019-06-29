@@ -213,7 +213,7 @@ Logout
     }
     </Modal.Header>
     
-    <Modal.Body>    
+    <Modal.Body style={{backgroundColor: '#1A1A1A', borderColor: '#808080'}}>    
 
       {this.state.message}
 
@@ -225,6 +225,7 @@ Logout
             onChange={this.handleInputChange}
             name="username"
             placeholder="Username"
+            style={{backgroundColor: '#313131', color: 'white'}}
           />
 
           <Input
@@ -233,6 +234,7 @@ Logout
             name="password"
             type="password"
             placeholder="Password"
+            style={{backgroundColor: '#313131', color: 'white'}}
           />
 
           {/* TODO: Form validations and modal */}
@@ -251,6 +253,7 @@ Logout
   onChange={this.handleInputChange}
   name="firstName"
   placeholder="First Name"
+  style={{backgroundColor: '#1A1A1A', borderColor: '#808080'}}
   />
 
   <Input
@@ -258,6 +261,7 @@ Logout
   onChange={this.handleInputChange}
   name="lastName"
   placeholder="Last Name"
+  style={{backgroundColor: '#1A1A1A', borderColor: '#808080'}}
   />  
 
   <Input
@@ -265,6 +269,7 @@ Logout
   onChange={this.handleInputChange}
   name="username"
   placeholder="Username"
+  style={{backgroundColor: '#1A1A1A', borderColor: '#808080'}}
   />
 
   <Input
@@ -273,6 +278,7 @@ Logout
   name="password"
   type="password"
   placeholder="Password"
+  style={{backgroundColor: '#1A1A1A', borderColor: '#808080'}}
   />
 
   <Input
@@ -280,6 +286,7 @@ Logout
   onChange={this.handleInputChange}
   name="email"
   placeholder="Email"
+  style={{backgroundColor: '#1A1A1A', borderColor: '#808080'}}
   />
   {/* TODO: Form validations and modal */}
   <FormBtn
