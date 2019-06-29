@@ -215,7 +215,7 @@ p {
     background-color: transparent !important;
     right: 0;
 }
-.work-details .icon li a, .team-box .title, .team-box .icon li a, .team-slides .owl-nav div {
+.work-details .icon li a, .team-box .icon li a, .team-slides .owl-nav div {
     color: #BF25D6 !important;
     text-decoration: none;
 }
