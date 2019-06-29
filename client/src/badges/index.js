@@ -19,6 +19,12 @@ const WordPress = lazy(() => import(`./WordPress`));
 const GoogleTagManager = lazy(() => import(`./GoogleTagManager`));
 const MetaTags = lazy(() => import(`./MetaTags`));
 const Typekit = lazy(() => import(`./Typekit`));
+const Handlebars = lazy(() => import(`./Handlebars`));
+const Responsive = lazy(() => import(`./Responsive`));
+const Chartbeat = lazy(() => import(`./Chartbeat`));
+const NewRelic = lazy(() => import(`./NewRelic`));
+const Titan = lazy(() => import(`./Titan`));
+const OWLCarousel = lazy(() => import(`./OWLCarousel`));
 
 export { 
     AngularJS,
@@ -39,5 +45,11 @@ export {
     WordPress,
     GoogleTagManager,
     MetaTags,
-    Typekit
+    Typekit,
+    Handlebars,
+    Responsive,
+    Chartbeat,
+    NewRelic,
+    Titan,
+    OWLCarousel
 };

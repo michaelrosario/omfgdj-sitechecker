@@ -24,7 +24,7 @@ export default class Aboutus extends Component {
                 <Row>
                     <Col size="md-6">
                         <p><span className="span">CodeHype</span> is a platform that scrapes and verifies site-specific elements, functionality, issues and many more relevant web metrics.</p>
-                    <br/>
+                            <br/>
                         <p>The ambition behind <span className="span">CodeHype</span> is to encourage our users to test their websites and receive a score and badges for any metrics that CodeHype currently checks for.</p>
                     </Col>
                     <Col size="md-6">

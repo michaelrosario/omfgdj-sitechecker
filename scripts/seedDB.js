@@ -198,7 +198,68 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_icon: "Typekit.png",
     badge_category: "Font Scripts",
     badge_score: 10
+  },
+  {
+    _id: "5d141c9854f7cf9fdf100003",
+    badge_name: "Handlebars",
+    badge_component: "Handlebars",
+    badge_description: "Hold on tight, come along for a rendering ride!",
+    badge_version: "1.0",
+    badge_icon: "Handlebars.png",
+    badge_category: "Javascript Framework",
+    badge_score: 10
+  },
+  {
+    _id: "5d141c9854f7cf9fdf100004",
+    badge_name: "Responsive",
+    badge_component: "Responsive",
+    badge_description: "Be like water, fill any container!",
+    badge_version: "1.0",
+    badge_icon: "responsive.svg",
+    badge_category: "DOM",
+    badge_score: 10
+  },
+  {
+    _id: "5d141c9854f7cf9fdf100055",
+    badge_name: "Chartbeat",
+    badge_component: "Chartbeat",
+    badge_description: "",
+    badge_version: "1.0",
+    badge_icon: "Chartbeat.png",
+    badge_category: "Publishing Content Intelligence",
+    badge_score: 10
+  },
+  {
+    _id: "5d141c9854f7cf9fdf100066",
+    badge_name: "New Relic",
+    badge_component: "NewRelic",
+    badge_description: "",
+    badge_version: "1.0",
+    badge_icon: "New Relic.png",
+    badge_category: "Web Application Performance Service",
+    badge_score: 10
+  },
+  {
+    _id: "5d141c9854f7cf9fdf100077",
+    badge_name: "Titan",
+    badge_component: "Titan",
+    badge_description: "",
+    badge_version: "1.0",
+    badge_icon: "Titan.png",
+    badge_category: "Transit Advertising",
+    badge_score: 10
+  },
+  {
+    _id: "5d141c9854f7cf9fdf100088",
+    badge_name: "OWL Carousel",
+    badge_component: "OWLCarousel",
+    badge_description: "",
+    badge_version: "1.0",
+    badge_icon: "OWL Carousel.png",
+    badge_category: "jQuery Plugin",
+    badge_score: 10
   }
+ 
 ];
 
 

@@ -47,7 +47,9 @@ app.use(
 		saveUninitialized: false //required
 	})
 )
-
+app.get('/.well-known/acme-challenge/:content', function(req, res) {
+	res.send('Mle0GSeKT6HkOBecMZu7dw8It8yagT75Q9W1TArn1YI')
+})
 // Passport
 app.use(passport.initialize())
 app.use(passport.session()) // calls the deserializeUser

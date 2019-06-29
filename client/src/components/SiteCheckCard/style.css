@@ -64,3 +64,6 @@ p {
     border-radius: 5px;
 
 }
+.btn-gray { color: #AAA; background: #666; }
+.btn-gray:hover { color: #CCC; background: #999; }
+.btn-claim { margin: 10px 0 0 0; width: 100%; }
