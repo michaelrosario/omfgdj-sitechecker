@@ -2,6 +2,9 @@
 .bgdarko {
     background-color: #1a1a1a6e !important;
 }
+.heightz {
+    min-height: 600px !important;
+}
 .fiftyfifty {
     margin-top: 2rem;
     margin-bottom: 2rem;
