@@ -6,7 +6,7 @@ module.exports = {
     db.Sites
       .find(req.query)
       .populate('site_badges')
-      .sort({ date: -1 })
+      .sort({ site_lastSave: 'descending' })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

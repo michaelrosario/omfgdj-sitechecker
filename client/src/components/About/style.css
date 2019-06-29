@@ -92,7 +92,7 @@ p {
     transition: all 1s ease 0s;
     -webkit-transition: all 1s ease 0s;
 }
-.team-box:hover:before{  }
+
 .team-box:after{
     content: "";
     display: block;
