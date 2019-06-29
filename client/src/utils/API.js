@@ -34,6 +34,9 @@ export default {
   },
   getAllBadges: function(){
     return axios.get('/api/badge');
+  },
+  addSiteToUser: function(userId,siteId){
+    return axios.put('/api/user/add-site',{ userId, siteId });
   }
   
 };

@@ -7,6 +7,7 @@ import Portfolio from "./pages/Portfolio";
 import Aboutus from "./pages/Aboutus";
 
 import NoMatch from "./pages/NoMatch";
+import Claim from "./pages/Claim";
 import Nav from "./components/Nav";
 // import Books from "./pages/Books";
 // import Detail from "./pages/Detail";
@@ -38,8 +39,10 @@ class App extends Component {
               <Route exact path="/books" component={Books} />
               <Route exact path="/books/:id" component={Detail} />
             */}
+            
             <Route exact path="/" component={Home} />
-            <Route exact path="/user/" component={Portfolio} />
+            <Route path="/claim/:site" component={Claim} />
+            <Route path="/user/:user" component={Portfolio} />
             <Route exact path="/account" component={Account} />
             <Route component={Aboutus} />
 

@@ -15,8 +15,8 @@ module.exports = {
       .findOne({ site_url: req.query.url })
       .then(dbModel => {
         // only send back id and lastSave
-        const { _id, site_lastSave } = dbModel;
-        res.json({_id,site_lastSave});
+        const { _id, site_lastSave,user } = dbModel;
+        res.json({_id,site_lastSave,user });
 
       })
       .catch(err => res.status(200).json("new"));

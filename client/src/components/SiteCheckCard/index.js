@@ -1,9 +1,11 @@
 import React,{ lazy, Suspense, Component } from "react";
+import { Link } from "react-router-dom";
 import * as Badges from "../../badges/";
 import API from "../../utils/API";
 import socket from 'socket.io-client';
 import { Input, FormBtn } from "../Form";
-import { Card, CardGroup, CardColumns } from "react-bootstrap";
+import { Badge, Card, CardGroup, CardColumns } from "react-bootstrap";
+import UserContext from "../../context/UserContext";
 import 'font-awesome/css/font-awesome.min.css';
 import "./style.css";
 
@@ -187,6 +189,18 @@ export default class SiteCheckCard extends React.Component {
      
   }
 
+  componentDidUpdate(){
+    const {  
+      siteData, 
+      loggedIn,
+    } = this.state;
+
+    if(!loggedIn && siteData){
+      this.checkLoggedIn();
+    } 
+
+  }
+
   render() {
 
     const { 
@@ -194,7 +208,7 @@ export default class SiteCheckCard extends React.Component {
       siteData, 
       badges,
       userScore,
-      siteBadgeId,
+      loggedIn,
       siteBadges
     } = this.state;
 
@@ -248,10 +262,27 @@ export default class SiteCheckCard extends React.Component {
                         {siteTitle ? (
                           <div>
                             <img className="site-screen" src={siteData.image} alt={siteTitle} />
-                            <button type="button" class="btn btn-dark">
-                            Coder Rank Score: <span class="badge badge-light">{calculatedScore}</span>
-                            </button>
+                            <h3>
+                            CoderHype Score <Badge variant="secondary">{calculatedScore}</Badge>
+                            </h3>
                             {/* <h5 className="text-light">Coder Rank Score: {calculatedScore}</h5> */}
+                            <UserContext.Consumer>
+                              {(context) => {
+                                return <div>
+                                {loggedIn ? (
+                                  <Link to={`/claim/${site}`}>
+                                    <button type="button" class="btn btn-claim">
+                                      Claim this Site
+                                    </button>
+                                  </Link>
+                                ) : (
+                                  <button onClick={() => context.updateValue('userModal','signup')} type="button" class="btn btn-claim btn-gray">
+                                    Claim this Site
+                                  </button>
+                                )}
+                                </div>
+                              }}
+                            </UserContext.Consumer>
                           </div>
                         ) : ""}
                     </form>
