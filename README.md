@@ -42,7 +42,7 @@ Our users may add a meta tag to their sites to “claim” a site and it will be
 * [Axios](https://github.com/mzabriskie/axios/)
 
 ## Project Members: 
-### Michael Rosario - <https://github.com/michaelrosarion/>
+### Michael Rosario - <https://github.com/michaelrosario/>
 ### Danny Lee - <https://github.com/dcldev/>
 ### Omar Ong - <https://github.com/jetsetPanda/>
 ### Franchesca Gonzalez - <https://github.com/Frenshy1031/>
