@@ -76,7 +76,7 @@ class Claim extends Component {
         <div>
           {this.renderRedirect()}
                         <Jumbotron>
-                            <h1 class="text-white">Claim the Site</h1>
+                            <h1 className="text-white">Claim the Site</h1>
                         </Jumbotron>
                    
       <Container>

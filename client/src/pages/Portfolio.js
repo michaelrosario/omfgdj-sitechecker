@@ -44,7 +44,7 @@ class Portfolio extends Component {
         <div>
          
                         <Jumbotron>
-                            <h1 class="text-white">Sites by {this.state.firstName} {this.state.lastName}</h1>
+                            <h1 className="text-white">Sites by {this.state.firstName} {this.state.lastName}</h1>
                         </Jumbotron>
                    
       <Container>

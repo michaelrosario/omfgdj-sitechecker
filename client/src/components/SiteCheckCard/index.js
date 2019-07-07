@@ -271,12 +271,12 @@ export default class SiteCheckCard extends React.Component {
                                 return <div>
                                 {loggedIn ? (
                                   <Link to={`/claim/${site}`}>
-                                    <button type="button" class="btn btn-claim">
+                                    <button type="button" className="btn btn-claim">
                                       Claim this Site
                                     </button>
                                   </Link>
                                 ) : (
-                                  <button onClick={() => context.updateValue('userModal','signup')} type="button" class="btn btn-claim btn-gray">
+                                  <button onClick={() => context.updateValue('userModal','signup')} type="button" className="btn btn-claim btn-gray">
                                     Claim this Site
                                   </button>
                                 )}
