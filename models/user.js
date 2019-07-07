@@ -13,8 +13,10 @@ const userSchema = new Schema({
   user_github: { type: String, required: false },
   user_preference: { type: String, required: false },
   user_sites: [{
-      type: Schema.Types.ObjectId,
-      ref: "Sites" 
+    _siteId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Sites'
+    }
   }]
 });
 

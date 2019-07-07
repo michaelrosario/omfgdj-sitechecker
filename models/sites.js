@@ -9,12 +9,12 @@ const siteSchema = new Schema({
   site_lastSave : { type: Number, default: (new Date()).getTime() },
   site_badges:[
     {
-      type: Schema.Types.ObjectId, 
-      ref: "Badges"
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'Badges'
     }
   ],
   user: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Users'
   }
 });

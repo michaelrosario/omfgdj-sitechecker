@@ -40,15 +40,18 @@ module.exports = {
     db.User
       .findById({ _id: req.body.userId })
       .then(dbModel => {
-        console.log("dbModel",dbModel)
-        if(!dbModel.user_sites.some(x => x._id === req.body.siteId) || dbModel.user_sites.length === 0){
-          dbModel.user_sites.push({
-            _id: req.body.siteId 
-          });
-          console.log("dbModel update",dbModel);
+        console.log("dbModel",dbModel);
+        if(!dbModel.user_sites.find(x => x._siteId == req.body.siteId)){
+          const item = {
+            _siteId: req.body.siteId
+          }
+          dbModel.user_sites.push(item);
           db.User
-            .findByIdAndUpdate(req.params.userId,dbModel)
-            .then(dbModel2 => res.json(dbModel2))
+            .findByIdAndUpdate({ _id: req.body.userId },dbModel)
+            .then(dbModel2 => {
+              console.log("dbModel2",dbModel2);
+              res.json(dbModel2.user_sites);
+            })
             .catch(err => res.status(422).json(err));
         } else {
           return res.status(200).json("site is already added")
