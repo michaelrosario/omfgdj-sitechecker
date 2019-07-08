@@ -1,0 +1,14 @@
+.code { color: #FFF; border: 1px solid #999; padding: 10px; border-radius: 5px; margin: 10px 0; }
+.claim { 
+    padding: 7px 30px;
+    margin: 10px 0 0 0;
+    color: #AAA;
+    border-radius: 3px;
+    background: purple;
+    cursor: pointer;
+    outline: none;
+}
+.claim:hover {
+    color: #FFF;
+    background-color: rgb(146, 8, 151);
+}

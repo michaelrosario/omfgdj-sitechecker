@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import "./app.css";
 
 
 class Claim extends Component {
@@ -63,7 +64,9 @@ class Claim extends Component {
     if(siteId && userId){
       API.addSiteToUser(userId,siteId).then(res => {
         console.log("res",res);
-        return <Redirect to={`/user/${res.user_login}`} />
+        if(res.data.type === "success"){
+            // redirect to user login
+        }
       });
     }
   }
@@ -83,12 +86,19 @@ class Claim extends Component {
         <Row>
            <Col size="md-12">
               <h3 className="text-white">How to claim <u>{this.props.match.params.site}</u> to your profile:</h3>
-              <button onClick={() => this.handleClaimSite()}>Claim this Site</button>
+             
            </Col>
         </Row>
         <Row>
           <Col size="md-12">
-          
+              <p>Add the following meta tag to your header:</p>
+              <pre className="code">
+                {`<meta name="coderhype" content="${this.state.userId}"></meta>`.toString()}
+              </pre>
+              <br />
+              
+              <p>Once that is added, click the button below to confirm:</p>
+              <button className="claim" onClick={() => this.handleClaimSite()}>Claim this Site</button>
           </Col>
         </Row>
       </Container>
