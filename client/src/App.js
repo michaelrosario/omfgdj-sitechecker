@@ -4,8 +4,7 @@ import UserContext from "./context/UserContext";
 import Home from "./pages/Home";
 import Account from "./pages/Account";
 import Portfolio from "./pages/Portfolio";
-import Aboutus from "./pages/Aboutus";
-
+import About from "./pages/About";
 import NoMatch from "./pages/NoMatch";
 import Claim from "./pages/Claim";
 import Nav from "./components/Nav";
@@ -30,6 +29,9 @@ class App extends Component {
 
     return (
       <Router>
+        {/*
+        UserContext.Provider to be used through out the pages
+        */}
         <UserContext.Provider value={{state: this.state, updateValue: this.updateValue}}>   
         <div style={siteStyle}>
         <Nav />
@@ -44,7 +46,7 @@ class App extends Component {
             <Route path="/claim/:site" component={Claim} />
             <Route path="/user/:user" component={Portfolio} />
             <Route exact path="/account" component={Account} />
-            <Route component={Aboutus} />
+            <Route path="/about" component={About} />
 
             
             <Route component={NoMatch} />

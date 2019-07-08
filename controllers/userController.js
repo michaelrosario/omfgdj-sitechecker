@@ -40,9 +40,11 @@ module.exports = {
   },
   updateSites: function(req, res) {
     db.Sites
-      .findById(req.body.siteId)
+      .findById(req.body.siteId) 
       .then(site => {
+        // stores findById to a promise to variable 'site' container
         console.log("confirming ", site.site_url);
+        // scraping using cheerios
         axios.get("https://"+site.site_url)
           .then(response => {
             
