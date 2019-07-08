@@ -10,12 +10,31 @@ class Portfolio extends Component {
     siteId: '',
     userId: '',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    sites: []
   };
 
   componentDidMount() {
     
     this.checkLoggedIn();
+    API.getUserByLogin(this.props.match.params.user).then(user => {
+      const {
+        user_login,
+        user_firstname,
+        user_lastname,
+        user_sites
+      } = user.data;
+
+      console.log("user",user);
+
+      this.setState({
+        userLogin: user_login,
+        firstName: user_firstname,
+        lastName: user_lastname,
+        sites: user_sites
+      });
+
+    });
 
   }
 
@@ -37,15 +56,22 @@ class Portfolio extends Component {
 
 
   render() {
+    
+    const sites = this.state.sites.map( site => {
+      return <img src={site._siteId.site_imgsrc} alt={site._siteId.site_name} />;
+    })
+
 
     return (
 
     
         <div>
          
-                        <Jumbotron>
-                            <h1 className="text-white">Sites by {this.state.firstName} {this.state.lastName}</h1>
-                        </Jumbotron>
+        <Jumbotron>
+            <h1 className="text-white">
+              Sites by {this.state.firstName} {this.state.lastName}
+            </h1>
+        </Jumbotron>
                    
       <Container>
         <Row>
@@ -55,7 +81,7 @@ class Portfolio extends Component {
         </Row>
         <Row>
           <Col size="md-12">
-          
+              {sites}
           </Col>
         </Row>
       </Container>
