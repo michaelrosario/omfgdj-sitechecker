@@ -39,6 +39,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   updateSites: function(req, res) {
+    // this verifies the site and adds it to their profile
     db.Sites
       .findById(req.body.siteId) 
       .then(site => {

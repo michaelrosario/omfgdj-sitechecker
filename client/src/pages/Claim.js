@@ -8,8 +8,10 @@ import "./app.css";
 
 class Claim extends Component {
   state = {
+    message: '',
     siteId: '',
     userId: '',
+    userLogin: '',
     redirect: false,
     loggedIn: false
   };
@@ -47,6 +49,7 @@ class Claim extends Component {
       console.log("response on checkLoggedIn",response);
       if(response.data.user){
         this.setState({ 
+          userLogin: response.data.username,
           userId: response.data.user._id,
           loggedIn: true 
         });
@@ -65,7 +68,11 @@ class Claim extends Component {
       API.addSiteToUser(userId,siteId).then(res => {
         console.log("res",res);
         if(res.data.type === "success"){
-            // redirect to user login
+           window.location = '/user/'+this.state.userLogin;
+        } else {
+          this.setState({
+            message: res.data.message
+          })
         }
       });
     }
@@ -99,6 +106,7 @@ class Claim extends Component {
               
               <p>Once that is added, click the button below to confirm:</p>
               <button className="claim" onClick={() => this.handleClaimSite()}>Claim this Site</button>
+              <p>{this.state.message}</p>
           </Col>
         </Row>
       </Container>
