@@ -1,42 +1,41 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const routes = require("./routes");
-const cors = require('cors');
-const app = express();
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const routes = require("./routes"); //url segments that we define
+const cors = require('cors'); //cross domain solution
+const app = express(); // backend
+const server = require('http').createServer(app); // create server
+const io = require('socket.io')(server); // sockets
 
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-const passport = require('./passport');
+const bodyParser = require('body-parser'); // goes through code and parses
+// login
+const morgan = require('morgan'); // middleware for logging  - part of passport
+const session = require('express-session'); // keep session for the user
+const MongoStore = require('connect-mongo')(session); // stores session on DB
+const passport = require('./passport'); // handles login authentication
 
-app.use(cors());
+app.use(cors()); // calling cors
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001; // assign port process.env.PORT is heroku/server
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json()); // uses everything is json
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+if (process.env.NODE_ENV === "production") { // compress version and faster
+  app.use(express.static("client/build")); 
 }
 
 // Define middleware here
-app.use(morgan('dev'))
-app.use(
+app.use(morgan('dev')) // calling morgan
+app.use(       
 	bodyParser.urlencoded({
 		extended: false
 	})
-)
+)// converts/safe data to be pass through URL
 app.use(bodyParser.json())
 
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/sitechecker";
 mongoose.connect(MONGODB_URI);
-var dbConnection = mongoose.connection;
+var dbConnection = mongoose.connection; // container for all connection information
 
 // Sessions
 app.use(
@@ -46,17 +45,19 @@ app.use(
 		resave: false, //required
 		saveUninitialized: false //required
 	})
-)
+) // stores all the session in MongoDB
+
 app.get('/.well-known/acme-challenge/:content', function(req, res) {
 	res.send('Mle0GSeKT6HkOBecMZu7dw8It8yagT75Q9W1TArn1YI')
-})
+}) // SSL certificate
+
 // Passport
 app.use(passport.initialize())
 app.use(passport.session()) // calls the deserializeUser
 
 // Add routes, both API and view
 app.use(routes);
-
+// socket
 io.on('connection', function (socket) {
   socket.on('fromReact', function (site) {
     socket.broadcast.emit('toReact', { data: site });

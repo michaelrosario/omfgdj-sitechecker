@@ -74,7 +74,7 @@ class Nav extends Component {
           
   
           <li>
-            <NavLink to="/aboutus" exact activeStyle={{ color: 'white' }}>
+            <NavLink to="/about" exact activeStyle={{ color: 'white' }}>
                 <i className="fa fa-users"></i> &nbsp;<span style={{color: '#BF25D6'}}>About Us</span>
             </NavLink>
           </li>
