@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  checkSite: function(site) {
-    return axios.get("/api/site/check/"+site);
+  checkSite: function(protocol,site) {
+    return axios.get("/api/site/check/"+site+"/"+protocol);
   },
   saveSite: function(data) {
     return axios.post("/api/site", data);

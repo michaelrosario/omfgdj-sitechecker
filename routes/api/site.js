@@ -17,7 +17,7 @@ router
   .delete(siteController.remove);
 
 router
-  .route("/check/:site")
+  .route("/check/:site/:protocol")
   .get(siteController.checkSite);
 
 module.exports = router;

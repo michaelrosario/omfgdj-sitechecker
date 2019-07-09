@@ -14,6 +14,7 @@ export default class SiteCheckCard extends React.Component {
             super(props, context);
              this.state = {
                 site: '',
+                protocol: 'https',
                 siteId: '',
                 siteImage: "",
                 userScore: [],
@@ -78,17 +79,37 @@ export default class SiteCheckCard extends React.Component {
     });
   }
 
+  getHostnameFromRegex = url => {
+    // run against regex
+    const matches = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i) || url.match(/^http?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+    // extract hostname (will be null if no match is found)
+    return matches && matches[1];
+  }
+
   handleFormSubmit = event => {
     event.preventDefault();
-    const { site } = this.state;  
-    console.log("SEARCH "+site+" VIA APIs");
+    const { site } = this.state; 
+    
+    let website = site.trim();
+    let protocol = "https";
+
+    if(site.startsWith("http://")){
+      protocol = "http";
+    } 
+    if(site.startsWith("https://")){
+      protocol = "https";
+    } 
+    website = this.getHostnameFromRegex(site);
+    console.log("SEARCH "+website+" VIA APIs");
 
     this.setState({
       userScore: [],
+      protocol,
+      site: website,
       processing: true
     });
 
-   API.getSiteByUrl(site).then(siteRes => {
+   API.getSiteByUrl(website).then(siteRes => {
       console.log("siteRes",siteRes);
 
       if(siteRes.data === "new"){
@@ -99,7 +120,7 @@ export default class SiteCheckCard extends React.Component {
         })
       }
   
-      API.checkSite(site).then(res => {
+      API.checkSite(protocol,website).then(res => {
       
         console.log("API.checkSite res is >>>>>",res);
         
@@ -127,7 +148,7 @@ export default class SiteCheckCard extends React.Component {
   
         const io = socket(this.state.endpoint, { secure: true });
         // Send site to all users
-          io.emit('fromReact', { data: site });
+          io.emit('fromReact', { data: website });
           this.setState({
             siteData: res.data,
             badges: badgeArr
@@ -153,7 +174,7 @@ export default class SiteCheckCard extends React.Component {
   }
 
   saveSiteToDB = () => {
-      const { siteData, site, siteBadgeId, siteId } = this.state;
+      const { siteData, site, siteBadgeId, siteId, protocol } = this.state;
       const pushBadges = [];
       siteBadgeId.map(id => { 
         pushBadges.push({_id: id }); //format data
@@ -176,7 +197,8 @@ export default class SiteCheckCard extends React.Component {
         site_url: site,
         site_desc: metaDescription,
         site_imgsrc: siteData.image,
-        site_badges: pushBadges
+        site_badges: pushBadges,
+        site_protocol: protocol,
       };
       console.log("siteId",siteId);
       if(siteId){
