@@ -3,6 +3,9 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 
 function NoMatch() {
+
+  window.analytics.page('404 Page Not Found');
+
   return (
     <Container fluid>
       <Row>

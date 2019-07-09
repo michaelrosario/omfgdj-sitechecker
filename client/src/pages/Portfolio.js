@@ -16,6 +16,8 @@ class Portfolio extends Component {
 
   componentDidMount() {
     
+    window.analytics.page('/user/'+this.props.match.params.user);
+
     this.checkLoggedIn();
     API.getUserByLogin(this.props.match.params.user).then(user => {
       const {

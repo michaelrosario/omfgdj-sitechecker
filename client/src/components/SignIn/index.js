@@ -41,6 +41,9 @@ componentDidMount(){
     if(response.data.message === "success"){
       this.setState({ loggedIn: true });
       this.props.setUserSession(this.state.loggedIn,response.data.username);
+      window.analytics.identify(response.data.user._id, {
+        username: response.data.username
+      });
     }
   });
 }
@@ -125,6 +128,7 @@ handleLogin = event => {
         message: ""
       });
       this.props.setUserSession(this.state.loggedIn,res.data.username);
+      window.analytics.track('User Sign In', { username: res.data.username });
       this.props.context.updateValue('userModal','');
 
     } else {
@@ -156,8 +160,11 @@ handleSignUp = event => {
     user_lastname: lastName
   }
 
+  
+
   API.signup(user).then(res => {
     console.log("res",res);
+    window.analytics.track('User Sign Up', { username: res.data.username });
     this.setState({ loggedIn: true });
     this.props.setUserSession(this.state.loggedIn,res.data.username);
     this.props.context.updateValue('userModal',''); // hide the modal window
