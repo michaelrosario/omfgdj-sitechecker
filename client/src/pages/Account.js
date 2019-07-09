@@ -9,6 +9,8 @@ class Account extends Component {
   };
 
   componentDidMount() {
+
+    window.analytics.page('Account');
   
     API.checkLoggedIn().then(res => {
       console.log("response on componentDidMount",res)

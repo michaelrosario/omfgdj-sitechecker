@@ -10,6 +10,8 @@ class Home extends Component {
   };
 
   componentDidMount() {
+
+    window.analytics.page('Home');
     
     API.getsites().then(res => {
       console.log("getsites res",res);
