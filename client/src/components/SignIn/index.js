@@ -40,7 +40,7 @@ componentDidMount(){
     console.log("response on checkLoggedIn",response);
     if(response.data.message === "success"){
       this.setState({ loggedIn: true });
-      this.props.setUserSession(this.state.loggedIn);
+      this.props.setUserSession(this.state.loggedIn,response.data.username);
     }
   });
 }
@@ -69,7 +69,7 @@ handleLogout = () => {
       this.setState({
         loggedIn: false,
       });
-      this.props.setUserSession(this.state.loggedIn);
+      this.props.setUserSession(this.state.loggedIn,'');
     }
   });
 }
@@ -90,7 +90,7 @@ handleInputChange = event => {
 handleShowSignIn = event => {
   event.preventDefault();
   this.setState({ show: "signin"});
-  this.context.updateValue('userModal', "signin");
+  this.props.context.updateValue('userModal', "signin");
 }
 
 handleShowSignup = event => {
@@ -124,7 +124,7 @@ handleLogin = event => {
         user_id: res.data.user,
         message: ""
       });
-      this.props.setUserSession(this.state.loggedIn);
+      this.props.setUserSession(this.state.loggedIn,res.data.username);
       this.props.context.updateValue('userModal','');
 
     } else {
@@ -159,8 +159,8 @@ handleSignUp = event => {
   API.signup(user).then(res => {
     console.log("res",res);
     this.setState({ loggedIn: true });
-    this.props.setUserSession(this.state.loggedIn);
-    this.context.updateValue('userModal','');
+    this.props.setUserSession(this.state.loggedIn,res.data.username);
+    this.props.context.updateValue('userModal',''); // hide the modal window
   });
 
 }

@@ -21,8 +21,17 @@ router.post('/signup', (req, res) => {
         else {
             const newUser = new User(req.body)
             newUser.save((err, savedUser) => {
-                if (err) return res.json(err)
-                res.json(savedUser)
+                if (err) {
+                    return res.json(err);
+                } else {
+                    //res.json(savedUser)
+                    req.logIn(savedUser, function(err) {
+                        if (err) {  return res.json(err); }
+                        console.log("user.user_login",savedUser.user_login);
+                        return res.json({ message: "success", user: savedUser._id, username: savedUser.user_login });
+                      });
+                }
+                
             })
         }
     })
@@ -35,16 +44,20 @@ router.post('/login', function(req, res, next) {
       req.logIn(user, function(err) {
         if (err) { return next(err); }
         console.log("user.user_login",user.user_login);
-        return res.json({ message: "success", user: user._id });
+        return res.json({ message: "success", user: user._id, username: user.user_login });
       });
     })(req, res, next);
   });
 
 router.get('/', (req, res, next) => {
     console.log('===== user!!======')
-    console.log("req.user",req.user);
+    
     if (req.user) {
-        res.json({ message: "success", user: req.user })
+        User.findById(req.user._id).then(response => {
+            console.log("req.user",req.user);
+            console.log("username",response.user_login);
+            res.json({ message: "success", user: req.user, username: response.user_login })
+        });
     } else {
         res.json({ message: "failure", user: null })
     }

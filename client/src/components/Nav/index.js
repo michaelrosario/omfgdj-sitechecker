@@ -13,12 +13,14 @@ class Nav extends Component {
   state = {
     alert:"",
     isLoggedIn: false,
+    userLogin: '',
     endpoint: process.env.NODE_ENV === "production" ? "/" : "localhost:3001"
   }
 
-  handleLoggedIn = bool => {
+  handleLoggedIn = (bool,username) => {
     this.setState({
-      isLoggedIn: bool
+      isLoggedIn: bool,
+      userLogin: username
     })
   }
 
@@ -66,7 +68,7 @@ class Nav extends Component {
           ) : "" }
           {this.state.isLoggedIn ? (
           <li>
-            <NavLink to="/user" exact activeStyle={{ color: 'white' }}>
+            <NavLink to={`/user/${this.state.userLogin}`} exact activeStyle={{ color: 'white' }}>
               <i className="fa fa-link"></i> &nbsp;<span>Sites</span>
             </NavLink>
           </li>

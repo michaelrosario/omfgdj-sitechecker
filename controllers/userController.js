@@ -7,16 +7,53 @@ module.exports = {
   findAll: function(req, res) {
     db.User
       .find(req.query)
-      .populate('user_sites')
+      .populate('user_sites._siteId')
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  getUserByLogin: function(req, res) { 
+    db.User
+      .findOne({ user_login: req.params.username })
+      .populate('user_sites._siteId')
+      .then(dbModel => {
+        const {
+          user_firstname,
+          user_lastname,
+          user_login,
+          user_sites 
+        } = dbModel;
+
+        res.json({
+          user_firstname,
+          user_lastname,
+          user_login,
+          user_sites
+        })
+      })
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
     db.User
       .findById(req.params.id)
-      .populate('user_sites')
-      .then(dbModel => res.json(dbModel))
+      .populate('user_sites._siteId')
+      .then(dbModel => {
+
+        const {
+          user_firstname,
+          user_lastname,
+          user_login,
+          user_sites 
+        } = dbModel;
+
+        res.json({
+          user_firstname,
+          user_lastname,
+          user_login,
+          user_sites
+        })
+
+      })
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
@@ -39,6 +76,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   updateSites: function(req, res) {
+    // this verifies the site and adds it to their profile
     db.Sites
       .findById(req.body.siteId) 
       .then(site => {
