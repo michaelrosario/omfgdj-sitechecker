@@ -43,6 +43,6 @@ export default {
   },
   addSiteToUser: function(userId,siteId){
     return axios.put('/api/user/add-site',{ userId, siteId });
-  }
+  },
   
 };
