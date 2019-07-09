@@ -56,7 +56,8 @@ module.exports = {
   },
   checkSite: function(req,res){
     let site = req.params.site;
-    let website = "https://"+site;
+    let protocol = req.params.protocol || "https";
+    let website = protocol+"://"+site;
     const data = {};
     
     (async () => {
@@ -218,10 +219,10 @@ module.exports = {
         console.log("data",data);
 
         // WAPPALYZER
-        let url = "https://"+site;
+       
         console.log("---- WAPPALYZER ----");
         
-        axios.get(`https://api.wappalyzer.com/analyze/v1/?url=${url}`, {
+        axios.get(`https://api.wappalyzer.com/analyze/v1/?url=${website}`, {
           headers: {
             "X-Api-Key": "wappalyzer.api.demo.key"
           }
