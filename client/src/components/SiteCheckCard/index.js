@@ -4,7 +4,7 @@ import * as Badges from "../../badges/";
 import API from "../../utils/API";
 import socket from 'socket.io-client';
 import { Input, FormBtn } from "../Form";
-import { Badge, Card, CardGroup, CardColumns } from "react-bootstrap";
+import { Badge, Form, Card, CardGroup, CardColumns, InputGroup, DropdownButton, Dropdown, FormControl} from "react-bootstrap";
 import UserContext from "../../context/UserContext";
 import 'font-awesome/css/font-awesome.min.css';
 import "./style.css";
@@ -22,7 +22,8 @@ export default class SiteCheckCard extends React.Component {
                 badges: [],
                 siteBadges: [],
                 processing: false,
-                loggedIn: false
+                loggedIn: false,
+                httpStatus: "select"
             };           
             
             this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -75,6 +76,15 @@ export default class SiteCheckCard extends React.Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value
+    });
+  }
+
+  handleHttpChange = event => {
+    const { value } = event.target.value;
+    console.log("HTTP Change Detected");
+    console.log("HTTP State httpStatus:",value);
+    this.setState({
+      httpStatus: value
     });
   }
 
@@ -209,7 +219,8 @@ export default class SiteCheckCard extends React.Component {
       badges,
       userScore,
       loggedIn,
-      siteBadges
+      siteBadges,
+      httpStatus
     } = this.state;
 
    const components = siteData ? siteBadges.map(badge => {
@@ -241,15 +252,44 @@ export default class SiteCheckCard extends React.Component {
             <Card className="thirty bgdarko">
                 <Card.Body className="">
 
-                    <form>
-                        <Input
+                    <Form>
+                      <Form.Row>
+
+                        <InputGroup className="mb-3 bgdarkish text-light heightz inputz">
+                          <DropdownButton
+                              as={InputGroup.Prepend}
+                              variant="outline-secondary"
+                              title={this.state.httpStatus}
+                              id="httpStatz"
+                              value={this.state.httpStatus}
+                              name="httpStatus"
+                              onChange={this.handleHttpChange}
+                              height="600"
+                          >
+                            <Dropdown.Item 
+                              href="#"
+                              value="https://"
+                              // onClick={this.handleHttpChange}
+                              >https://
+                            </Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item 
+                              href="#"
+                              value="http://"
+                              // onClick={this.handleHttpChange}
+                            >http://
+                            </Dropdown.Item>
+                          </DropdownButton>
+                          <FormControl
                             value={site}
                             className="bgdarkish text-light heightz inputz"
                             onChange={this.handleInputChange}
                             name="site"
                             placeholder="  Enter your URL"
                             height="600"
-                        />
+                          />
+                        </InputGroup>
+                      </Form.Row>
                         <FormBtn
                             className="inputz"
                             disabled={!(site && !this.state.processing)}
@@ -285,7 +325,7 @@ export default class SiteCheckCard extends React.Component {
                             </UserContext.Consumer>
                           </div>
                         ) : ""}
-                    </form>
+                    </Form>
                 </Card.Body>
                 <Card.Footer></Card.Footer>
             </Card>
@@ -300,7 +340,7 @@ export default class SiteCheckCard extends React.Component {
                 </CardColumns>
                    
                         </div>
-                    : <h4 className="jetsetfont1">Enter your URL and CoderHype will perform an algorithmic scan and reward you with DevChops badges and a CoderHype Score. The more advanced tools you use, the higher your badge count and score will be!</h4>}
+                    : <h4 className="jetsetfont1">Enter your URL and CoderHype will perform an algorithmic scan and reward you with tech badges and your CoderHype Score. The more advanced tools you use, the higher your badge count and score will be!</h4>}
               
                 </Card.Body>
                 <Card.Footer></Card.Footer>
