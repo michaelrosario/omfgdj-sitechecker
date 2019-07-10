@@ -1,14 +1,14 @@
 import React from "react";
 import Badge from "../../components/Badge";
 
-const webpack = (props) => {
+const Webpack = (props) => {
 
   let siteData = props.siteData || {};
   let showStyle = false;
   //console.log(siteData);
   
   if(Object.keys(siteData).length !== 0 && siteData.constructor === Object && siteData.wappalyzer.length) {
-    if(siteData.wappalyzer.some(item => item.name === props.badge.badge_name)){
+    if(siteData.wappalyzer.some(item => item.name === "webpack")){
       console.log(props.badge.badge_name + " FOUND");
       
       // run only once
@@ -28,4 +28,4 @@ const webpack = (props) => {
         />;
 }
 
-export default webpack;
+export default Webpack;

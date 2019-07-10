@@ -26,7 +26,7 @@ const NewRelic = lazy(() => import(`./NewRelic`));
 const Titan = lazy(() => import(`./Titan`));
 const OWLCarousel = lazy(() => import(`./OWLCarousel`));
 const Segment = lazy(() => import(`./Segment`));
-const webpack = lazy(() => import(`./webpack`));
+const Webpack = lazy(() => import(`./Webpack`));
 const Nodejs = lazy(() => import(`./Nodejs`));
 const Express = lazy(() => import(`./Express`));
 
@@ -57,7 +57,7 @@ export {
     Titan,
     OWLCarousel,
     Segment,
-    webpack,
+    Webpack,
     Nodejs,
     Express
 };
