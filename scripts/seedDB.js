@@ -278,6 +278,16 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_icon: "webpack.svg",
     badge_category: "Compiler",
     badge_score: 10
+  },
+  {
+    _id: "5d141c9854f7cf9fdf100101",
+    badge_name: "Express",
+    badge_component: "Express",
+    badge_description: "",
+    badge_version: "1.0",
+    badge_icon: "express.png",
+    badge_category: "Backend Technology",
+    badge_score: 10
   }
  
 ];

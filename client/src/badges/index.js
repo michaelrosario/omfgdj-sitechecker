@@ -28,6 +28,7 @@ const OWLCarousel = lazy(() => import(`./OWLCarousel`));
 const Segment = lazy(() => import(`./Segment`));
 const webpack = lazy(() => import(`./webpack`));
 const Nodejs = lazy(() => import(`./Nodejs`));
+const Express = lazy(() => import(`./Express`));
 
 export { 
     AngularJS,
@@ -57,5 +58,6 @@ export {
     OWLCarousel,
     Segment,
     webpack,
-    Nodejs
+    Nodejs,
+    Express
 };
