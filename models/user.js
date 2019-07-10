@@ -14,7 +14,7 @@ const userSchema = new Schema({
   user_preference: { type: String, required: false },
   user_sites: [{
     _siteId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Sites'
     }
   }]

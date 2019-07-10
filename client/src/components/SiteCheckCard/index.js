@@ -318,7 +318,7 @@ export default class SiteCheckCard extends React.Component {
                 <Suspense fallback={<div>Loading...</div>}>{components}</Suspense>
                 {siteTitle ? 
                         <div>
-                        <h5 className="jetsetfont1">Here's the awesome tech we found on your site >>{siteTitle}</h5>
+                        <h5 className="jetsetfont1">Here's the awesome tech we found on your site >> {siteTitle}</h5>
                 <CardColumns>
                   {badgeIcons}
                 </CardColumns>

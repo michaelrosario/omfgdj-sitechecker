@@ -7,7 +7,7 @@ import SiteCheckCard from '../components/SiteCheckCard';
 class Home extends Component {
   state = {
     siteDB: [],
-    allbadges: [],
+    allbadges: {},
   };
 
   componentDidMount() {
@@ -23,7 +23,10 @@ class Home extends Component {
 
     API.getAllBadges().then(res => {
       console.log("Gettin dem badges",res.data);
-      let badgey = res.data;
+      let badgey = {}
+      res.data.map(badge => {
+        badgey[badge._id] = badge;
+      });
       this.setState({
         allbadges: badgey
       });
