@@ -17,7 +17,9 @@ const siteSchema = new Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Users'
-  }
+  },
+  demo_user: { type: String, required: true },
+  demo_img: { type: String, required: true },
 });
 
 const Sites = mongoose.model("Sites", siteSchema);

@@ -7,9 +7,7 @@ import SiteCheckCard from '../components/SiteCheckCard';
 class Home extends Component {
   state = {
     siteDB: [],
-    badgeOneFive: [],
-    badgeSixTen: [],
-    badgeElevenFifteen: []
+    allbadges: [],
   };
 
   componentDidMount() {
@@ -23,13 +21,9 @@ class Home extends Component {
 
     API.getAllBadges().then(res => {
       console.log("Gettin dem badges",res.data);
-      let badgeUno = res.data.slice(0,5); // O: first five badges for dummi display
-      let badgeDos = res.data.slice(5,10); // O: next five....
-      let badgeTres = res.data.slice(10,15); // O: more for that mock data but from real badge collection in database woot woot
+      let badgey = res.data;
       this.setState({
-        badgeOneFive: badgeUno,
-        badgeSixTen: badgeDos,
-        badgeElevenFifteen: badgeTres
+        allbadges: badgey
       });
     });
 
@@ -58,9 +52,10 @@ class Home extends Component {
             </h3>
             <SiteShowcase 
               sitez={this.state.siteDB}
-              badgeUno={this.state.badgeOneFive}
-              badgeDos={this.state.badgeSixTen}
-              badgeTres={this.state.badgeElevenFifteen}
+              badgey={this.state.allbadges}
+              // badgeUno={this.state.badgeOneFive}
+              // badgeDos={this.state.badgeSixTen}
+              // badgeTres={this.state.badgeElevenFifteen}
             />
           </Col>
           <Col size="md-1" />
