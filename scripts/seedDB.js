@@ -324,7 +324,7 @@ const userSeed = [
       user_firstname: "James",
       user_lastname: "Tagorda",
       user_phone: "123-456-7891",
-      user_imgsrc: "",
+      user_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/v1562769197/alli_dhwttb.jpg",
       user_github: "http://github.com",
       user_preference: "undefined",
       user_sites: []
@@ -336,19 +336,19 @@ const userSeed = [
       user_firstname: "Francesca",
       user_lastname: "Gonzalez",
       user_phone: "123-456-7891",
-      user_imgsrc: "",
+      user_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/v1562769197/alli_dhwttb.jpg",
       user_github: "http://github.com",
       user_preference: "undefined",
       user_sites: []
     },
     {
-      user_login: "Omar",
+      user_login: "Mike",
       user_password: "omar123",
       user_email: "omar@gmail.com",
-      user_firstname: "Omar",
-      user_lastname: "Ong",
+      user_firstname: "Michael",
+      user_lastname: "Rosario",
       user_phone: "123-456-7891",
-      user_imgsrc: "",
+      user_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/v1562769197/mike_ykth1y.jpg",
       user_github: "http://github.com",
       user_preference: "undefined",
       user_sites: []
@@ -360,7 +360,7 @@ const userSeed = [
       user_firstname: "Danny",
       user_lastname: "Lee",
       user_phone: "123-456-7891",
-      user_imgsrc: "",
+      user_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/v1562769197/danny_ruvibw.jpg",
       user_github: "http://github.com",
       user_preference: "undefined",
       user_sites: []
@@ -387,14 +387,15 @@ db.User
   process.exit(1);
 });
 
-
   const sitesSeed = [
     {
       site_name: "Yelp",
       site_url: "www.yelp.com",
       site_desc: "Yelp is a business directory service and crowd-sourced review forum. The company develops, hosts and markets the Yelp.com website and mobile app, which publishes crowd-sourced reviews about businesses.",
       site_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/v1561738721/site%20snapshots/yelppage_xveupr.jpg",
-      site_badges: [{_id:"5d141c9854f7cf9fdff32b3c"}, {_id:"5d141c9854f7cf9fdff32b3a"}, {_id:"5d141c9854f7cf9fdff32b3b"}, {_id:"5d141c9854f7cf9fdff32b39"}] // how to populate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdff32b3b"}, {_id:"5d141c9854f7cf9fdff32b3e"}, {_id:"5d141c9854f7cf9fdff32b3f"}, {_id:"5d141c9854f7cf9fdf011111"}], // how to populate with assigned badges
+      demo_user: "Danny Lee",
+      demo_img: "https://res.cloudinary.com/jetsetengine/image/upload/v1562769197/danny_ruvibw.jpg"
     },
     {
       site_name: "MLB",
@@ -402,7 +403,9 @@ db.User
       site_protocol: "https",
       site_desc: "Major League Baseball (MLB) is a professional baseball organization in the United States. There is a total of 30 teams that play in both the National League (NL) and American League (AL), with 15 teams in each league.",
       site_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/c_scale,h_598,w_1096/v1561738721/site%20snapshots/mlbSite_fqsucs.jpg",
-      site_badges: [{_id:"5d141c9854f7cf9fdff32b3a"}, {_id:"5d141c9854f7cf9fdff32b3d"}, {_id:"5d141c9854f7cf9fdff32b3b"}] // how to pop cv gn ulate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdf055555"}, {_id:"5d141c9854f7cf9fdff32b3d"}, {_id:"5d141c9854f7cf9fdf033333"}], // how to pop cv gn ulate with assigned badges
+      demo_user: "Devin Marsh",
+      demo_img: "https://res.cloudinary.com/jetsetengine/image/upload/v1562769341/devin_g6zyiv.jpg"
     },
     {
       site_name: "Homedepot",
@@ -410,7 +413,9 @@ db.User
       site_protocol: "https",
       site_desc: "Home Depot is an American home improvement supplies retailing and warehouse company that sells tools, construction products, and services. The company is headquartered in the suburbs of Atlanta, Georgia in the United States.",
       site_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/v1561738721/c_scale,h_598,w_1096/site%20snapshots/homedepotSite_pm0ei6.jpg",
-      site_badges: [{_id:"5d141c9854f7cf9fdff32b3e"}, {_id:"5d141c9854f7cf9fdff32b3a"}, {_id:"5d141c9854f7cf9fdff32b3b"}] // how to populate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdf066666"}, {_id:"5d141c9854f7cf9fdf088888"}, {_id:"5d141c9854f7cf9fdf099999"}], // how to populate with assigned badges
+      demo_user: "Michael Rosario",
+      demo_img: "https://res.cloudinary.com/jetsetengine/image/upload/v1562769197/mike_ykth1y.jpg"
     },
     {
       site_name: "Columbia University",
@@ -418,7 +423,9 @@ db.User
       site_protocol: "https",
       site_desc: "Columbia University is a private Ivy League research university in New York City. Established in 1754, Columbia is the oldest institution of higher education in New York and the fifth-oldest institution of higher learning in the United States",
       site_imgsrc: "https://res.cloudinary.com/jetsetengine/image/upload/c_scale,h_598,w_1096/v1561738721/site%20snapshots/columbiaSite_wrawyp.jpg",
-      site_badges: [{_id:"5d141c9854f7cf9fdff32b3f"}, {_id:"5d141c9854f7cf9fdff32b3c"}, {_id:"5d141c9854f7cf9fdff32b40"}] // how to populate with assigned badges
+      site_badges: [{_id:"5d141c9854f7cf9fdff32b39"}, {_id:"5d141c9854f7cf9fdf100000"}, {_id:"5d141c9854f7cf9fdf100001"}, {_id:"5d141c9854f7cf9fdf100004"}], // how to populate with assigned badges
+      demo_user: "Allison Bardy",
+      demo_img: "https://res.cloudinary.com/jetsetengine/image/upload/v1562769197/alli_dhwttb.jpg"
     }
   ];
 

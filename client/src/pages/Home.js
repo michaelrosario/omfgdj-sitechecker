@@ -6,7 +6,8 @@ import SiteCheckCard from '../components/SiteCheckCard';
 
 class Home extends Component {
   state = {
-    siteDB: []
+    siteDB: [],
+    allbadges: [],
   };
 
   componentDidMount() {
@@ -14,22 +15,29 @@ class Home extends Component {
     window.analytics.page('Home');
     
     API.getsites().then(res => {
-      console.log("getsites res",res);
+      console.log("Getsites Heres the Data",res.data);
       this.setState({
         siteDB: res.data
+      });
+    });
+
+    API.getAllBadges().then(res => {
+      console.log("Gettin dem badges",res.data);
+      let badgey = res.data;
+      this.setState({
+        allbadges: badgey
       });
     });
 
   }
 
   componentWillUnmount() {
- 
-  }
+  } //meh
+
 
   render() {
 
     return (
-
       <Container fluid>
         <Row>
           <Col size="md-1" />
@@ -46,6 +54,10 @@ class Home extends Component {
             </h3>
             <SiteShowcase 
               sitez={this.state.siteDB}
+              badgey={this.state.allbadges}
+              // badgeUno={this.state.badgeOneFive}
+              // badgeDos={this.state.badgeSixTen}
+              // badgeTres={this.state.badgeElevenFifteen}
             />
           </Col>
           <Col size="md-1" />

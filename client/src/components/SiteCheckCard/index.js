@@ -31,7 +31,7 @@ export default class SiteCheckCard extends React.Component {
             this.saveSiteToDB = this.saveSiteToDB.bind(this);
             this.handleAddScore = this.handleAddScore.bind(this);
           }
-            
+
   componentDidMount() {
     this.checkLoggedIn();
 
