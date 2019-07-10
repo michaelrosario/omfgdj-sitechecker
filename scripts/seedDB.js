@@ -282,7 +282,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
   {
     _id: "5d141c9854f7cf9fdf100100",
     badge_name: "Webpack",
-    badge_component: "webpack",
+    badge_component: "Webpack",
     badge_description: "It's cold out side... Let's bundle up!",
     badge_version: "1.0",
     badge_icon: "webpack.svg",
