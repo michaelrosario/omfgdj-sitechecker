@@ -25,6 +25,9 @@ const Chartbeat = lazy(() => import(`./Chartbeat`));
 const NewRelic = lazy(() => import(`./NewRelic`));
 const Titan = lazy(() => import(`./Titan`));
 const OWLCarousel = lazy(() => import(`./OWLCarousel`));
+const Segment = lazy(() => import(`./Segment`));
+const webpack = lazy(() => import(`./webpack`));
+const Nodejs = lazy(() => import(`./Nodejs`));
 
 export { 
     AngularJS,
@@ -51,5 +54,8 @@ export {
     Chartbeat,
     NewRelic,
     Titan,
-    OWLCarousel
+    OWLCarousel,
+    Segment,
+    webpack,
+    Nodejs
 };

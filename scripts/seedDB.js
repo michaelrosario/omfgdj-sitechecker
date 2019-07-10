@@ -251,12 +251,32 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
   },
   {
     _id: "5d141c9854f7cf9fdf100088",
-    badge_name: "OWL Carousel",
-    badge_component: "OWLCarousel",
+    badge_name: "Segment",
+    badge_component: "Segment",
     badge_description: "",
     badge_version: "1.0",
-    badge_icon: "OWL Carousel.png",
-    badge_category: "jQuery Plugin",
+    badge_icon: "Segment.png",
+    badge_category: "Analytics",
+    badge_score: 10
+  },
+  {
+    _id: "5d141c9854f7cf9fdf100099",
+    badge_name: "NodeJs",
+    badge_component: "Nodejs",
+    badge_description: "",
+    badge_version: "1.0",
+    badge_icon: "node.js.png",
+    badge_category: "Backend Technology",
+    badge_score: 10
+  },
+  {
+    _id: "5d141c9854f7cf9fdf100100",
+    badge_name: "Webpack",
+    badge_component: "webpack",
+    badge_description: "",
+    badge_version: "1.0",
+    badge_icon: "webpack.svg",
+    badge_category: "Compiler",
     badge_score: 10
   }
  
