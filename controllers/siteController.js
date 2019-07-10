@@ -12,9 +12,11 @@ module.exports = {
   findAll: function(req, res) {
     db.Sites
       .find(req.query)
-      .populate('site_badges')
       .sort({ site_lastSave: 'descending' })
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => {
+        dbModel.message = "Success";
+        res.json(dbModel)
+      })
       .catch(err => res.status(422).json(err));
   },
   findByUrl: function(req, res) {
@@ -234,6 +236,7 @@ module.exports = {
             // return console.log(jsonResponse);
           }).catch( error => {
             console.log(error)
+            data.wappalyzer = [];
             console.log("---- WAPPALYZER FAILED ----");
             return res.json(data);
           });

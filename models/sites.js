@@ -10,16 +10,16 @@ const siteSchema = new Schema({
   site_lastSave : { type: Number, default: (new Date()).getTime() },
   site_badges:[
     {
-      type: mongoose.Schema.Types.ObjectId, 
+      type: Schema.Types.ObjectId, 
       ref: 'Badges'
     }
   ],
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Users'
-  },
-  demo_user: { type: String, required: true },
-  demo_img: { type: String, required: true },
+  }
+},{
+  collection: 'sites'
 });
 
 const Sites = mongoose.model("Sites", siteSchema);
