@@ -279,10 +279,10 @@ export default class SiteCheckCard extends React.Component {
                             disabled={!(site && !this.state.processing)}
                             onClick={this.handleFormSubmit}
                         >
-                            {this.state.processing ?   
-                              <span> &nbsp; &nbsp; <i className="fa fa-spinner fa-spin"></i> &nbsp; &nbsp; </span> : 
-                              "Check"}
-                        </FormBtn>
+                        {this.state.processing ?   
+                          <span> &nbsp; &nbsp; <i className="fa fa-spinner fa-spin"></i> &nbsp; &nbsp; </span> : 
+                          "Check"}
+                      </FormBtn>
                         {siteTitle ? (
                           <div>
                             <img className="site-screen" src={siteData.image} alt={siteTitle} />
