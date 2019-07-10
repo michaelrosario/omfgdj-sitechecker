@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
+import SiteCard from '../components/SiteCard';
 import { Redirect } from 'react-router-dom'
 
 
@@ -11,6 +12,7 @@ class Portfolio extends Component {
     userId: '',
     firstName: '',
     lastName: '',
+    allbadges: {},
     sites: []
   };
 
@@ -38,6 +40,17 @@ class Portfolio extends Component {
 
     });
 
+    API.getAllBadges().then(res => {
+      console.log("Gettin dem badges",res.data);
+      let badgey = {}
+      res.data.map(badge => {
+        badgey[badge._id] = badge;
+      });
+      this.setState({
+        allbadges: badgey
+      });
+    });
+
   }
 
   componentWillUnmount() {
@@ -60,9 +73,8 @@ class Portfolio extends Component {
   render() {
     
     const sites = this.state.sites.map( site => {
-      return <img src={site._siteId.site_imgsrc} alt={site._siteId.site_name} />;
+      return <Col size="md-4"><SiteCard className="fiftyfifty" site={site._siteId} key={site._id} badgey={this.state.allbadges}/></Col>
     })
-
 
     return (
 
@@ -77,14 +89,9 @@ class Portfolio extends Component {
                    
       <Container>
         <Row>
-           <Col size="md-12">
-              
-           </Col>
-        </Row>
-        <Row>
-          <Col size="md-12">
+         
               {sites}
-          </Col>
+         
         </Row>
       </Container>
       </div>
