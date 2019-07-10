@@ -260,7 +260,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 10
     },
   {
-    _id: "5d141c9854f7cf9fdf100088",
+    _id: "5d141c9854f7cf9fdf100089",
     badge_name: "Segment",
     badge_component: "Segment",
     badge_description: "We like to be specific about what we know about you.",
