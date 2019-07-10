@@ -240,13 +240,23 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_score: 10
   },
   {
-    _id: "5d141c9854f7cf9fdf100077",
+    _id: "5d141c9854f7cf9fdf100076",
     badge_name: "Titan",
     badge_component: "Titan",
     badge_description: "",
     badge_version: "1.0",
     badge_icon: "Titan.png",
     badge_category: "Transit Advertising",
+    badge_score: 10
+  },
+  {
+    _id: "5d141c9854f7cf9fdf100077",
+    badge_name: "OWL Carousel",
+    badge_component: "OWLCarousel",
+    badge_description: "",
+    badge_version: "1.0",
+    badge_icon: "OWL Carousel.png",
+    badge_category: "jQuery Plugin",
     badge_score: 10
   },
   {
