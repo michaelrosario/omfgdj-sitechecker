@@ -95,11 +95,13 @@ export default class SiteCheckCard extends React.Component {
 
     if(site.startsWith("http://")){
       protocol = "http";
+      website = this.getHostnameFromRegex(site);
     } 
     if(site.startsWith("https://")){
       protocol = "https";
+      website = this.getHostnameFromRegex(site);
     } 
-    website = this.getHostnameFromRegex(site);
+   
     console.log("SEARCH "+website+" VIA APIs");
 
     this.setState({
