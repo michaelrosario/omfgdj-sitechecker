@@ -295,7 +295,7 @@ const badgeSeed = [ // Omar: These dummy entries are actually real values from t
     badge_component: "Express",
     badge_description: "Express yourself! Charles Wright & the Watts 103rd Street Rhythm Band.",
     badge_version: "1.0",
-    badge_icon: "express.png",
+    badge_icon: "Express.png",
     badge_category: "Backend Technology",
     badge_score: 10
   }
